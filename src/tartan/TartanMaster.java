@@ -54,8 +54,8 @@ public class TartanMaster {
     }
 
     public void paint(Graphics2D g2d) {
-        
-        int orien = 0 //start with vertical, 1=vertical , 1 = horizontal
+
+        int orien = 0; //start with vertical, 1=vertical , 1 = horizontal
         int threadCount = 0;
         int pivot = 0;
         int weave = 0;
@@ -73,7 +73,7 @@ public class TartanMaster {
                     g2d.setPaint(colors[x]);
                     g2d.fill(new Rectangle(threadSettWidth[x], threadSettLength[0]));
                     g2d.translate(threadSettWidth[x], 0);
-                  //System.out.println("fowards loop");
+                    //System.out.println("fowards loop");
                     //System.out.println(threadSettWidth[x]);
                     //System.out.println(colors[x]);
                 }
@@ -84,7 +84,7 @@ public class TartanMaster {
                     g2d.setPaint(colors[x]);
                     g2d.fill(new Rectangle(threadSettWidth[x], threadSettLength[0]));
                     g2d.translate(threadSettWidth[x], 0);
-                  //System.out.println("reverse loop");
+                    //System.out.println("reverse loop");
                     //System.out.println(threadSettWidth[x]);
                     //System.out.println(colors[x]);
                 }
@@ -94,8 +94,6 @@ public class TartanMaster {
           // --------------//
             //g2d.translate(threadSettWidth[x], 0);
 
-            
-            
         } //vertical drop swtch height and width
 
         /*
@@ -119,7 +117,7 @@ public class TartanMaster {
          g2d.setPaint(Color.blue);
          g2d.fill(rect);
          */
-    //g2d.drawLine(0, 0, 100, 100);
+        //g2d.drawLine(0, 0, 100, 100);
     }
 
     public static void main(String[] args) throws IOException {
@@ -140,7 +138,7 @@ public class TartanMaster {
         TartanMaster test = new TartanMaster();
         test.paint(svgGenerator);
 
-    // Finally, stream out SVG to the standard output using
+        // Finally, stream out SVG to the standard output using
         // UTF-8 encoding.
         boolean useCSS = true; // we want to use CSS style attributes
         Writer out = new OutputStreamWriter(System.out, "UTF-8");
