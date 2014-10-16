@@ -4,7 +4,7 @@ This README would normally document whatever steps are necessary to get your app
 
 ### What is this repository for? ###
 
-* Quick summary
+* Quick summary   
 This is the ultimate tartan generator in the history of tartans. Don't mess with it.
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
