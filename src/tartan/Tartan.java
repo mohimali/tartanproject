@@ -6,61 +6,86 @@
 package tartan;
 
 import java.awt.Color;
+
 /**
- *
  * @author mohim
  */
 public class Tartan {
-    
-   public int threadCount = 0;
-   public int threadSizes[];
-   public Color colours[];
-   public int settCount = 0;
-   public int warp = 0;
-   public int weft = 0;
-   
-   
 
-    private Tartan(int requiredThreadCount, int requiredThreadSizes[],
-                   Color requiredColours[], int requiredSettCount)
-    {
-        threadCount = requiredThreadCount;
-        threadSizes = requiredThreadSizes;
-        
+    // make then private and protected later. Find out what each mean.
+
+    public double threadSizes[];
+    public Color colours[];
+    public int settCount = 0;
+    public int warp = 0;
+    public int weft = 0;
+
+    public double dimensions = 1;
+
+    Tartan(double requiredThreadSizes[],
+           Color requiredColours[], int requiredSettCount,
+           double requiredDimensions) {
+
+
         settCount = requiredSettCount;
         colours = requiredColours;
-        
-        
+
+        dimensions = requiredDimensions;
+
+
+        threadSizes = new double[]{};
+        threadSizes = computeThreadSizes(requiredThreadSizes);
     } // Constructor tartan
-    
-    public void updateThreadCount(int newThreadCount)
+
+
+    public double[] computeThreadSizes(double requiredThreadSizes[])
     {
-        threadCount = newThreadCount;
-    } // updateThreadCount
-    
-    public void updateThreadSizes(int newThreadSizes[])
-    {
+        double total = 0;
+        double newThreadSizes[] = new double[requiredThreadSizes.length];
+
+
+        for (double requiredThreadSize : requiredThreadSizes) {
+            total += requiredThreadSize;
+        }
+
+
+        for (int x = 0; x < requiredThreadSizes.length; x++) {
+
+
+            newThreadSizes[x] = ((requiredThreadSizes[x] / total) * dimensions) / (settCount);
+            System.out.println(newThreadSizes[x]);
+        }
+
+        return newThreadSizes;
+
+    }
+
+    public void updateThreadSizes(double newThreadSizes[]) {
         threadSizes = newThreadSizes;
     } // updateThreadSizes
-    
-    public void updateColors(Color newColours[])
-    {
+
+    public void updateColors(Color newColours[]) {
         colours = newColours;
     } // updateThreadSizes
-    
-    public void updateSettCount(int newSettCount)
-    {
+
+    public void updateSettCount(int newSettCount) {
         settCount = newSettCount;
     } // updateSettCount
-    
-    public int getThreadCount()
-    {
-        return threadCount;
-    } // getThreadCount
-    
-    public int getSettCount()
-    {
+
+
+    public int getSettCount() {
         return settCount;
     } // getSettCount
-    
+
+    public double getThreadSizes(int i) {
+        return threadSizes[i];
+    } // getThreadSizes
+
+    public int getThreadSizesCount() {
+        return threadSizes.length;
+    } // getThreadSizes
+
+    public double getDimensions() {
+        return dimensions;
+    } // getThreadSizes
 }
