@@ -50,7 +50,6 @@ public class TartanMaster {
         origThreadSizes = new double[]{10, 50, 50, 10};  // remove end number later just
 
 
-
         //Upgrade to RGB later
         colours = new Color[]{black, red,
                 black, yellow}; // May be static so cant be changed?
@@ -63,36 +62,60 @@ public class TartanMaster {
 
     public void paint(Graphics2D g2d, Tartan tartan1) {
 
-
-        //g2d.translate(threadSettWidth[x], 0);
+        int alpha1 = 100;
+        int alpha2 = 0;
+        // PRINT WARP
         for (int i = 0; i < tartan1.getSettCount() / 2; i += 1) {
 
             //forwards pattern
             for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
                 g2d.setPaint(colours[x]);
-                // System.out.println("mainTSize: " + tartan1.getThreadSizes(x) + "mainTDim: " + tartan1.getDimensions());
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(x), tartan1.getDimensions()) {
                 });
                 g2d.translate(tartan1.getThreadSizes(x), 0);
-                //System.out.println("fowards loop");
-                //System.out.println(threadSettWidth[x]);
-                //System.out.println(colors[x]);
             } //forwards for
 
             //reverse pattern
             for (int x = tartan1.getThreadSizesCount() - 1; x >= 0; x -= 1) {
                 g2d.setPaint(colours[x]);
-                // System.out.println("mainTSize: " + tartan1.getThreadSizes(x) + "mainTDim: " + tartan1.getDimensions());
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(x), tartan1.getDimensions()) {
                 });
                 g2d.translate(tartan1.getThreadSizes(x), 0);
-                //System.out.println("fowards loop");
-                //System.out.println(threadSettWidth[x]);
-                //System.out.println(colors[x]);
             } //reverse for
 
 
         } // most outer for
+
+
+        g2d.translate(-1 * g2d.getTransform().getTranslateX(), 0);
+        System.out.println("" + g2d.getTransform().getTranslateX());
+
+
+        //PRINT WEFT
+        for (int i = 0; i < tartan1.getSettCount() / 2; i += 1) {
+
+            //forwards pattern
+            for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
+                Color color = new Color(colours[x].getRed(), colours[x].getGreen(), colours[x].getBlue(), alpha1); //Red
+                g2d.setPaint(color);
+                g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getDimensions(), tartan1.getThreadSizes(x)) {
+                });
+                g2d.translate(0, tartan1.getThreadSizes(x));
+            } //forwards for
+
+            //reverse pattern
+            for (int x = tartan1.getThreadSizesCount() - 1; x >= 0; x -= 1) {
+                Color color = new Color(colours[x].getRed(), colours[x].getGreen(), colours[x].getBlue(), alpha1); //Red
+                g2d.setPaint(color);
+                g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getDimensions(), tartan1.getThreadSizes(x)) {
+                });
+                g2d.translate(0, tartan1.getThreadSizes(x));
+
+            } //reverse for
+
+
+        } // most outer for
+
     }
 
     public static void main(String[] args) throws IOException {
