@@ -97,6 +97,7 @@ public class TartanMaster {
 
     public static void main(String[] args) throws IOException {
 
+        // Initialise variables
         init();
 
         // Create an instance of a tartan
