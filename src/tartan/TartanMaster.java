@@ -1,11 +1,10 @@
-/*
+package tartan;/*
  * ref: http://xmlgraphics.apache.org/batik/using/svg-generator.html
  * 
  * 
  */
-package tartan;
 
-import java.awt.Rectangle;
+
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
@@ -19,8 +18,6 @@ import org.apache.batik.dom.GenericDOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMImplementation;
 
-import static java.awt.Color.*;
-
 // http://xmlgraphics.apache.org/batik/using/svg-generator.html
 
 /**
@@ -29,34 +26,17 @@ import static java.awt.Color.*;
 public class TartanMaster {
 
 
-    public static double tartanDimensions;
+    public static int tartanDimensions;
 
-    public static double origThreadSizes[];// remove end number later just
-
-
-    //Upgrade to RGB later
-    public static Color colours[];
+    public static String inputColours;
 
     public static int settCount = 0; // cant be odd
-    public static int warp = 0;
-    public static int weft = 0;
 
-    // int requiredThreadCount, int requiredThreadSizes[],
-    // Color requiredColours[], int requiredSettCount
 
     public static void init() {
         tartanDimensions = 800;
-
-        origThreadSizes = new double[]{10, 50, 50, 10};  // remove end number later just
-
-
-        //Upgrade to RGB later
-        colours = new Color[]{black, red,
-                black, yellow}; // May be static so cant be changed?
-
         settCount = 4;
-        warp = 0;
-        weft = 0;
+        inputColours = "K4,G4,O4,R50,K50,Y4";
     }
 
 
@@ -69,7 +49,7 @@ public class TartanMaster {
 
             //forwards pattern
             for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
-                g2d.setPaint(colours[x]);
+                g2d.setPaint(tartan1.getThreadColour(x));
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(x), tartan1.getDimensions()) {
                 });
                 g2d.translate(tartan1.getThreadSizes(x), 0);
@@ -77,7 +57,7 @@ public class TartanMaster {
 
             //reverse pattern
             for (int x = tartan1.getThreadSizesCount() - 1; x >= 0; x -= 1) {
-                g2d.setPaint(colours[x]);
+                g2d.setPaint(tartan1.getThreadColour(x));
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(x), tartan1.getDimensions()) {
                 });
                 g2d.translate(tartan1.getThreadSizes(x), 0);
@@ -86,35 +66,41 @@ public class TartanMaster {
 
         } // most outer for
 
-
+        System.out.println("transformBefore:" + g2d.getTransform().getTranslateX());
         g2d.translate(-1 * g2d.getTransform().getTranslateX(), 0);
-        System.out.println("" + g2d.getTransform().getTranslateX());
+        System.out.println("transformMOHIM:" + g2d.getTransform().getTranslateX());
 
-
-        //PRINT WEFT
         for (int i = 0; i < tartan1.getSettCount() / 2; i += 1) {
 
             //forwards pattern
             for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
-                Color color = new Color(colours[x].getRed(), colours[x].getGreen(), colours[x].getBlue(), alpha1); //Red
+                Color color = new Color(tartan1.getThreadColour(x).getRed(),
+                        tartan1.getThreadColour(x).getGreen(),
+                        tartan1.getThreadColour(x).getBlue(), alpha1); //Red
                 g2d.setPaint(color);
+
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getDimensions(), tartan1.getThreadSizes(x)) {
                 });
                 g2d.translate(0, tartan1.getThreadSizes(x));
+
             } //forwards for
 
             //reverse pattern
             for (int x = tartan1.getThreadSizesCount() - 1; x >= 0; x -= 1) {
-                Color color = new Color(colours[x].getRed(), colours[x].getGreen(), colours[x].getBlue(), alpha1); //Red
+                Color color = new Color(tartan1.getThreadColour(x).getRed(),
+                        tartan1.getThreadColour(x).getGreen(),
+                        tartan1.getThreadColour(x).getBlue(), alpha1); //Red
                 g2d.setPaint(color);
+
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getDimensions(), tartan1.getThreadSizes(x)) {
                 });
-                g2d.translate(0, tartan1.getThreadSizes(x));
-
+                g2d.translate(0,tartan1.getThreadSizes(x));
             } //reverse for
 
 
-        } // most outer for
+        }
+
+
 
     }
 
@@ -124,8 +110,10 @@ public class TartanMaster {
         init();
 
         // Create an instance of a tartan
-        Tartan tartan = new Tartan(origThreadSizes, colours,
-                settCount, tartanDimensions);
+        Tartan tartan = new Tartan(inputColours, settCount, tartanDimensions, true);
+
+        System.out.println("test");
+        System.out.println(tartan.toString());
 
         // Get a DOMImplementation.
         DOMImplementation domImpl =
@@ -147,6 +135,7 @@ public class TartanMaster {
         boolean useCSS = true; // we want to use CSS style attributes
         Writer out = new OutputStreamWriter(System.out, "UTF-8");
         svgGenerator.stream(out, useCSS);
+
 
     }
 }

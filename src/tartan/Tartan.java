@@ -1,72 +1,64 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tartan;
 
-import java.awt.Color;
+import java.awt.*;
+import java.util.ArrayList;
 
 /**
- * @author mohim
+ * Created by Mohim Ali on 08/11/2014.
  */
 public class Tartan {
 
-    // make then private and protected later. Find out what each mean.
+    // tartan.Tartan Dimensions
+    int width = 1;
+    int height = 1;
 
+
+    String originalThreadList;
+    // Is the tartan a Asymmetrical tartan or a Symmetrical one.
+    ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
+    int settCount;
+    boolean isSymmetrical = true;
     public double threadSizes[];
-    public Color colours[];
-    public int settCount = 0;
-    public int warp = 0;
-    public int weft = 0;
 
-    public double dimensions = 1;
+    public Tartan(String requiredThreads,
+                  int requiredSettCount,
+                  int requiredDimension,
+                  boolean requiredIsSymmetrical) {
 
-    Tartan(double requiredThreadSizes[],
-           Color requiredColours[], int requiredSettCount,
-           double requiredDimensions) {
-
-
+        originalThreadList = requiredThreads;
+        threads = ThreadFactory.buildThread(requiredThreads);
         settCount = requiredSettCount;
-        colours = requiredColours;
-
-        dimensions = requiredDimensions;
-
+        width = height = requiredDimension; //Its a square so width height are same
+        isSymmetrical = requiredIsSymmetrical;
 
         threadSizes = new double[]{};
-        threadSizes = computeThreadSizes(requiredThreadSizes);
-    } // Constructor tartan
+        threadSizes = computeThreadSizes(threads);
+
+    }
 
 
-    public double[] computeThreadSizes(double requiredThreadSizes[])
+
+    public double[] computeThreadSizes( ArrayList<TartanThread> threadList)
     {
         double total = 0;
-        double newThreadSizes[] = new double[requiredThreadSizes.length];
+        double newThreadSizes[] = new double[threadList.size()];
 
 
-        for (double requiredThreadSize : requiredThreadSizes) {
-            total += requiredThreadSize;
+        for (TartanThread thread :threadList ) {
+            total += thread.getSize();
+
         }
 
 
-        for (int x = 0; x < requiredThreadSizes.length; x++) {
+        for (int x = 0; x <threadList.size(); x++) {
+            newThreadSizes[x] = ((threadList.get(x).getSize() / total) * width) / (settCount);
 
-
-            newThreadSizes[x] = ((requiredThreadSizes[x] / total) * dimensions) / (settCount);
-            System.out.println(newThreadSizes[x]);
         }
 
         return newThreadSizes;
 
     }
 
-    public void updateThreadSizes(double newThreadSizes[]) {
-        threadSizes = newThreadSizes;
-    } // updateThreadSizes
-
-    public void updateColors(Color newColours[]) {
-        colours = newColours;
-    } // updateThreadSizes
 
     public void updateSettCount(int newSettCount) {
         settCount = newSettCount;
@@ -81,11 +73,44 @@ public class Tartan {
         return threadSizes[i];
     } // getThreadSizes
 
+    public Color getThreadColour(int i) {
+        return threads.get(i).getColour();
+    } // getThreadSizes
+
     public int getThreadSizesCount() {
-        return threadSizes.length;
+        return threads.size();
+
     } // getThreadSizes
 
     public double getDimensions() {
-        return dimensions;
+        return width;
     } // getThreadSizes
+
+    public String toString() {
+        String threadAll = "";
+
+        for (TartanThread item : threads)
+            threadAll += item.toString() + ",";
+
+        return "tartan.Tartan: \n" +
+                "OriginalThreads: " + originalThreadList + "\n" +
+                "Real Threads: " + threadAll + "\n" +
+                "IsSymmetrical: " + isSymmetrical + "\n" +
+                "settCount: " + settCount + "\n" +
+                "Width: " + width + "\n" +
+                "Height: " + height + "\n" +
+                "threadSizesActual: " + getRealThreadSizes() +  "\n";
+    }
+
+    public String getRealThreadSizes()
+    {
+        String sizes="";
+
+        for (double size : threadSizes)
+            sizes += sizes + size + ",";
+
+        return sizes;
+    }
+
+
 }
