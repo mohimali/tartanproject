@@ -1,8 +1,7 @@
 package tartan.combination;
 
-import tartan.Tartan;
-import tartan.TartanThread;
-import tartan.ThreadFactory;
+
+import tartan.*;
 
 import java.util.ArrayList;
 

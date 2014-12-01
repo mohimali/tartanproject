@@ -20,6 +20,25 @@ public class Tartan {
     boolean isSymmetrical = true;
     public double threadSizes[];
 
+    public String getOriginalThreadList()
+    {
+        return originalThreadList;
+
+    }
+
+    public void updateThreadList( ArrayList<TartanThread> newThreadList)
+    {
+        threads = newThreadList;
+
+    }
+
+    public  ArrayList<TartanThread> getThreadList()
+    {
+        return threads;
+
+    }
+
+
     public Tartan(String requiredThreads,
                   int requiredSettCount,
                   int requiredDimension,

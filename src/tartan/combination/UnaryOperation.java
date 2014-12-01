@@ -1,5 +1,7 @@
 package tartan.combination;
 
+import tartan.*;
+
 /**
  * Created by mmapxma3 on 01/12/14.
  */
