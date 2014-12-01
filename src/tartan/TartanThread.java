@@ -19,6 +19,7 @@ public class TartanThread {
 
     }
 
+
     public TartanThread getTartanThread()
     {
         return this;

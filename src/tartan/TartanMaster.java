@@ -14,7 +14,6 @@ import java.io.IOException;
 
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.dom.GenericDOMImplementation;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMImplementation;
 

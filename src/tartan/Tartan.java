@@ -15,7 +15,7 @@ public class Tartan {
 
     String originalThreadList;
     // Is the tartan a Asymmetrical tartan or a Symmetrical one.
-    ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
+    public ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
     int settCount;
     boolean isSymmetrical = true;
     public double threadSizes[];
@@ -75,7 +75,7 @@ public class Tartan {
 
     public Color getThreadColour(int i) {
         return threads.get(i).getColour();
-    } // getThreadSizes
+    } // getThreadColour
 
     public int getThreadSizesCount() {
         return threads.size();
@@ -84,7 +84,7 @@ public class Tartan {
 
     public double getDimensions() {
         return width;
-    } // getThreadSizes
+    } // getDimensions
 
     public String toString() {
         String threadAll = "";

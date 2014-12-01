@@ -24,7 +24,7 @@ public class ThreadFactory {
     public static Color M = Color.MAGENTA; // MAGENTA
     public static Color C = Color.CYAN; // CYAN
 
-    // Patterns - Eager Instantation
+    // Patterns - Eager Instantiation
     ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
 
 
