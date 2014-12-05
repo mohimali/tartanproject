@@ -7,7 +7,7 @@ import tartan.Tartan;
  */
 public abstract class BinaryOperation extends Combination{
 
-    public abstract Tartan performUnaryOperation(Tartan t1,Tartan t2);
+    public abstract Tartan performBinaryOperation(Tartan t1,Tartan t2);
 }
 
 

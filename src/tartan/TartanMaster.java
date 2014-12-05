@@ -16,6 +16,8 @@ import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.dom.GenericDOMImplementation;
 import org.w3c.dom.Document;
 import org.w3c.dom.DOMImplementation;
+import tartan.combination.*;
+
 
 // http://xmlgraphics.apache.org/batik/using/svg-generator.html
 
@@ -65,9 +67,9 @@ public class TartanMaster {
 
         } // most outer for
 
-        System.out.println("transformBefore:" + g2d.getTransform().getTranslateX());
+        //System.out.println("transformBefore:" + g2d.getTransform().getTranslateX());
         g2d.translate(-1 * g2d.getTransform().getTranslateX(), 0);
-        System.out.println("transformMOHIM:" + g2d.getTransform().getTranslateX());
+        //System.out.println("transformMOHIM:" + g2d.getTransform().getTranslateX());
 
         for (int i = 0; i < tartan1.getSettCount() / 2; i += 1) {
 
@@ -105,14 +107,42 @@ public class TartanMaster {
 
     public static void main(String[] args) throws IOException {
 
+
         // Initialise variables
         init();
+          Operate combiner = new Operate();
+//        public static Color K = Color.BLACK;  //BLACK
+//        public static Color T = new Color(165, 42, 42);  //BROWN
+//        public static Color N = Color.GRAY; // GREY
+//
+//        public static Color B = Color.BLUE; // BLUE
+//        public static Color G = Color.GREEN; // GREEN
+//        public static Color O = Color.ORANGE; // ORANGE
+//        public static Color P = Color.PINK; // PINK
+//        public static Color R = Color.RED; // RED
+//        public static Color W = Color.WHITE; // WHITE
+//        public static Color Y = Color.YELLOW; // YELLOW
+//        public static Color M = Color.MAGENTA; // MAGENTA
+//        public static Color C = Color.CYAN; // CYAN
+
 
         // Create an instance of a tartan
-        Tartan tartan = new Tartan(inputColours, settCount, tartanDimensions, true);
+        int mode = 1; //1 means unary(1 Tartan transform), 2 means binary(2 tartans combined)
+        String threadT1 = "K4,G4,O4,R50,K50,Y4";
+        String threadT2 = "B1,K1,B1,C20,M20,W1";
 
-        System.out.println("test");
-        System.out.println(tartan.toString());
+        Tartan t1 = new Tartan(threadT1, settCount, tartanDimensions, true);
+        Tartan t2 = new Tartan(threadT2, settCount, tartanDimensions, true);
+
+        //Tartan t3 = combiner.performOperation(t1,t2,OPERATION.COMBINE_CONCATENATION);
+        //Tartan t3 = combiner.performOperation(t1,t2,OPERATION.COMBINE_ODD_EVEN);
+        //Tartan t3 = combiner.performOperation(t1,OPERATION.INVERT_COLOUR);
+        //Tartan t3 = combiner.performOperation(t1,OPERATION.DARKER_COLOUR);
+        Tartan t3 = combiner.performOperation(t1,OPERATION.BRIGHTER_COLOUR);
+
+        System.out.println("Starting System");
+        System.out.println("Tartan1: " + t1.toString());
+        System.out.println("Tartan2: " + t2.toString());
 
         // Get a DOMImplementation.
         DOMImplementation domImpl =
@@ -127,7 +157,20 @@ public class TartanMaster {
 
         // Ask the test to render into the SVG Graphics2D implementation.
         TartanMaster test = new TartanMaster();
-        test.paint(svgGenerator, tartan);
+
+        if (mode ==1) //unary 1 tartan transformed
+        {
+            test.paint(svgGenerator, t1);
+            test.paint(svgGenerator, t3);
+        }
+        else if (mode==2) // binary  2 tartans combined
+        {
+            test.paint(svgGenerator, t1);
+            test.paint(svgGenerator, t2);
+            test.paint(svgGenerator, t3);
+        }
+
+
 
         // Finally, stream out SVG to the standard output using
         // UTF-8 encoding.

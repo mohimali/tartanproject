@@ -39,12 +39,35 @@ public class Tartan {
     }
 
 
+    public Tartan(ArrayList<TartanThread> requiredThreads,
+                  int requiredSettCount,
+                  int requiredDimension,
+                  boolean requiredIsSymmetrical) {
+
+        originalThreadList = "Combined Model";
+
+
+        threads = requiredThreads;
+        //threads = ThreadFactory.buildThread(requiredThreads);
+        settCount = requiredSettCount;
+        width = height = requiredDimension; //Its a square so width height are same
+        isSymmetrical = requiredIsSymmetrical;
+
+        threadSizes = new double[]{};
+        threadSizes = computeThreadSizes(threads);
+
+    }
+
+
     public Tartan(String requiredThreads,
                   int requiredSettCount,
                   int requiredDimension,
                   boolean requiredIsSymmetrical) {
 
         originalThreadList = requiredThreads;
+
+
+
         threads = ThreadFactory.buildThread(requiredThreads);
         settCount = requiredSettCount;
         width = height = requiredDimension; //Its a square so width height are same
@@ -56,6 +79,11 @@ public class Tartan {
     }
 
 
+    public void setThreadArray( ArrayList<TartanThread> requiredList)
+    {
+        threadSizes = new double[]{};
+        threadSizes = computeThreadSizes(requiredList);
+    }
 
     public double[] computeThreadSizes( ArrayList<TartanThread> threadList)
     {
@@ -101,7 +129,7 @@ public class Tartan {
 
     } // getThreadSizes
 
-    public double getDimensions() {
+    public int getDimensions() {
         return width;
     } // getDimensions
 
