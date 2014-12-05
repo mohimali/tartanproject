@@ -1,4 +1,5 @@
 package tartan;
+
 import java.awt.Color;
 
 /**
@@ -10,37 +11,32 @@ import java.awt.Color;
 public class TartanThread {
 
     Color colour;
-    int   size;
+    int size;
 
-    public TartanThread(Color requiredThreadColour, int requiredThreadSize )
-    {
+    public TartanThread(Color requiredThreadColour, int requiredThreadSize) {
         colour = requiredThreadColour;
         size = requiredThreadSize;
 
     }
 
 
-    public TartanThread getTartanThread()
-    {
+    public TartanThread getTartanThread() {
         return this;
     }
 
-    public Color getColour()
-    {
+    public Color getColour() {
         return colour;
 
     }
 
 
-    public int getSize()
-    {
+    public int getSize() {
         return size;
 
     }
 
-    public String toString()
-    {
-        return "Colour:" + colour + " Size: " + size ;
+    public String toString() {
+        return "Colour:" + colour + " Size: " + size;
 
     }
 

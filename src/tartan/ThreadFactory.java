@@ -28,7 +28,7 @@ public class ThreadFactory {
     ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
 
 
-    public static synchronized  ArrayList<TartanThread> buildThread(String string) {
+    public static synchronized ArrayList<TartanThread> buildThread(String string) {
 
 
         String[] parts = string.split(",");
@@ -59,7 +59,7 @@ public class ThreadFactory {
             while (m.find()) {
                 String colourToken = m.group(1);  // Thread Color
                 String sizeToken = m.group(2); // Thread Size
-                threads.add(new TartanThread(myColor.get(colourToken),  Integer.parseInt(sizeToken)));
+                threads.add(new TartanThread(myColor.get(colourToken), Integer.parseInt(sizeToken)));
             }
             index++;
         } // OUTER WHILE

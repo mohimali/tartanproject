@@ -1,9 +1,7 @@
 package tartan.combination;
 
 
-
 import tartan.*;
-
 
 
 import java.util.ArrayList;
@@ -22,21 +20,19 @@ public class Concatenation extends BinaryOperation {
 
         ArrayList<TartanThread> newThreads = new ArrayList<TartanThread>();
 
-        for(int i=0;i < t1.getThreadList().size();i++)
-        {
+        for (int i = 0; i < t1.getThreadList().size(); i++) {
             newThreads.add(t1.getThreadList().get(i));
         }
 
-        for(int i=0;i < t2.getThreadList().size();i++)
-        {
+        for (int i = 0; i < t2.getThreadList().size(); i++) {
             newThreads.add(t2.getThreadList().get(i));
         }
 
-        String requiredThreads = t1.getOriginalThreadList() + "," +  t2.getOriginalThreadList();
+        String requiredThreads = t1.getOriginalThreadList() + "," + t2.getOriginalThreadList();
         int requiredSettCount = t1.getSettCount() + t2.getSettCount();
         int requiredDimensions = t1.getDimensions();
         boolean isSymmetrical = true;
-        newTartan = new Tartan(requiredThreads,requiredSettCount,requiredDimensions,isSymmetrical);
+        newTartan = new Tartan(requiredThreads, requiredSettCount, requiredDimensions, isSymmetrical);
 
         return newTartan;
     }

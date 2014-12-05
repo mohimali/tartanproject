@@ -1,7 +1,6 @@
 package tartan.combination;
 
 
-
 import tartan.*;
 
 
@@ -23,25 +22,22 @@ public class BrighterColours extends UnaryOperation {
         ArrayList<TartanThread> newThreads = new ArrayList<TartanThread>();
 
         // Take even element e.g remember 0 index so 0,2,4,6
-        for(int i=0;i < t1.getThreadList().size();i++)
-        {
+        for (int i = 0; i < t1.getThreadList().size(); i++) {
 
 
             Color originalColour = t1.getThreadList().get(i).getColour();
             int originalSize = t1.getThreadList().get(i).getSize();
 
-            Color brighterColour =  originalColour.brighter();
+            Color brighterColour = originalColour.brighter();
 
 
-            for(int x=0;x<10;x++)
-            {
+            for (int x = 0; x < 10; x++) {
                 brighterColour = brighterColour.brighter();
             }
 
-            TartanThread newC = new TartanThread(brighterColour,originalSize);
+            TartanThread newC = new TartanThread(brighterColour, originalSize);
             newThreads.add(newC);
         }
-
 
 
         String requiredThreads = "New Model of t1";
@@ -49,7 +45,7 @@ public class BrighterColours extends UnaryOperation {
         int requiredDimensions = t1.getDimensions();
         boolean isSymmetrical = true;
 
-        newTartan = new Tartan(newThreads,requiredSettCount,requiredDimensions,isSymmetrical);
+        newTartan = new Tartan(newThreads, requiredSettCount, requiredDimensions, isSymmetrical);
         //newTartan.setThreadArray(newThreads);
         return newTartan;
     }

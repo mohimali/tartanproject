@@ -20,20 +20,17 @@ public class Tartan {
     boolean isSymmetrical = true;
     public double threadSizes[];
 
-    public String getOriginalThreadList()
-    {
+    public String getOriginalThreadList() {
         return originalThreadList;
 
     }
 
-    public void updateThreadList( ArrayList<TartanThread> newThreadList)
-    {
+    public void updateThreadList(ArrayList<TartanThread> newThreadList) {
         threads = newThreadList;
 
     }
 
-    public  ArrayList<TartanThread> getThreadList()
-    {
+    public ArrayList<TartanThread> getThreadList() {
         return threads;
 
     }
@@ -67,7 +64,6 @@ public class Tartan {
         originalThreadList = requiredThreads;
 
 
-
         threads = ThreadFactory.buildThread(requiredThreads);
         settCount = requiredSettCount;
         width = height = requiredDimension; //Its a square so width height are same
@@ -79,25 +75,23 @@ public class Tartan {
     }
 
 
-    public void setThreadArray( ArrayList<TartanThread> requiredList)
-    {
+    public void setThreadArray(ArrayList<TartanThread> requiredList) {
         threadSizes = new double[]{};
         threadSizes = computeThreadSizes(requiredList);
     }
 
-    public double[] computeThreadSizes( ArrayList<TartanThread> threadList)
-    {
+    public double[] computeThreadSizes(ArrayList<TartanThread> threadList) {
         double total = 0;
         double newThreadSizes[] = new double[threadList.size()];
 
 
-        for (TartanThread thread :threadList ) {
+        for (TartanThread thread : threadList) {
             total += thread.getSize();
 
         }
 
 
-        for (int x = 0; x <threadList.size(); x++) {
+        for (int x = 0; x < threadList.size(); x++) {
             newThreadSizes[x] = ((threadList.get(x).getSize() / total) * width) / (settCount);
 
         }
@@ -146,12 +140,11 @@ public class Tartan {
                 "settCount: " + settCount + "\n" +
                 "Width: " + width + "\n" +
                 "Height: " + height + "\n" +
-                "threadSizesActual: " + getRealThreadSizes() +  "\n";
+                "threadSizesActual: " + getRealThreadSizes() + "\n";
     }
 
-    public String getRealThreadSizes()
-    {
-        String sizes="";
+    public String getRealThreadSizes() {
+        String sizes = "";
 
         for (double size : threadSizes)
             sizes += sizes + size + ",";
