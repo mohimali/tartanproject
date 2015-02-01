@@ -10,7 +10,6 @@ import java.util.ArrayList;
  */
 public abstract class Combination {
 
-
     public abstract Tartan getTartan();
 
 }
