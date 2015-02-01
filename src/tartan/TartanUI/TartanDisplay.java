@@ -22,7 +22,7 @@ public class TartanDisplay extends JPanel {
     JSVGCanvas canvas;
     GridBagConstraints gbcTartanDisplay;
 
-    public TartanDisplay() {
+    public TartanDisplay(String threadStructure) {
         //this.setLayout(new GridBagLayout());
         gbcTartanDisplay = new GridBagConstraints();
         canvas = new JSVGCanvas();
@@ -39,7 +39,7 @@ public class TartanDisplay extends JPanel {
 
 
         // Create an instance of a tartan
-        String threadT1 = "K4,G4,O4,R50,K50,Y4";
+        String threadT1 = threadStructure;
 
         Tartan t1 = new Tartan(threadT1, 2, 200, true);
 

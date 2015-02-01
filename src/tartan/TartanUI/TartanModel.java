@@ -16,10 +16,19 @@ public class TartanModel {
     private ArrayList<Tartan> tartanList = new ArrayList<Tartan>();
     private ArrayList<TartanThread> tartanThreadList= new ArrayList<TartanThread>();
 
+    private String originalThreads = "K4,G4,O4,R50,K50,Y4";
 
     protected String getTest() {
         return test;
 
+    }
+
+    protected String getOriginalThreads() {
+        return originalThreads;
+    }
+
+    protected void setOriginalThreads(String requiredThreads) {
+         originalThreads = requiredThreads;
     }
 
     protected ArrayList<TartanThread> getTartanThreadList() {

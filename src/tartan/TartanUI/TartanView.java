@@ -77,7 +77,7 @@ public class TartanView{
         leftColourChooser = new ThreadChooser();
         leftColourChooser.setBackground(Color.ORANGE);
 
-        tartanDisplay = new TartanDisplay();
+        tartanDisplay = new TartanDisplay("K4,G4,O4,R50,K50,Y4,B2");
 
 
         threadList = new ThreadList();
