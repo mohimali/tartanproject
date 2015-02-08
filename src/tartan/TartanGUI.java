@@ -200,7 +200,7 @@ public class TartanGUI {
 
         f.getContentPane().add(canvas);
         canvas.setSVGDocument(doc); // adds doc to canvas
-
+        canvas.setBackground(Color.red);
         //add scroll pane
 
         f.pack();

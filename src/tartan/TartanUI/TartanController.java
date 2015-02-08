@@ -1,5 +1,7 @@
 package tartan.TartanUI;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -17,38 +19,110 @@ public class TartanController {
         this.theView = theView;
         this.theModel = theModel;
 
-        // Tell the View that when ever the calculate button
-        // is clicked to execute the actionPerformed method
-        // in the CalculateListener inner class
         this.theView.addThreadListener(new AddThreadListener());
+        this.theView.addChooseColourListener(new ChooseColourListener());
+        this.theView.leftColourChooser.palettes.addGridColourListener(new GridChooseColourListener());
+        this.theView.addCustomColourListener(new AddCustomColourListener());
+        this.theView.addSinglePaletteListener(new SinglePaletteListener());
+    }
+
+    class SinglePaletteListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
+                    theView.leftColourChooser.updateSinglePaletteColour(null);
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+                theView.displayErrorMessage("You Need to Enter 2 Integers");
+            }
+
+        }
+
+    }
+
+    class AddCustomColourListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
+                    theView.displayCustomColourPicker();
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+                theView.displayErrorMessage("You Need to Enter 2 Integers");
+            }
+
+        }
+
+    }
+
+
+    class GridChooseColourListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+
+                    theView.leftColourChooser.updateSinglePaletteColour(((JButton) e.getSource()).getBackground());
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+                theView.displayErrorMessage("You Need to Enter 2 Integers");
+            }
+
+        }
+
     }
 
     class AddThreadListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
-            int firstNumber, secondNumber = 0;
-
-            // Surround interactions with the view with
-            // a try block in case numbers weren't
-            // properly entered
-
             try {
 
                 //firstNumber = theView.getFirstNumber();
                 //secondNumber = theView.getSecondNumber();
-
                 //theModel.addTwoNumbers(firstNumber, secondNumber);
 
                 theView.setAddThreadStatus(theModel.getTest());
 
             } catch (NumberFormatException ex) {
-
                 System.out.println(ex);
-
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
+            }
+
+        }
+
+    }
+
+    class ChooseColourListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
 
 
+            try {
+
+                theView.leftColourChooser.updateSinglePaletteColour(null);
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+                theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
 
         }

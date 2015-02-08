@@ -1,5 +1,6 @@
 package tartan.TartanUI;
 
+import net.miginfocom.swing.MigLayout;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.swing.JSVGCanvas;
@@ -20,28 +21,18 @@ import java.awt.geom.Rectangle2D;
 public class TartanDisplay extends JPanel {
 
     JSVGCanvas canvas;
-    GridBagConstraints gbcTartanDisplay;
 
     public TartanDisplay(String threadStructure) {
-        //this.setLayout(new GridBagLayout());
-        gbcTartanDisplay = new GridBagConstraints();
-        canvas = new JSVGCanvas();
-        canvas.setSize(500, 500);
-        this.setSize(500, 500);
-        canvas.setBackground(Color.WHITE);
 
-        gbcTartanDisplay.gridx = 0;
-        gbcTartanDisplay.gridy = 0;
+        this.setLayout(new MigLayout());
 
-
-        this.setBackground(Color.BLUE);
-
-
-
+        this.setOpaque(true);
+        //this.setBackground(Color.RED);
+        this.setBorder(BorderFactory.createEmptyBorder());
         // Create an instance of a tartan
         String threadT1 = threadStructure;
 
-        Tartan t1 = new Tartan(threadT1, 2, 200, true);
+        Tartan t1 = new Tartan(threadT1, 2, 400, true);
 
         System.out.println("Starting System");
         System.out.println("Tartan1: " + t1.toString());
@@ -54,9 +45,6 @@ public class TartanDisplay extends JPanel {
         // Create a converter for this document.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(doc);
 
-        //VERY BAD CODE, CAUSES STUFF TO RESIZE HORRIBLY
-        //svgGenerator.setSVGCanvasSize(new Dimension(800, 4000));
-
         this.paint(svgGenerator, t1);
 
 
@@ -66,14 +54,11 @@ public class TartanDisplay extends JPanel {
 
         // Display the document.
         JSVGCanvas canvas = new JSVGCanvas(); // holds doc with graphics
-        //canvas.setSize(500, 2000);
-
-
-
-
         canvas.setSVGDocument(doc); // adds doc to canvas
-
+        //MUST MATCH TARTAN DIMENSIONS
+        canvas.setPreferredSize(new Dimension(400, 400));
         this.add(canvas);
+
 
 
     }

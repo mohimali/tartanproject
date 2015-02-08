@@ -1,5 +1,7 @@
 package tartan.TartanUI;
 
+import net.miginfocom.swing.MigLayout;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -9,29 +11,18 @@ import java.awt.*;
 public class ThreadList extends JPanel{
 
     JLabel test = new JLabel("Test");
+    JLabel test1 = new JLabel("Test1");
+    JLabel test2 = new JLabel("Test2");
     public ThreadList()
     {
-        this.setLayout(new GridBagLayout());
-        this.setBackground(Color.yellow);
-        this.setSize(500,500);
-        addItem(new JLabel("Name:"), 0, 0, 1, 1, GridBagConstraints.WEST);
-        addItem(new JLabel("Name1:"), 0, 1, 1, 1, GridBagConstraints.WEST);
-        addItem(new JLabel("Name2:"), 0, 2, 1, 1, GridBagConstraints.WEST);
+        this.setLayout(new MigLayout());
+        this.setBackground(Color.DARK_GRAY);
+        this.setPreferredSize(new Dimension(500,100));
 
-    }
+        this.add(test,"wrap");
+        this.add(test1,"wrap");
+        this.add(test2,"wrap");
 
-    private void addItem(JComponent component, int x, int y, int width, int height, int align) {
-        GridBagConstraints gbc = new GridBagConstraints();
-        gbc.gridx = x;
-        gbc.gridy = y;
-        gbc.gridwidth = width;
-        gbc.gridheight = height;
-        gbc.weightx = 100.0;
-        gbc.weighty = 100.0;
-        gbc.insets = new Insets(5, 5, 5, 5);
-        gbc.anchor = align;
-        gbc.fill = GridBagConstraints.NONE;
-        this.add(component, gbc);
     }
 
 }

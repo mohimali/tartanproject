@@ -1,4 +1,4 @@
-package tartan.TartanUI;
+package tartan.test;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.StringSelection;
 import java.awt.datatransfer.Transferable;

@@ -7,6 +7,7 @@ import tartan.TartanUI.TartanView;
 import javax.swing.*;
 
 import javax.swing.UIManager.*;
+
 public class TartanMVC {
 
     public static TartanView theView;
@@ -31,10 +32,8 @@ public class TartanMVC {
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 theView = new TartanView();
-
                 theModel = new TartanModel();
-
-                theController = new TartanController(theView,theModel);
+                theController = new TartanController(theView, theModel);
             }
         });
 
@@ -61,9 +60,6 @@ public class TartanMVC {
             }
         });
 */
-
-
-
 
 
     }
