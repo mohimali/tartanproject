@@ -1,13 +1,13 @@
 package tartan.TartanUI;
 
 
+import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -28,39 +28,74 @@ import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 public class XMLSaveColours {
 
     //No generics
-    ArrayList<PaletteColour> myData;
+    ArrayList<PaletteColour> paletteColours = new ArrayList<PaletteColour>();
     Document dom;
 
+
     public XMLSaveColours() {
-        //create a list to hold the data
-        myData = new  ArrayList<PaletteColour>();
 
         //initialize the list
-        loadData();
+        loadData(null,"");
 
         //Get a DOM object
         createDocument();
-    }
 
-
-    public void runExample(){
-        System.out.println("Started .. ");
         createDOMTree();
-        printToFile();
-        System.out.println("Generated file successfully.");
+
+        //Save to file
+        //this.saveToFile();
+
+    }
+
+    public void addColour(Color newColour,String name)
+    {
+        paletteColours = new ArrayList<PaletteColour>();
+        //initialize the list
+        loadData(newColour,name);
+
+        //Get a DOM object
+        createDocument();
+
+        createDOMTree();
+
+        //Save to file
+        this.saveToFile();
     }
 
 
-    /**
-     * Add a list of books to the list
-     * In a production system you might populate the list from a DB
-     */
-    private void loadData(){
+    public void saveToFile(){
+        printToFile();
 
-        myData.add(new PaletteColour("Colour",1,"Black","0x000000"));
-        myData.add(new PaletteColour("Colour",2,"White","0xFFFFFF"));
-        myData.add(new PaletteColour("Colour",3,"Navy","0x000080"));
-        myData.add(new PaletteColour("Colour",4,"Blue","0x0000FF"));
+    }
+
+
+    private void loadData(Color c,String name){
+
+        //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colours stored their
+        XMLParserColours xpc = new XMLParserColours();
+        ArrayList<PaletteColour> coloursArray = xpc.getColoursArray();
+
+        //type,id,name,code
+
+        if(c != null)
+        {
+            //padded zeros
+            String rgb = ("" + String.format("%03d", c.getRed()) + ","
+                             + String.format("%03d", c.getGreen())  + ","
+                             + String.format("%03d", c.getBlue()));
+            PaletteColour newColour = new PaletteColour("Colour",coloursArray.size()+1,name,
+                    rgb,1  );
+            coloursArray.add(newColour);
+
+        }
+
+        for(int i=0; i < coloursArray.size();i++)
+        {
+            paletteColours.add(coloursArray.get(i));
+
+        }
+
+        //paletteColours.add(new PaletteColour("Colour",1,"Black","0x000000"));
 
     }
 
@@ -92,26 +127,22 @@ public class XMLSaveColours {
      */
     private void createDOMTree(){
 
-        //create the root element <Books>
-        Element rootEle = dom.createElement("Colour");
+        //create the root element <Pallete>
+        Element rootEle = dom.createElement("Pallete");
         dom.appendChild(rootEle);
 
         //No enhanced for
-        Iterator it  = myData.iterator();
+        Iterator it  = paletteColours.iterator();
         while(it.hasNext()) {
             PaletteColour pc = (PaletteColour)it.next();
-            //For each Book object  create <Book> element and attach it to root
+            //For each Colour object  create <Colour> element and attach it to root
             Element colourEle = createColourElement(pc);
             rootEle.appendChild(colourEle);
         }
 
     }
 
-    /**
-     * Helper method which creates a XML element <Book>
-     * @param b The book for which we need to create an xml representation
-     * @return XML element snippet representing a book
-     */
+
     private Element createColourElement(PaletteColour pc){
 
         Element colourEle = dom.createElement("Colour");
@@ -137,10 +168,7 @@ public class XMLSaveColours {
         codeEle.appendChild(codeText);
         colourEle.appendChild(codeEle);
 
-
-
         return colourEle;
-
     }
 
     /**
@@ -161,7 +189,7 @@ public class XMLSaveColours {
 
             //to generate a file output use fileoutputstream instead of system.out
             XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("src/tartan/TartanUI/xml/newc.xml")), format);
+                    new FileOutputStream(new File("src/tartan/TartanUI/xml/palette.xml")), format);
 
 
             serializer.serialize(dom);
@@ -175,10 +203,11 @@ public class XMLSaveColours {
     public static void main(String args[]) {
 
         //create an instance
-        XMLSaveColours xce = new XMLSaveColours();
+        //XMLSaveColours xce = new XMLSaveColours();
 
-        //run the example
-        xce.runExample();
+        //xce.addColour(Color.red,"chicken");
+        //Save to file
+        //xce.saveToFile();
     }
 }
 

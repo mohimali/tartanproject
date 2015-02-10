@@ -86,7 +86,7 @@ public class ThreadChooser extends JPanel {
 
     }
 
-    public void updateCustomPaletteColour(Color newColour) {
+    public void updateCustomPaletteColour(Color newColour,String name) {
 
 
         if (!singlePaletteStatus)
@@ -98,8 +98,9 @@ public class ThreadChooser extends JPanel {
 
         }
 
-        if(newColour != null)
+        if(newColour != null) {
             singlePalette.updatePaletteColour(newColour);
-
+            palettes.addNewCustomColour(newColour,name);
+        }
     }
 }

@@ -1,14 +1,10 @@
 package tartan.TartanUI;
 
 import javax.swing.JFrame;
-import java.awt.Button;
-import java.awt.TextField;
 import java.awt.event.ActionListener;    //for addController()
-
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
-
 import java.awt.*;
 import javax.swing.*;
 
@@ -47,7 +43,10 @@ public class TartanView {
 
     public void displayCustomColourPicker() {
         Color newColor = ColorPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
-        leftColourChooser.updateCustomPaletteColour(newColor);
+
+        String name= JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
+
+        leftColourChooser.updateCustomPaletteColour(newColor,name);
     }
 
 

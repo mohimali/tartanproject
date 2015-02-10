@@ -10,8 +10,8 @@ import java.awt.event.ActionListener;
 
 public class TartanController {
 
-    private TartanView theView;
     private TartanModel theModel;
+    private TartanView theView;
 
     public TartanController(TartanView theView, TartanModel theModel) {
 

@@ -1,25 +1,25 @@
 package tartan.TartanUI;
 
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Random;
-
-import net.miginfocom.swing.MigLayout;
-
 import javax.swing.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
-/**
- * Created by Mohim on 07/02/2015.
- */
 public class Palettes extends JPanel{
 
     JButton[][] palettes;
 
+    //EXTRACT THE XML INFO FROM palette.xml and use the colours stored their
+    XMLParserColours xpc = new XMLParserColours();
+    ArrayList<PaletteColour> coloursArray = xpc.getColoursArray();
+    XMLSaveColours xsc = new XMLSaveColours();
+    int MAX = 40;
+    int coloursArrayIndex = 0;
+    int lastX = 0;
+    int lastY = 0;
+    int tempX = 0;
+    int tempY = 3;
     public Palettes(int width, int height,int eachPaletteSize) {
-        Random rand = new Random();
         this.setLayout(new GridLayout(height, width));
         this.setOpaque(true);
         this.setForeground(Color.WHITE);
@@ -27,40 +27,69 @@ public class Palettes extends JPanel{
         palettes = new JButton[width][height];
 
         this.setBorder(BorderFactory.createRaisedBevelBorder());
+        int stopCounting = 0;
+        tempX = 0;
+        //tempY= 3;
+        for (lastX = 0; lastX < palettes.length; lastX++) {
+            for (lastY = 0; lastY < palettes[lastX].length; lastY++) {
 
-        //EXTRACT THE XML INFO FROM palette.xml and use the colours stored their
-        XMLParserColours xpc = new XMLParserColours();
-        ArrayList<PaletteColour> coloursArray = xpc.getColoursArray();
-        int coloursArrayIndex = 0;
 
-        for (int x = 0; x < palettes.length; x++) {
-            for (int y = 0; y < palettes[x].length; y++) {
-                palettes[x][y] = new JButton("");
-                float r = rand.nextFloat();
-                float g = rand.nextFloat();
-                float b = rand.nextFloat();
-                Color randomColor = new Color(r, g, b);
-                //SLATE GREY WITH A CAUSES PROBLEMS
                 if (coloursArrayIndex < coloursArray.size())
                 {
-                    palettes[x][y].setBackground(coloursArray.get(coloursArrayIndex).getRGB());
-                    //palettes[x][y].setForeground(Color.BLACK);
+                    palettes[lastX][lastY] = new JButton("");
+                    palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
+                    coloursArrayIndex++;
+                    palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
+                    palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
+                    this.add(palettes[lastX][lastY]);
+
+                }
+                else if (coloursArrayIndex < MAX || stopCounting ==1 )
+                {
+                    stopCounting = 1;
+
+                    palettes[lastX][lastY] = new JButton("");
+                    //palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
+                    //coloursArrayIndex++;
+                    palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
+                    palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
+                    palettes[lastX][lastY].setText("X");
+                    palettes[lastX][lastY].setEnabled(false);
+                    this.add(palettes[lastX][lastY]);
                 }
                 else
                 {
-                    palettes[x][y].setBackground(Color.WHITE);
+                    //DONT ADD ANY MORE COLOURS
                 }
-                coloursArrayIndex++;
-                palettes[x][y].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
-                //palettes[x][y].setOpaque(true);
-                palettes[x][y].setBorder(BorderFactory.createEmptyBorder());
-                this.add(palettes[x][y]);
 
-            }
+
+            } //INNER FOR
+
+            
         }
+
     }
 
 
+    public void addNewCustomColour(Color colour, String name)
+    {
+        //Save the colour
+        xsc.addColour(colour,name);
+        xpc = new XMLParserColours();
+        coloursArray = xpc.getColoursArray();
+
+        palettes[tempX][tempY].setEnabled(true);
+        this.updateUI();
+        palettes[tempX][tempY].setBackground(colour);
+        coloursArrayIndex++;
+        palettes[tempX][tempY].setText("");
+        this.updateUI();
+
+        tempX++;
+
+        //get old colours in case its been updated
+
+    }
 
     void addGridColourListener(ActionListener listenForGridColourButton) {
 
