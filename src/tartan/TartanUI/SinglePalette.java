@@ -28,17 +28,7 @@ public class SinglePalette extends JButton {
 
         this.setBackground(requiredColour);
         this.setPreferredSize(dimension);
-
-        Border blackline, raisedbevel;
-
-        blackline = BorderFactory.createLineBorder(Color.black);
-        raisedbevel = BorderFactory.createRaisedBevelBorder();
-
-
-        Border compound = BorderFactory.createCompoundBorder(
-                raisedbevel, blackline);
-
-        this.setBorder(compound);
+        this.setBorder(BorderFactory.createRaisedBevelBorder());
 
     }
 

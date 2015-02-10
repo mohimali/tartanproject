@@ -15,9 +15,11 @@ public class TartanController {
 
     public TartanController(TartanView theView, TartanModel theModel) {
 
-
-        this.theView = theView;
         this.theModel = theModel;
+        this.theView = theView;
+
+        // PASS IN THE COLOURS FROM THE MODEL[XML FILE]
+        theView.initComponents(theModel.getTartan(0));
 
         this.theView.addThreadListener(new AddThreadListener());
         this.theView.addChooseColourListener(new ChooseColourListener());
@@ -25,6 +27,7 @@ public class TartanController {
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
     }
+
 
     class SinglePaletteListener implements ActionListener {
 

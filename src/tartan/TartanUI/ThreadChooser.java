@@ -3,6 +3,7 @@ package tartan.TartanUI;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 /**
@@ -41,23 +42,26 @@ public class ThreadChooser extends JPanel {
         //CREATE LEFT_CHOOSER
         this.setBackground(Color.DARK_GRAY);
         this.setLayout(new MigLayout());
-        this.setBorder(BorderFactory.createBevelBorder(1));
+
         btnChooseColour = new JButton("Choose Colour");
         btnAddThread = new JButton("Add Thread");
         btnCustomColourChooser =  new JButton("<html><font color='green'>Custom Colour</font></html>");
         lblThreadCount = new JLabel("<html><font color='white'><b>Thread Count<b/></font></html>");
         txfThreadCount = new JTextField("Enter Size here");
-        this.setPreferredSize(new Dimension(300, 300));
+        this.setPreferredSize(new Dimension(300, 420));
         UIManager.put("Label.disabledForeground", Color.blue); // Remove foreground of grey label
         this.add(btnChooseColour,"Wrap,hidemode 3");
         this.add(singlePalette,"Wrap, hidemode 3, span 3");
         this.add(palettes,"Wrap,hidemode 3, span 3");
         this.add(btnCustomColourChooser,"Wrap,hidemode 3");
         this.add(lblThreadCount,"align right");
-        this.add(txfThreadCount,"Wrap");
+        this.add(txfThreadCount,"Wrap,width 100");
         this.add(btnAddThread,"span 3, align center");
-        palettes.setVisible(false);
 
+        this.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE,1)),
+                                                 "<html><font color='white'><b>Choose a colour and ThreadCount</b></font></html>"));
+        palettes.setVisible(false);
     }
 
 

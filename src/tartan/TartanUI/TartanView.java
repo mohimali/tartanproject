@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;    //for addController()
 
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
+import tartan.Tartan;
 
 import java.awt.*;
 import javax.swing.*;
@@ -20,36 +21,22 @@ public class TartanView {
     TartanDisplay tartanDisplay;
     ThreadList threadList;
 
-    private TextField myTextField;
-    private Button button;
-    // Called from the Model
-
-
-    // If the btnAddThread is clicked execute a method
-    // in the Controller named actionPerformed
-
+    // If the btnAddThread is then go the the controller
+    // and do the actionPerformed method.
     void addThreadListener(ActionListener listenForAddThreadButton) {
         leftColourChooser.btnAddThread.addActionListener(listenForAddThreadButton);
-
     }
 
     void addChooseColourListener(ActionListener listenForChooseColourButton) {
         leftColourChooser.btnChooseColour.addActionListener(listenForChooseColourButton);
-
-
     }
 
     void addCustomColourListener(ActionListener listenForAddCustomColourButton) {
         leftColourChooser.btnCustomColourChooser.addActionListener(listenForAddCustomColourButton);
-
-
-
     }
+
     public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
-
-        //leftColourChooser.updateSinglePaletteColour(null);
         leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
-
     }
 
 
@@ -61,12 +48,7 @@ public class TartanView {
     public void displayCustomColourPicker() {
         Color newColor = ColorPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
         leftColourChooser.updateCustomPaletteColour(newColor);
-
-
     }
-
-
-
 
 
     // Open a popup that contains the error message passed
@@ -79,35 +61,35 @@ public class TartanView {
 
 
     public TartanView() {
-        initComponents();
+
     }
 
 
-    private void initComponents() {
+    public void initComponents(Tartan tartan) {
         frame = new JFrame("Tartan Designer");
         frame.setSize(1000, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(new MigLayout("", // Layout Constraints
                 "[]80[]", // Column constraints
-                "[]50[]")); // Row constraints);
+                "[]10[]")); // Row constraints);
 
         Container mainWindow = frame.getContentPane();
-        mainWindow.setBackground(Color.WHITE);
+        mainWindow.setBackground(Color.GRAY);
 
         //CREATE LEFT_CHOOSER
         leftColourChooser = new ThreadChooser();
-
-
-        tartanDisplay = new TartanDisplay("K4,G4,O4,R50,K50,Y4,B2,M1,P1,M10");
-
+        tartanDisplay = new TartanDisplay(tartan);
         threadList = new ThreadList();
+        //leftColourChooser.setBorder(BorderFactory.createTitledBorder("<html><font color='white'>Choose a colour</font></html>"));
+        //tartanDisplay.setBorder(BorderFactory.createTitledBorder("Tartan"));
+        //threadList.setBorder(BorderFactory.createTitledBorder("<html><font color='white'>Thread list</font></html>"));
 
         //UIManager.put("Label.disabledForeground",Color.blue); // Remove foreground of grey label
         //UIManager.getLookAndFeelDefaults().put("defaultFont", new Font("Serif", Font.BOLD, 14));
 
         frame.add(leftColourChooser, "aligny top");
-        frame.add(tartanDisplay, "wrap");
-        frame.add(threadList, "span");
+        frame.add(tartanDisplay, "wrap, aligny top,growy");
+        frame.add(threadList, "span,growx");
 
 
         frame.pack();

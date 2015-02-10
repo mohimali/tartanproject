@@ -31,35 +31,15 @@ public class TartanMVC {
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                theView = new TartanView();
+
                 theModel = new TartanModel();
+                theView = new TartanView();
                 theController = new TartanController(theView, theModel);
             }
         });
 
 
-        /*
-        SwingUtilities.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                        if ("Nimbus".equals(info.getName())) {
-                            UIManager.setLookAndFeel(info.getClassName());
-                            break;
-                        }
-                    }
-                } catch (Exception e) {
-                    // If Nimbus unavailable set gui to other feel
-                }
 
-                new TartanView();
-                TartanModel theModel = new TartanModel();
-
-                TartanController theController = new TartanController(theView,theModel);
-            }
-        });
-*/
 
 
     }

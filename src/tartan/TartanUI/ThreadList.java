@@ -17,11 +17,14 @@ public class ThreadList extends JPanel{
     {
         this.setLayout(new MigLayout());
         this.setBackground(Color.DARK_GRAY);
-        this.setPreferredSize(new Dimension(500,100));
+       // this.setPreferredSize(new Dimension(500,100));
+        this.setBorder(BorderFactory.createTitledBorder(
+                BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE,1)),
+                "<html><font color='white'><b>Thread List</b></font></html>"));
 
-        this.add(test,"wrap");
-        this.add(test1,"wrap");
-        this.add(test2,"wrap");
+        this.add(test,"wrap,span");
+        this.add(test1,"wrap,span");
+        this.add(test2,"wrap,span");
 
     }
 

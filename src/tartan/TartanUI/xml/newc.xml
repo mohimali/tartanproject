@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Colour>
+    <Colour type="Colour">
+        <Id>1</Id>
+        <Name>Black</Name>
+        <Code>0x000000</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>2</Id>
+        <Name>White</Name>
+        <Code>0xFFFFFF</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>3</Id>
+        <Name>Navy</Name>
+        <Code>0x000080</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>4</Id>
+        <Name>Blue</Name>
+        <Code>0x0000FF</Code>
+    </Colour>
+</Colour>
