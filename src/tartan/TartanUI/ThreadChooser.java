@@ -3,7 +3,6 @@ package tartan.TartanUI;
 import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 
 /**
@@ -35,6 +34,11 @@ public class ThreadChooser extends JPanel {
 
 
     }
+    public void updatePaletteStuff()
+    {
+        palettes.palettes[0][0].setText("U");
+    }
+
 
     public ThreadChooser() {
 
@@ -102,5 +106,7 @@ public class ThreadChooser extends JPanel {
             singlePalette.updatePaletteColour(newColour);
             palettes.addNewCustomColour(newColour,name);
         }
+
+
     }
 }

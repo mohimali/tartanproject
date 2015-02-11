@@ -41,21 +41,22 @@ public class TartanView {
     }
 
 
+
     public void displayCustomColourPicker() {
         Color newColor = ColorPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
 
-        String name= JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
+        if (newColor != null) {
+            String name = JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
+            leftColourChooser.updateCustomPaletteColour(newColor, name);
+        }
 
-        leftColourChooser.updateCustomPaletteColour(newColor,name);
     }
 
 
     // Open a popup that contains the error message passed
 
     void displayErrorMessage(String errorMessage) {
-
         JOptionPane.showMessageDialog(frame, errorMessage);
-
     }
 
 

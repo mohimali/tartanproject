@@ -17,7 +17,6 @@ public class ThreadList extends JPanel{
     {
         this.setLayout(new MigLayout());
         this.setBackground(Color.DARK_GRAY);
-       // this.setPreferredSize(new Dimension(500,100));
         this.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE,1)),
                 "<html><font color='white'><b>Thread List</b></font></html>"));
@@ -26,6 +25,13 @@ public class ThreadList extends JPanel{
         this.add(test1,"wrap,span");
         this.add(test2,"wrap,span");
 
+    }
+
+    public void updateThreadList()
+    {
+        test.setText("works");
+        test1.setText("works");
+        test2.setText("works");
     }
 
 }

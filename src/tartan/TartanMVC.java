@@ -14,6 +14,7 @@ public class TartanMVC {
     public static TartanModel theModel;
     public static TartanController theController;
 
+
     public static void main(String[] args) {
 
         //theView.setVisible(true);
@@ -28,6 +29,7 @@ public class TartanMVC {
         } catch (Exception e) {
         }
 
+        /*
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
@@ -35,6 +37,7 @@ public class TartanMVC {
                 theModel = new TartanModel();
                 theView = new TartanView();
                 theController = new TartanController(theView, theModel);
+                //theView.updateME();
             }
         });
 

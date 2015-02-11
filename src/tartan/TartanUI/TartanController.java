@@ -60,6 +60,7 @@ public class TartanController {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
                     theView.displayCustomColourPicker();
 
+
                 }
 
             } catch (NumberFormatException ex) {
@@ -104,6 +105,8 @@ public class TartanController {
                 //theModel.addTwoNumbers(firstNumber, secondNumber);
 
                 theView.setAddThreadStatus(theModel.getTest());
+                //theView.threadList.updateThreadList();
+                //theView.leftColourChooser.updatePaletteStuff();
 
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
