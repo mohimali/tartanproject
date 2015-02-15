@@ -18,7 +18,7 @@ public class Tartan {
     public ArrayList<TartanThread> threads = new ArrayList<TartanThread>();
     int settCount;
     boolean isSymmetrical = true;
-    public double threadSizes[];
+    public double threadCounts[];
 
     public String getOriginalThreadList() {
         return originalThreadList;
@@ -36,6 +36,17 @@ public class Tartan {
     }
 
 
+    public Tartan(int tartanSize) {
+
+        settCount = 2;
+        width = height = tartanSize; //Its a square so width height are same
+        isSymmetrical = true;
+        originalThreadList="";
+        //threadSizes = new double[]{};
+        //threadSizes = computeThreadSizes(threads);
+
+    }
+
     public Tartan(ArrayList<TartanThread> requiredThreads,
                   int requiredSettCount,
                   int requiredDimension,
@@ -50,10 +61,12 @@ public class Tartan {
         width = height = requiredDimension; //Its a square so width height are same
         isSymmetrical = requiredIsSymmetrical;
 
-        threadSizes = new double[]{};
-        threadSizes = computeThreadSizes(threads);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
 
     }
+
+
 
 
     public Tartan(String requiredThreads,
@@ -69,15 +82,15 @@ public class Tartan {
         width = height = requiredDimension; //Its a square so width height are same
         isSymmetrical = requiredIsSymmetrical;
 
-        threadSizes = new double[]{};
-        threadSizes = computeThreadSizes(threads);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
 
     }
 
 
     public void setThreadArray(ArrayList<TartanThread> requiredList) {
-        threadSizes = new double[]{};
-        threadSizes = computeThreadSizes(requiredList);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(requiredList);
     }
 
     public double[] computeThreadSizes(ArrayList<TartanThread> threadList) {
@@ -86,13 +99,13 @@ public class Tartan {
 
 
         for (TartanThread thread : threadList) {
-            total += thread.getSize();
+            total += thread.getThreadCount();
 
         }
 
 
         for (int x = 0; x < threadList.size(); x++) {
-            newThreadSizes[x] = ((threadList.get(x).getSize() / total) * width) / (settCount);
+            newThreadSizes[x] = ((threadList.get(x).getThreadCount() / total) * width) / (settCount);
 
         }
 
@@ -111,7 +124,7 @@ public class Tartan {
     } // getSettCount
 
     public double getThreadSizes(int i) {
-        return threadSizes[i];
+        return threadCounts[i];
     } // getThreadSizes
 
     public Color getThreadColour(int i) {
@@ -130,8 +143,9 @@ public class Tartan {
     public String toString() {
         String threadAll = "";
 
-        for (TartanThread item : threads)
+        for (TartanThread item : threads) {
             threadAll += item.toString() + ",";
+        }
 
         return "tartan.Tartan: \n" +
                 "OriginalThreads: " + originalThreadList + "\n" +
@@ -146,11 +160,34 @@ public class Tartan {
     public String getRealThreadSizes() {
         String sizes = "";
 
-        for (double size : threadSizes)
+        for (double size : threadCounts)
             sizes += sizes + size + ",";
 
         return sizes;
     }
 
 
+    public void addThread(Color myColour, int myThreadCount, String myColourName) {
+        TartanThread tt = new TartanThread(myColour,myThreadCount,myColourName);
+
+        threads.add(tt);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
+        //this.toString();
+
+//        String threadAll = "";
+//
+//        for (TartanThread item : threads)
+//            threadAll += item.toString() + ",";
+
+//        System.out.println( "tartan.Tartan: \n" +
+//                "OriginalThreads: " + originalThreadList + "\n" +
+//                "Real Threads: " + threadAll + "\n" +
+//                "IsSymmetrical: " + isSymmetrical + "\n" +
+//                "settCount: " + settCount + "\n" +
+//                "Width: " + width + "\n" +
+//                "Height: " + height + "\n" +
+//                "threadSizesActual: " + getRealThreadSizes() + "\n");
+
+    }
 }

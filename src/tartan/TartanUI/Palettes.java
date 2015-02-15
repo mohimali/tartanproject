@@ -1,5 +1,7 @@
 package tartan.TartanUI;
 
+import org.w3c.css.sac.ElementSelector;
+
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -21,6 +23,24 @@ public class Palettes extends JPanel {
     int tempY = 0;
     int tempColourIndex = 0;
     boolean customColourChangedStatus = false;
+
+    public Color getFirstColour()
+    {
+        if (palettes != null && palettes[0] != null && palettes[0][0] != null)
+            return palettes[0][0].getBackground();
+        else
+            return Color.WHITE;
+
+    }
+
+    public String getFirstColourName()
+    {
+        if (palettes != null && palettes[0] != null && palettes[0][0] != null )
+            return palettes[0][0].getClientProperty("Name").toString();
+
+        return "Invalid Colour";
+
+    }
 
 
     public boolean getCustomColourChangedStatus()
@@ -44,6 +64,7 @@ public class Palettes extends JPanel {
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
+                    palettes[lastX][lastY].putClientProperty("Name",coloursArray.get(coloursArrayIndex).getName());
                     this.add(palettes[lastX][lastY]);
                     coloursArrayIndex++;
                 } else {
@@ -65,6 +86,8 @@ public class Palettes extends JPanel {
                 palettes[lastX][lastY].setBackground(null);
                 palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                 palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
+                // NO COLOUR NAME AT THIS POINT
+                //palettes[lastX][lastY].putClientProperty("Name",coloursArray.get(coloursArrayIndex).getName());
                 palettes[lastX][lastY].setEnabled(false);
                 this.add(palettes[lastX][lastY]);
                 coloursArrayIndex++;
@@ -77,6 +100,7 @@ public class Palettes extends JPanel {
             palettes[tempX][tempY].setEnabled(true);
             palettes[tempX][tempY].setText("");
             palettes[tempX][tempY].setBackground(colour);
+            palettes[tempX][tempY].putClientProperty("Name",name);
             tempX++;
             tempColourIndex++;
 

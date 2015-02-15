@@ -26,7 +26,7 @@ public class BrighterColours extends UnaryOperation {
 
 
             Color originalColour = t1.getThreadList().get(i).getColour();
-            int originalSize = t1.getThreadList().get(i).getSize();
+            int originalSize = t1.getThreadList().get(i).getThreadCount();
 
             Color brighterColour = originalColour.brighter();
 

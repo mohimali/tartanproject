@@ -22,7 +22,7 @@ public class XMLParserColours extends DefaultHandler{
     public XMLParserColours(){
         coloursList = new ArrayList<PaletteColour>();
         parseDocument();
-        printColours(); //REMOVE LATER
+        //printColours(); //REMOVE LATER
     }
 
     public ArrayList getColoursArray() {
@@ -88,7 +88,7 @@ public class XMLParserColours extends DefaultHandler{
 
         }else if (qName.equalsIgnoreCase("Id"))
         {
-            System.out.println(tempVal);
+            //System.out.println(tempVal);
             tempCol.setID(Integer.parseInt(tempVal));
         }
         else if (qName.equalsIgnoreCase("Name"))

@@ -48,6 +48,22 @@ public class SVGTartan {
 
     }
 
+    public void paintTestTartan(Graphics2D g2d, Tartan tartan1) {
+
+        // PRINT WARP
+        for (int i = 0; i < tartan1.getSettCount() / 2; i += 1) {
+
+            //forwards pattern
+            for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
+                g2d.setPaint(tartan1.getThreadColour(x));
+                g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(x), tartan1.getDimensions()) {
+                });
+                g2d.translate(tartan1.getThreadSizes(x), 0);
+            } //forwards for
+        } // most outer for
+
+    }
+
     public void paintTartan(Graphics2D g2d, Tartan tartan1) {
 
         int alpha1 = 100;
@@ -109,6 +125,12 @@ public class SVGTartan {
         }
 
 
-    }
+    } // paintTartan
 
-}
+
+
+
+
+
+
+} // SVGTartan Class

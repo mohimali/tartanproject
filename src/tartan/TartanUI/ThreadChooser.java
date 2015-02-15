@@ -27,11 +27,21 @@ public class ThreadChooser extends JPanel {
 
     public void init() {
         palettes = new Palettes(noOfPalettesX, noOfPalettesY, eachPaletteSize);
-        singlePalette = new SinglePalette(Color.WHITE, (int) palettes.getPreferredSize().getWidth() + modifier,
-                (int) palettes.getPreferredSize().getHeight() + modifier);
+        singlePalette = new SinglePalette(palettes.getFirstColour(), (int) palettes.getPreferredSize().getWidth() + modifier,
+                (int) palettes.getPreferredSize().getHeight() + modifier,palettes.getFirstColourName());
         singlePaletteStatus = true;
 
 
+    }
+
+    protected String getThreadCount()
+    {
+        return txfThreadCount.getText();
+    }
+
+    protected Color getThreadColour()
+    {
+        return this.singlePalette.getPaletteColour();
     }
 
     public void saveCustomColours() {
@@ -49,7 +59,7 @@ public class ThreadChooser extends JPanel {
         btnAddThread = new JButton("Add Thread");
         btnCustomColourChooser = new JButton("<html><font color='green'>Custom Colour</font></html>");
         lblThreadCount = new JLabel("<html><font color='white'><b>Thread Count<b/></font></html>");
-        txfThreadCount = new JTextField("Enter Size here");
+        txfThreadCount = new JTextField("1");
         this.setPreferredSize(new Dimension(300, 420));
         UIManager.put("Label.disabledForeground", Color.blue); // Remove foreground of grey label
         this.add(btnChooseColour, "Wrap,hidemode 3");
@@ -67,15 +77,15 @@ public class ThreadChooser extends JPanel {
     }
 
 
-    void updateSinglePaletteColour(Color newColour) {
+    void updateSinglePaletteColour(Color newColour,String newColourName) {
 
         singlePaletteStatus = !singlePaletteStatus;
         if (singlePaletteStatus) {
             singlePalette.setVisible(true);
             palettes.setVisible(false);
 
-            if (newColour != null)
-                singlePalette.updatePaletteColour(newColour);
+            if (newColour != null && newColour != null)
+                singlePalette.updatePaletteColour(newColour,newColourName);
         } else {
             singlePalette.setVisible(false);
             palettes.setVisible(true);
@@ -93,10 +103,15 @@ public class ThreadChooser extends JPanel {
 
         }
         if (newColour != null) {
-            singlePalette.updatePaletteColour(newColour);
+            singlePalette.updatePaletteColour(newColour,name);
             palettes.addNewCustomColour(newColour, name);
         }
 
-
     }
+
+    public String getColourName() {
+        return singlePalette.getColourName();
+    }
+
+
 }

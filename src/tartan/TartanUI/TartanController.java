@@ -21,7 +21,6 @@ public class TartanController {
         // PASS IN THE COLOURS FROM THE MODEL[XML FILE]
         //theView.initComponents();
 
-
         this.theView.addThreadListener(new AddThreadListener());
         this.theView.addChooseColourListener(new ChooseColourListener());
         this.theView.leftColourChooser.palettes.addGridColourListener(new GridChooseColourListener());
@@ -38,7 +37,7 @@ public class TartanController {
 
                 if (e.getSource() instanceof JButton) {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
-                    theView.leftColourChooser.updateSinglePaletteColour(null);
+                    theView.leftColourChooser.updateSinglePaletteColour(null,null);
 
                 }
 
@@ -49,7 +48,7 @@ public class TartanController {
 
         }
 
-    }
+    } //SinglePaletteListener class
 
     class AddCustomColourListener implements ActionListener {
 
@@ -71,7 +70,7 @@ public class TartanController {
 
         }
 
-    }
+    } //AddCustomColourListener class
 
 
     class GridChooseColourListener implements ActionListener {
@@ -82,7 +81,11 @@ public class TartanController {
 
                 if (e.getSource() instanceof JButton) {
 
-                    theView.leftColourChooser.updateSinglePaletteColour(((JButton) e.getSource()).getBackground());
+                    JButton currentJB = (JButton) e.getSource();
+                    String myName = currentJB.getClientProperty("Name").toString();
+                    Color myColour = currentJB.getBackground();
+
+                    theView.leftColourChooser.updateSinglePaletteColour(myColour,myName);
 
                 }
 
@@ -93,47 +96,49 @@ public class TartanController {
 
         }
 
-    }
+    } //AddCustomColourListener class
 
     class AddThreadListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
 
             try {
+                String strThreadCount = theView.getThreadCount();
+                Color colour = theView.getThreadColour();
+                String colourName = theView.getColourName();
 
-                //firstNumber = theView.getFirstNumber();
-                //secondNumber = theView.getSecondNumber();
-                //theModel.addTwoNumbers(firstNumber, secondNumber);
+                int threadCount = Integer.parseInt(strThreadCount.trim());
+                if (threadCount > 99) {
+                    theView.displayErrorMessage("You Need a number less then 99 for the thread count.");
+                } else {
 
-                //theView.setAddThreadStatus(theModel.getTest());
-                //theView.threadList.updateThreadList();
-                //theView.leftColourChooser.updatePaletteStuff();
+                    theModel.addTartanThread(colour, threadCount, colourName);
+//                    theView.displayErrorMessage("" + "Col: " + colour + " threadCount" +
+//                                                threadCount + " colourname: " + colourName );
+
+                    System.out.println(theModel.getTartan());
+                    theView.updateTartan(theModel.getTartan());
+
+                }
+
 
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 Integers");
+                theView.displayErrorMessage("You Need a number less then 99 for the thread count.");
             }
-
         }
-
-    }
+    } // AddThreadListener class
 
     class ChooseColourListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-
-
             try {
-
-                theView.leftColourChooser.updateSinglePaletteColour(null);
-
+                theView.leftColourChooser.updateSinglePaletteColour(null,null);
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
-
         }
+    } // ChooseColourListener
 
-    }
-
-}
+} // TartanController class

@@ -11,12 +11,30 @@ import java.awt.Color;
 public class TartanThread {
 
     Color colour;
-    int size;
+    int threadCount;
+    String colourName = "";
 
-    public TartanThread(Color requiredThreadColour, int requiredThreadSize) {
+    public TartanThread(Color requiredThreadColour, int requiredThreadCount) {
         colour = requiredThreadColour;
-        size = requiredThreadSize;
+        threadCount = requiredThreadCount;
 
+    }
+
+    public TartanThread(Color requiredThreadColour, int requiredThreadCount, String requiredColourName) {
+        colour = requiredThreadColour;
+        threadCount = requiredThreadCount;
+        colourName = requiredColourName;
+    }
+
+
+    public void setColourName(String requiredColourName)
+    {
+        colourName = requiredColourName;
+    }
+
+    public String getColourName()
+    {
+        return colourName;
     }
 
 
@@ -30,13 +48,13 @@ public class TartanThread {
     }
 
 
-    public int getSize() {
-        return size;
+    public int getThreadCount() {
+        return threadCount;
 
     }
 
     public String toString() {
-        return "Colour:" + colour + " Size: " + size;
+        return "Colour:" + colour + " Size: " + threadCount + " Name: " + colourName;
 
     }
 

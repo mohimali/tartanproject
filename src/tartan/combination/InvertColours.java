@@ -26,7 +26,7 @@ public class InvertColours extends UnaryOperation {
 
 
             Color originalColour = t1.getThreadList().get(i).getColour();
-            int originalSize = t1.getThreadList().get(i).getSize();
+            int originalSize = t1.getThreadList().get(i).getThreadCount();
             int rgbFormat = originalColour.getRGB();
 
             int invertTransformed = (0x00FFFFFF - (rgbFormat | 0xFF000000)) | (rgbFormat & 0xFF000000);

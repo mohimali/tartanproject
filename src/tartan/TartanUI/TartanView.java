@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;    //for addController()
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
+import tartan.TartanThread;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -14,6 +15,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -41,11 +43,6 @@ public class TartanView {
 
     public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
         leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
-    }
-
-
-    void setAddThreadStatus(String test) {
-        JOptionPane.showMessageDialog(null, "ss", "InfoBox: " + "Test", JOptionPane.INFORMATION_MESSAGE);
     }
 
 
@@ -90,6 +87,16 @@ public class TartanView {
         }
     }
 
+    public String getThreadCount()
+    {
+        return leftColourChooser.getThreadCount();
+    }
+
+    public Color getThreadColour()
+    {
+        return leftColourChooser.getThreadColour();
+    }
+
     public void initComponents() throws Exception {
         frame = new JFrame("Tartan Designer");
         frame.setSize(1000, 600);
@@ -100,7 +107,7 @@ public class TartanView {
             String path = f1.getCanonicalPath();
             System.out.println(path);
 
-            frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src/tartan/TartanUI/images/2.jpg")))));
+            //frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src/tartan/TartanUI/images/2.jpg")))));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -112,7 +119,7 @@ public class TartanView {
                 "[]10[]")); // Row constraints);
 
         Container mainWindow = frame.getContentPane();
-        //mainWindow.setBackground(Color.GRAY);
+        mainWindow.setBackground(Color.GRAY);
 
         //CREATE LEFT_CHOOSER
         leftColourChooser = new ThreadChooser();
@@ -154,4 +161,11 @@ public class TartanView {
     }
 
 
+    public String getColourName() {
+        return leftColourChooser.getColourName();
+    }
+
+    public void updateTartan(Tartan newTartan) {
+        tartanDisplay.updateTartan(newTartan);
+    }
 } // TartanView
