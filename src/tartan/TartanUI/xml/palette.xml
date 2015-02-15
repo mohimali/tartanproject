@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Pallete>
+<Palette>
     <Colour type="Colour">
         <Id>1</Id>
         <Name>Black</Name>
@@ -150,4 +150,24 @@
         <Name>Yellow</Name>
         <Code>0xFFFF00</Code>
     </Colour>
-</Pallete>
+    <Colour type="Colour">
+        <Id>31</Id>
+        <Name>ASDA</Name>
+        <Code>0x002700a0</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>32</Id>
+        <Name>YO</Name>
+        <Code>0x00a03c00</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>33</Id>
+        <Name>asda</Name>
+        <Code>0x00ffec46</Code>
+    </Colour>
+    <Colour type="Colour">
+        <Id>34</Id>
+        <Name>asda</Name>
+        <Code>0x00b0ff00</Code>
+    </Colour>
+</Palette>

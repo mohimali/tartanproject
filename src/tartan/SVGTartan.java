@@ -17,6 +17,12 @@ public class SVGTartan {
 
     SVGDocument doc;
 
+    public SVGTartan() {
+
+
+
+    }
+
     public SVGTartan(Tartan tartan) {
 
 

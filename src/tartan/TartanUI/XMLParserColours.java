@@ -15,13 +15,9 @@ import org.xml.sax.helpers.DefaultHandler;
  */
 public class XMLParserColours extends DefaultHandler{
 
-    ArrayList<PaletteColour> coloursList;
-
+    private ArrayList<PaletteColour> coloursList;
     private String tempVal;
-
-    //contxt
     private PaletteColour tempCol;
-
 
     public XMLParserColours(){
         coloursList = new ArrayList<PaletteColour>();
@@ -54,10 +50,7 @@ public class XMLParserColours extends DefaultHandler{
         }
     }
 
-    /**
-     * Iterate through the list and print
-     * the contents
-     */
+
     private void printColours(){
 
         System.out.println("No of Colours '" + coloursList.size() + "'.");
@@ -90,7 +83,7 @@ public class XMLParserColours extends DefaultHandler{
 
         //String type, int id, String colour, String code
         if(qName.equalsIgnoreCase("Colour")) {
-            //add it to the list
+            //ADD TO LIST
             coloursList.add(tempCol);
 
         }else if (qName.equalsIgnoreCase("Id"))

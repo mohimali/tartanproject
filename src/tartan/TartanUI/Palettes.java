@@ -20,7 +20,13 @@ public class Palettes extends JPanel {
     int tempX = 0;
     int tempY = 0;
     int tempColourIndex = 0;
+    boolean customColourChangedStatus = false;
 
+
+    public boolean getCustomColourChangedStatus()
+    {
+        return customColourChangedStatus;
+    }
     public Palettes(int width, int height, int eachPaletteSize) {
         this.setLayout(new GridLayout(height, width));
         this.setOpaque(true);
@@ -29,13 +35,10 @@ public class Palettes extends JPanel {
         palettes = new JButton[width][height];
         this.setBorder(BorderFactory.createRaisedBevelBorder());
 
-
         //tempY= 3;
         outerloop:
-
         for (lastY = 0; lastY < palettes[0].length/*4*/; lastY++) {
             for (lastX = 0; lastX < palettes.length/*10*/; lastX++) {
-
                 if (coloursArrayIndex < coloursArray.size()) {
                     palettes[lastX][lastY] = new JButton("");
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
@@ -43,14 +46,11 @@ public class Palettes extends JPanel {
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
                     this.add(palettes[lastX][lastY]);
                     coloursArrayIndex++;
-
                 } else {
                     tempX = lastX;
                     tempY = lastY;
                     break outerloop;
                 }
-
-
             } //INNER FOR
         } //OUTER FOR
 
@@ -62,6 +62,7 @@ public class Palettes extends JPanel {
             for (lastX = tempX; lastX < palettes.length/*10*/; lastX++) {
                 palettes[lastX][lastY] = new JButton("X");
                 palettes[lastX][lastY].setBackground(Color.WHITE);
+                palettes[lastX][lastY].setBackground(null);
                 palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                 palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
                 palettes[lastX][lastY].setEnabled(false);
@@ -69,9 +70,6 @@ public class Palettes extends JPanel {
                 coloursArrayIndex++;
             }
         }
-
-
-
     }
 
     public void addNewCustomColour(Color colour, String name) {
@@ -82,18 +80,29 @@ public class Palettes extends JPanel {
             tempX++;
             tempColourIndex++;
 
+            //type,id,name,code
+            //padded zeros
+            String rgb = PaletteColour.getRGBFormat(colour);
+
+            PaletteColour newColour = new PaletteColour("Colour",coloursArray.size()+1,name,
+                    rgb,1);
+            coloursArray.add(newColour);
+            customColourChangedStatus = true;
         }
 
 
+    }
+
+    public void saveCustomColours()
+    {
         //Save the colour
-        /*
-        xsc.addColour(colour,name);
+
+        xsc.updateColoursXML(coloursArray);
         xpc = new XMLParserColours();
         coloursArray = xpc.getColoursArray();
 
-        */
-        //get old colours in case its been updated
 
+        //get old colours in case its been updated
     }
 
     void addGridColourListener(ActionListener listenForGridColourButton) {

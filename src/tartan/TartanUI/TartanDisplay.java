@@ -15,7 +15,7 @@ import java.awt.*;
  */
 public class TartanDisplay extends JPanel {
 
-    public TartanDisplay(Tartan tartan) {
+    public TartanDisplay() {
 
         this.setLayout(new MigLayout("insets 0 0 0 0"));
 
@@ -25,10 +25,11 @@ public class TartanDisplay extends JPanel {
                 BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE,1)),
                 "<html><font color='white'><b>Tartan</b></font></html>"));
 
-        Dimension tartanDimensions = new Dimension(tartan.getDimensions(),tartan.getDimensions());
+        Dimension tartanDimensions = new Dimension(400,400);
 
         // Create an instance of an SVG styled tartan
-        SVGTartan svgTartan = new SVGTartan(tartan);
+        //SVGTartan svgTartan = new SVGTartan(tartan);
+        SVGTartan svgTartan = new SVGTartan();
         SVGDocument doc = svgTartan.getSVGTartan();
 
         // Display the document.
@@ -39,7 +40,7 @@ public class TartanDisplay extends JPanel {
         canvas.setPreferredSize(tartanDimensions);
 
         canvas.setOpaque(true);
-        canvas.setBackground(Color.CYAN);
+        canvas.setBackground(Color.WHITE);
         this.add(canvas);
 
     }

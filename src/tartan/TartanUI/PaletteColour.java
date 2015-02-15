@@ -14,14 +14,23 @@ public class PaletteColour {
     private String code;
     private Color colour;
 
+    static String commaSeparatedRGBPattern = "^(\\d{3}),(\\d{3}),(\\d{3})$";
+    static final int HEXLENGTH = 8;
+    static final String hexaDecimalPattern = "^0x([\\da-fA-F]{1,8})$";
+
     //empty constructor
     public PaletteColour() {
     }
 
 
-    static String commaSeparatedRGBPattern = "^(\\d{3}),(\\d{3}),(\\d{3})$";
-    static final int HEXLENGTH = 8;
-    static final String hexaDecimalPattern = "^0x([\\da-fA-F]{1,8})$";
+    public static String getRGBFormat(Color c) {
+        String rgb = ("" + String.format("%03d", c.getRed()) + ","
+                + String.format("%03d", c.getGreen()) + ","
+                + String.format("%03d", c.getBlue()));
+
+        return rgb;
+    }
+
 
     public static Color hexToColour(String colourCode) {
 
@@ -51,9 +60,9 @@ public class PaletteColour {
         int green;
         int blue;
         if (rgbMatcher.find()) {
-            red =        Integer.parseInt(rgbMatcher.group(1));
-            green =         Integer.parseInt(rgbMatcher.group(2));
-            blue =           Integer.parseInt(rgbMatcher.group(3));
+            red = Integer.parseInt(rgbMatcher.group(1));
+            green = Integer.parseInt(rgbMatcher.group(2));
+            blue = Integer.parseInt(rgbMatcher.group(3));
             Color color = new Color(red, green, blue);
             hexValue = Integer.toHexString(color.getRGB() & 0x00ffffff);
             int numberOfZeroesNeededForPadding = HEXLENGTH - hexValue.length();
@@ -63,8 +72,8 @@ public class PaletteColour {
             }
             hexValue = "0x" + zeroPads + hexValue;
         }
-            return hexValue;
-        }
+        return hexValue;
+    }
 
 
     // CODE BEING PASSED IN IS HEX form 0x000000
@@ -87,7 +96,7 @@ public class PaletteColour {
         if (mode == 1) {
             System.out.println("Step1: " + code);
             this.code = this.rgbToHex(code);
-            System.out.println("Step2: " +  this.code);
+            System.out.println("Step2: " + this.code);
             this.colour = this.hexToColour(this.code);
             System.out.println("Step3: " + this.colour);
 
@@ -154,19 +163,18 @@ public class PaletteColour {
         return sb.toString();
     }
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         //Color c = Color.RED;
-       // String rgb = ("" + String.format("%03d", c.getRed()) + ","
-           //    + String.format("%03d", c.getGreen())  + ","
-           //     + String.format("%03d", c.getBlue()));
+        // String rgb = ("" + String.format("%03d", c.getRed()) + ","
+        //    + String.format("%03d", c.getGreen())  + ","
+        //     + String.format("%03d", c.getBlue()));
 
         //String.format("%03d", yournumber);
         //String other = rgbToHex(rgb);
         //System.out.println("Test" + other );
 
         //Color newwwww = hexToColour(other);
-       // System.out.println("Test2" + newwwww );
+        // System.out.println("Test2" + newwwww );
 
 
     }

@@ -19,7 +19,8 @@ public class TartanController {
         this.theView = theView;
 
         // PASS IN THE COLOURS FROM THE MODEL[XML FILE]
-        theView.initComponents(theModel.getTartan(0));
+        //theView.initComponents();
+
 
         this.theView.addThreadListener(new AddThreadListener());
         this.theView.addChooseColourListener(new ChooseColourListener());
@@ -104,7 +105,7 @@ public class TartanController {
                 //secondNumber = theView.getSecondNumber();
                 //theModel.addTwoNumbers(firstNumber, secondNumber);
 
-                theView.setAddThreadStatus(theModel.getTest());
+                //theView.setAddThreadStatus(theModel.getTest());
                 //theView.threadList.updateThreadList();
                 //theView.leftColourChooser.updatePaletteStuff();
 

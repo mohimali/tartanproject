@@ -35,7 +35,7 @@ public class XMLSaveColours {
     public XMLSaveColours() {
 
         //initialize the list
-        loadData(null,"");
+        loadData(null);
 
         //Get a DOM object
         createDocument();
@@ -47,11 +47,11 @@ public class XMLSaveColours {
 
     }
 
-    public void addColour(Color newColour,String name)
+    public void updateColoursXML(ArrayList<PaletteColour> pal)
     {
         paletteColours = new ArrayList<PaletteColour>();
         //initialize the list
-        loadData(newColour,name);
+        loadData(pal);
 
         //Get a DOM object
         createDocument();
@@ -69,33 +69,29 @@ public class XMLSaveColours {
     }
 
 
-    private void loadData(Color c,String name){
+    private void loadData(ArrayList<PaletteColour> coloursArray1){
 
-        //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colours stored their
-        XMLParserColours xpc = new XMLParserColours();
-        ArrayList<PaletteColour> coloursArray = xpc.getColoursArray();
+        //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colou1rs stored their
+        ArrayList<PaletteColour> coloursArray;
 
-        //type,id,name,code
-
-        if(c != null)
-        {
-            //padded zeros
-            String rgb = ("" + String.format("%03d", c.getRed()) + ","
-                             + String.format("%03d", c.getGreen())  + ","
-                             + String.format("%03d", c.getBlue()));
-            PaletteColour newColour = new PaletteColour("Colour",coloursArray.size()+1,name,
-                    rgb,1  );
-            coloursArray.add(newColour);
+        // FIRST CASE IS GETTING FROM XML FILE
+        if (coloursArray1 == null) {
+            XMLParserColours xpc = new XMLParserColours();
+             coloursArray = xpc.getColoursArray();
 
         }
+        // SECOND CASE IS GETTING FROM SAVED PALETTE GUI PASSED INTO coloursArray1
+        else
+        {
+            coloursArray = coloursArray1;
+        }
 
+        // NEED TO TAKE NULL CASE
         for(int i=0; i < coloursArray.size();i++)
         {
             paletteColours.add(coloursArray.get(i));
 
         }
-
-        //paletteColours.add(new PaletteColour("Colour",1,"Black","0x000000"));
 
     }
 
@@ -105,18 +101,18 @@ public class XMLSaveColours {
      */
     private void createDocument() {
 
-        //get an instance of factory
+        //Factory instance
         DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
         try {
-            //get an instance of builder
+            //BUILDER INSTANCE
             DocumentBuilder db = dbf.newDocumentBuilder();
 
-            //create an instance of DOM
+            //DOC INSTANCE
             dom = db.newDocument();
 
         }catch(ParserConfigurationException pce) {
-            //dump it
-            System.out.println("Error while trying to instantiate DocumentBuilder " + pce);
+            //exit
+            System.out.println("Couldn't initiate docbuilder. " + pce);
             System.exit(1);
         }
 
@@ -127,8 +123,8 @@ public class XMLSaveColours {
      */
     private void createDOMTree(){
 
-        //create the root element <Pallete>
-        Element rootEle = dom.createElement("Pallete");
+        //create the root element <Palette>
+        Element rootEle = dom.createElement("Palette");
         dom.appendChild(rootEle);
 
         //No enhanced for
