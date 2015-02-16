@@ -2,20 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef4475fb-c7db-4f4d-9e0e-bc01f408c032" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/combination/BrighterColours.java" afterPath="$PROJECT_DIR$/src/tartan/combination/BrighterColours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/combination/DarkerColours.java" afterPath="$PROJECT_DIR$/src/tartan/combination/DarkerColours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/combination/InvertColours.java" afterPath="$PROJECT_DIR$/src/tartan/combination/InvertColours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/SVGTartan.java" afterPath="$PROJECT_DIR$/src/tartan/SVGTartan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/Tartan.java" afterPath="$PROJECT_DIR$/src/tartan/Tartan.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/ThreadListRow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanThread.java" afterPath="$PROJECT_DIR$/src/tartan/TartanThread.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/XMLParserColours.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/XMLParserColours.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Tartan.iws" />
@@ -42,21 +35,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="Tartan.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/Tartan.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2329" max-vertical-offset="3196">
+              <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="TartanModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.6896553" vertical-offset="894" max-vertical-offset="1666">
-              <caret line="68" column="24" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1547">
+              <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreadChooser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.37931" vertical-offset="1996" max-vertical-offset="2363">
+              <caret line="136" column="32" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="32" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1152#1153#0" expanded="true" />
-                <element signature="e#1181#1182#0" expanded="true" />
-                <element signature="e#1651#1652#0" expanded="true" />
-                <element signature="e#1680#1681#0" expanded="true" />
-                <element signature="e#1733#1734#0" expanded="true" />
-                <element signature="e#1785#1786#0" expanded="true" />
-                <element signature="e#2281#2282#0" expanded="true" />
-                <element signature="e#2319#2320#0" expanded="true" />
+                <element signature="e#1571#1572#0" expanded="true" />
+                <element signature="e#1615#1616#0" expanded="true" />
+                <element signature="e#4615#4616#0" expanded="true" />
+                <element signature="e#4667#4668#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreadList.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-5.034483" vertical-offset="160" max-vertical-offset="1054">
+              <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1171#1172#0" expanded="true" />
+                <element signature="e#1231#1232#0" expanded="true" />
+                <element signature="e#1265#1266#0" expanded="true" />
+                <element signature="e#1287#1288#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ThreadListRow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadListRow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-8.413794" vertical-offset="45" max-vertical-offset="1190">
+              <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="PaletteColour.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/PaletteColour.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="119" max-vertical-offset="2873">
+              <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TartanController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2805">
+              <caret line="40" column="39" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="39" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="TartanView.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="2.4236841" vertical-offset="1612" max-vertical-offset="2890">
+              <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#4380#4653#0" expanded="true" />
+                <element signature="e#4652#4653#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,68 +138,9 @@
       <file leaf-file-name="TartanDisplay.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1224">
-              <caret line="63" column="10" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="879" max-vertical-offset="1326">
+              <caret line="78" column="39" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Tartan.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/Tartan.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.448276" vertical-offset="2662" max-vertical-offset="3196">
-              <caret line="182" column="51" selection-start-line="182" selection-start-column="51" selection-end-line="182" selection-end-column="51" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Palettes.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.7931035" vertical-offset="424" max-vertical-offset="2363">
-              <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="SinglePalette.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.5172415" vertical-offset="316" max-vertical-offset="918">
-              <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TartanController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.22727273" vertical-offset="1355" max-vertical-offset="2278">
-              <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="method#actionPerformed#0;class#AddCustomColourListener#0;class#TartanController#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TartanView.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2413" max-vertical-offset="2822">
-              <caret line="168" column="34" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="34" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#5376#5377#0" expanded="true" />
-                <element signature="e#5432#5433#0" expanded="true" />
-                <element signature="e#5482#5483#0" expanded="true" />
-                <element signature="e#5535#5536#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,7 +153,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/tartan/TestCombination.java" />
         <option value="$PROJECT_DIR$/src/tartan/combination/BinaryOperation.java" />
         <option value="$PROJECT_DIR$/src/tartan/combination/Concatenation.java" />
         <option value="$PROJECT_DIR$/src/tartan/combination/OddEven.java" />
@@ -168,7 +181,6 @@
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/JTitlePanel.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/XMLCreatorExample.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/Book.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanMVC.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/PaletteColour.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java" />
@@ -183,12 +195,15 @@
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/Pair.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java" />
         <option value="$PROJECT_DIR$/src/tartan/Tartan.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java" />
+        <option value="$PROJECT_DIR$/src/tartan/test/SpinnerDemo.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/ThreadListRow.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java" />
       </list>
     </option>
   </component>
@@ -229,7 +244,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -285,12 +299,35 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="test" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tartan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Tartan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tartan" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="TartanUI" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -326,28 +363,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.TartanMVC">
-    <configuration default="false" name="SAXParserExample" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="tartan.TartanUI.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="tartan.TartanUI.SAXParserExample" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Tartan" />
-      <envs />
-      <RunnerSettings RunnerId="Run" />
-      <ConfigurationWrapper RunnerId="Run" />
-      <method />
-    </configuration>
     <configuration default="false" name="XMLParserColours" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -428,6 +443,28 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="tartan.TartanUI.TartanModel" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Tartan" />
+      <envs />
+      <RunnerSettings RunnerId="Run" />
+      <ConfigurationWrapper RunnerId="Run" />
+      <method />
+    </configuration>
+    <configuration default="false" name="SpinnerDemo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="tartan.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="tartan.test.SpinnerDemo" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -743,19 +780,19 @@
     <list size="7">
       <item index="0" class="java.lang.String" itemvalue="Application.TartanView" />
       <item index="1" class="java.lang.String" itemvalue="Application.TartanMVC" />
-      <item index="2" class="java.lang.String" itemvalue="Application.SAXParserExample" />
-      <item index="3" class="java.lang.String" itemvalue="Application.XMLParserColours" />
-      <item index="4" class="java.lang.String" itemvalue="Application.XMLSaveColours" />
-      <item index="5" class="java.lang.String" itemvalue="Application.PaletteColour" />
-      <item index="6" class="java.lang.String" itemvalue="Application.TartanModel" />
+      <item index="2" class="java.lang.String" itemvalue="Application.XMLParserColours" />
+      <item index="3" class="java.lang.String" itemvalue="Application.XMLSaveColours" />
+      <item index="4" class="java.lang.String" itemvalue="Application.PaletteColour" />
+      <item index="5" class="java.lang.String" itemvalue="Application.TartanModel" />
+      <item index="6" class="java.lang.String" itemvalue="Application.SpinnerDemo" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.TartanModel" />
-        <item index="1" class="java.lang.String" itemvalue="Application.XMLSaveColours" />
-        <item index="2" class="java.lang.String" itemvalue="Application.PaletteColour" />
-        <item index="3" class="java.lang.String" itemvalue="Application.XMLParserColours" />
-        <item index="4" class="java.lang.String" itemvalue="Application.SAXParserExample" />
+        <item index="0" class="java.lang.String" itemvalue="Application.SpinnerDemo" />
+        <item index="1" class="java.lang.String" itemvalue="Application.TartanModel" />
+        <item index="2" class="java.lang.String" itemvalue="Application.XMLSaveColours" />
+        <item index="3" class="java.lang.String" itemvalue="Application.PaletteColour" />
+        <item index="4" class="java.lang.String" itemvalue="Application.XMLParserColours" />
       </list>
     </recent_temporary>
   </component>
@@ -805,12 +842,16 @@
       <workItem from="1423689023571" duration="10149000" />
       <workItem from="1423751154726" duration="588000" />
       <workItem from="1423938647007" duration="14774000" />
-      <workItem from="1424014363222" duration="17507000" />
+      <workItem from="1424014363222" duration="22954000" />
+      <workItem from="1424044443770" duration="2781000" />
+      <workItem from="1424108708798" duration="27000" />
+      <workItem from="1424109006334" duration="141000" />
+      <workItem from="1424117682159" duration="11735000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="194361000" />
+    <option name="totallyTimeSpent" value="214492000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -833,8 +874,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -850,10 +891,9 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2859477" sideWeight="0.49924356" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3267974" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22012103" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2375189" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38398692" sideWeight="0.58320725" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962178" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -863,6 +903,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38398692" sideWeight="0.58320725" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -883,13 +924,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="20" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
-        <watch expression="originalThreadList" />
-        <watch expression="threadAll" />
-        <watch expression="getRealThreadSizes()" />
+        <watch expression="colour" language="JAVA" custom="" />
+        <watch expression="threadCount" language="JAVA" custom="" />
+        <watch expression="colourName" language="JAVA" custom="" />
       </configuration>
     </watches-manager>
   </component>
@@ -898,27 +939,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/tartan/combination/Operate.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6127098" vertical-offset="611" max-vertical-offset="1445">
-          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/combination/BinaryOperation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26288658" vertical-offset="0" max-vertical-offset="582">
-          <caret line="9" column="49" selection-start-line="9" selection-start-column="27" selection-end-line="9" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/combination/Combination.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
-          <caret line="9" column="3" selection-start-line="9" selection-start-column="3" selection-end-line="9" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/awt/GridBagConstraints.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3315508" vertical-offset="5248" max-vertical-offset="10948">
@@ -1102,27 +1122,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="141" max-vertical-offset="680">
-          <caret line="31" column="28" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="28" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/javax/imageio/ImageIO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.33333334" vertical-offset="20303" max-vertical-offset="25993">
           <caret line="1300" column="0" selection-start-line="1300" selection-start-column="0" selection-end-line="1300" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="746" max-vertical-offset="3349">
-          <caret line="71" column="40" selection-start-line="71" selection-start-column="40" selection-end-line="71" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1130,7 +1133,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35579515" vertical-offset="531" max-vertical-offset="11118">
           <caret line="86" column="11" selection-start-line="86" selection-start-column="11" selection-end-line="86" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1138,9 +1140,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="612" max-vertical-offset="1241">
           <caret line="45" column="5" selection-start-line="45" selection-start-column="5" selection-end-line="45" selection-end-column="5" />
-          <folding>
-            <element signature="method#paintTartan#0;class#SVGTartan#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1148,7 +1147,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1241">
           <caret line="30" column="60" selection-start-line="30" selection-start-column="55" selection-end-line="30" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1156,7 +1154,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="292" max-vertical-offset="1020">
           <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1164,7 +1161,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="292" max-vertical-offset="1020">
           <caret line="32" column="41" selection-start-line="32" selection-start-column="41" selection-end-line="32" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1172,7 +1168,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3323782" vertical-offset="292" max-vertical-offset="986">
           <caret line="28" column="71" selection-start-line="28" selection-start-column="71" selection-end-line="28" selection-end-column="71" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1180,12 +1175,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="1122">
           <caret line="24" column="42" selection-start-line="24" selection-start-column="42" selection-end-line="24" selection-end-column="42" />
-          <folding>
-            <element signature="e#900#901#0" expanded="true" />
-            <element signature="e#947#948#0" expanded="true" />
-            <element signature="e#988#989#0" expanded="true" />
-            <element signature="e#1021#1022#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1193,7 +1182,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-6.5172415" vertical-offset="610" max-vertical-offset="1802">
           <caret line="57" column="45" selection-start-line="57" selection-start-column="45" selection-end-line="57" selection-end-column="45" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1201,105 +1189,135 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="356" max-vertical-offset="765">
           <caret line="38" column="0" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="424" max-vertical-offset="2363">
+          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="316" max-vertical-offset="918">
+          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/Arrays.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="55284" max-vertical-offset="85442">
+          <caret line="3330" column="31" selection-start-line="3330" selection-start-column="25" selection-end-line="3330" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1002445" vertical-offset="2747" max-vertical-offset="3349">
+          <caret line="182" column="79" selection-start-line="182" selection-start-column="79" selection-end-line="182" selection-end-column="79" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_25/src.zip!/java/util/ArrayList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33251834" vertical-offset="6987" max-vertical-offset="23715">
+          <caret line="456" column="19" selection-start-line="456" selection-start-column="19" selection-end-line="456" selection-end-column="19" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/PaletteColour.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.10119048" vertical-offset="153" max-vertical-offset="2873">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2873">
           <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7931035" vertical-offset="424" max-vertical-offset="2363">
-          <caret line="33" column="5" selection-start-line="33" selection-start-column="5" selection-end-line="33" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.6896553" vertical-offset="894" max-vertical-offset="1666">
-          <caret line="68" column="24" selection-start-line="68" selection-start-column="15" selection-end-line="68" selection-end-column="24" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1152#1153#0" expanded="true" />
-            <element signature="e#1181#1182#0" expanded="true" />
-            <element signature="e#1651#1652#0" expanded="true" />
-            <element signature="e#1680#1681#0" expanded="true" />
-            <element signature="e#1733#1734#0" expanded="true" />
-            <element signature="e#1785#1786#0" expanded="true" />
-            <element signature="e#2281#2282#0" expanded="true" />
-            <element signature="e#2319#2320#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.5172415" vertical-offset="316" max-vertical-offset="918">
-          <caret line="36" column="5" selection-start-line="36" selection-start-column="5" selection-end-line="36" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1121" max-vertical-offset="1547">
+          <caret line="97" column="29" selection-start-line="97" selection-start-column="29" selection-end-line="97" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadListRow.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2413" max-vertical-offset="2822">
-          <caret line="168" column="34" selection-start-line="168" selection-start-column="22" selection-end-line="168" selection-end-column="34" />
+        <state vertical-scroll-proportion="-8.413794" vertical-offset="45" max-vertical-offset="1190">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#5376#5377#0" expanded="true" />
-            <element signature="e#5432#5433#0" expanded="true" />
-            <element signature="e#5482#5483#0" expanded="true" />
-            <element signature="e#5535#5536#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.66748166" vertical-offset="730" max-vertical-offset="2057">
-          <caret line="61" column="42" selection-start-line="61" selection-start-column="42" selection-end-line="61" selection-end-column="42" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#967#968#0" expanded="true" />
-            <element signature="e#1014#1015#0" expanded="true" />
-            <element signature="e#1059#1060#0" expanded="true" />
-            <element signature="e#1119#1120#0" expanded="true" />
-            <element signature="e#3517#3518#0" expanded="true" />
-            <element signature="e#3569#3570#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/Tartan.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.448276" vertical-offset="2662" max-vertical-offset="3196">
-          <caret line="182" column="51" selection-start-line="182" selection-start-column="51" selection-end-line="182" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="714" max-vertical-offset="1224">
-          <caret line="63" column="10" selection-start-line="63" selection-start-column="10" selection-end-line="63" selection-end-column="10" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2329" max-vertical-offset="3196">
+          <caret line="156" column="0" selection-start-line="156" selection-start-column="0" selection-end-line="156" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22727273" vertical-offset="1355" max-vertical-offset="2278">
-          <caret line="101" column="0" selection-start-line="101" selection-start-column="0" selection-end-line="101" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="476" max-vertical-offset="2805">
+          <caret line="40" column="39" selection-start-line="40" selection-start-column="28" selection-end-line="40" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#actionPerformed#0;class#AddCustomColourListener#0;class#TartanController#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.034483" vertical-offset="160" max-vertical-offset="1054">
+          <caret line="18" column="22" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1171#1172#0" expanded="true" />
+            <element signature="e#1231#1232#0" expanded="true" />
+            <element signature="e#1265#1266#0" expanded="true" />
+            <element signature="e#1287#1288#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/ThreadChooser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.37931" vertical-offset="1996" max-vertical-offset="2363">
+          <caret line="136" column="32" selection-start-line="136" selection-start-column="23" selection-end-line="136" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1572#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#4615#4616#0" expanded="true" />
+            <element signature="e#4667#4668#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="879" max-vertical-offset="1326">
+          <caret line="78" column="39" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="2.4236841" vertical-offset="1612" max-vertical-offset="2890">
+          <caret line="157" column="0" selection-start-line="157" selection-start-column="0" selection-end-line="157" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4380#4653#0" expanded="true" />
+            <element signature="e#4652#4653#0" expanded="true" />
           </folding>
         </state>
       </provider>

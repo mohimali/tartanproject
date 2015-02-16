@@ -73,4 +73,10 @@ public class TartanDisplay extends JPanel {
 
 
     }
+
+    public void resetTartan() {
+        svgTartan = new SVGTartan();
+        doc = svgTartan.getSVGTartan();
+        canvas.setSVGDocument(doc); // adds doc to canvas
+    }
 }

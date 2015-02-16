@@ -20,13 +20,36 @@ public class TartanController {
 
         // PASS IN THE COLOURS FROM THE MODEL[XML FILE]
         //theView.initComponents();
-
+        //CALL ALL LISTENERS AND ADD THEM FROM CONTROLLER
         this.theView.addThreadListener(new AddThreadListener());
         this.theView.addChooseColourListener(new ChooseColourListener());
         this.theView.leftColourChooser.palettes.addGridColourListener(new GridChooseColourListener());
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
+        this.theView.addResetTartanListener(new ResetTartanListener());
     }
+
+    class ResetTartanListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
+                    theModel.resetTartan();
+                    theView.resetTartan();
+
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+            }
+
+        }
+
+    } //ResetTartanListener class
 
 
     class SinglePaletteListener implements ActionListener {
@@ -101,7 +124,6 @@ public class TartanController {
     class AddThreadListener implements ActionListener {
 
         public void actionPerformed(ActionEvent e) {
-
             try {
                 String strThreadCount = theView.getThreadCount();
                 Color colour = theView.getThreadColour();
@@ -113,15 +135,9 @@ public class TartanController {
                 } else {
 
                     theModel.addTartanThread(colour, threadCount, colourName);
-//                    theView.displayErrorMessage("" + "Col: " + colour + " threadCount" +
-//                                                threadCount + " colourname: " + colourName );
-
-                    System.out.println(theModel.getTartan());
                     theView.updateTartan(theModel.getTartan());
-
+                    theView.addThreadToList(colour,threadCount,colourName);
                 }
-
-
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need a number less then 99 for the thread count.");
@@ -130,7 +146,6 @@ public class TartanController {
     } // AddThreadListener class
 
     class ChooseColourListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
             try {
                 theView.leftColourChooser.updateSinglePaletteColour(null,null);

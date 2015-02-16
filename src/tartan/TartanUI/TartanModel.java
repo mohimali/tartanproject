@@ -13,9 +13,6 @@ import java.util.ArrayList;
  */
 public class TartanModel {
 
-
-    private String test = "HELLOWORLD";
-
     private ArrayList<Tartan> tartansList = new ArrayList<Tartan>();
     private ArrayList<TartanThread> tartanThreadList = new ArrayList<TartanThread>();
     private static int tartanSize = 400;
@@ -65,9 +62,8 @@ public class TartanModel {
     public void addTartanThread(Color myColour, int myThreadCount, String myColourName) {
 
         TartanThread newThread = new TartanThread(myColour, myThreadCount, myColourName);
-        //tartan.getThreadList().add(newThread);
         tartan.addThread(myColour, myThreadCount, myColourName);
-        tartan.toString();
+        //tartan.toString();
     }
 
     public String testasda() {
@@ -95,5 +91,14 @@ public class TartanModel {
 
     protected void setOriginalThreads(String requiredThreads) {
         originalThreads = requiredThreads;
+    }
+
+    public void resetTartan() {
+
+        //RESET ALL VARIABLES
+        tartansList = new ArrayList<Tartan>();
+        tartanThreadList = new ArrayList<TartanThread>();
+        tartan = new Tartan(tartanSize);
+
     }
 }

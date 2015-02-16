@@ -1,21 +1,16 @@
 package tartan.TartanUI;
 
-import javax.imageio.ImageIO;
+
 import javax.swing.JFrame;
 import java.awt.event.ActionListener;    //for addController()
-
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
-import tartan.TartanThread;
-
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -25,7 +20,6 @@ public class TartanView {
 
     ThreadChooser leftColourChooser;
     TartanDisplay tartanDisplay;
-    ThreadList threadList;
 
     // If the btnAddThread is then go the the controller
     // and do the actionPerformed method.
@@ -41,6 +35,10 @@ public class TartanView {
         leftColourChooser.btnCustomColourChooser.addActionListener(listenForAddCustomColourButton);
     }
 
+    void addResetTartanListener(ActionListener listenForResetTartanButton) {
+        leftColourChooser.btnResetTartan.addActionListener(listenForResetTartanButton);
+    }
+
     public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
         leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
     }
@@ -51,7 +49,7 @@ public class TartanView {
         String name;
         if (newColor != null) {
             name = JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
-            if ((name != null) && (name != "")) {
+            if ((name != null) && (name.equals(""))) {
                 leftColourChooser.updateCustomPaletteColour(newColor, name);
                 JOptionPane.showMessageDialog(null,
                         "Colour " + name + " has been added",
@@ -112,23 +110,20 @@ public class TartanView {
             e.printStackTrace();
         }
 
-        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
-        frame.setLayout(new MigLayout("", // Layout Constraints
+        mainWindow.setLayout(new MigLayout("", // Layout Constraints
                 "[]80[]", // Column constraints
                 "[]10[]")); // Row constraints);
 
-        Container mainWindow = frame.getContentPane();
         mainWindow.setBackground(Color.GRAY);
 
         //CREATE LEFT_CHOOSER
         leftColourChooser = new ThreadChooser();
         tartanDisplay = new TartanDisplay();
-        threadList = new ThreadList();
 
-        frame.add(leftColourChooser, "aligny top");
-         frame.add(tartanDisplay, "wrap, aligny top,growy");
-        frame.add(threadList, "span,growx");
+        mainWindow.add(leftColourChooser, "aligny top");
+        mainWindow.add(tartanDisplay, "wrap, aligny top,growy");
 
 
         // ADD WINDOW CLOSING LISTENERS
@@ -167,5 +162,16 @@ public class TartanView {
 
     public void updateTartan(Tartan newTartan) {
         tartanDisplay.updateTartan(newTartan);
+    }
+
+    public void addThreadToList(Color colour, int threadCount, String colourName) {
+        leftColourChooser.addThreadToList(colour,threadCount,colourName);
+    }
+
+    public void resetTartan()
+    {
+        leftColourChooser.resetTartan();
+        tartanDisplay.resetTartan();
+
     }
 } // TartanView
