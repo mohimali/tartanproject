@@ -11,6 +11,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -42,6 +43,15 @@ public class TartanView {
     public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
         leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
     }
+
+    public void addUpdateThreadListener(ActionListener listenForUpdateThreadButton,int index) {
+        leftColourChooser.threadListRows.addThreadChangedListener(index, listenForUpdateThreadButton);
+    }
+
+    public void addDeleteThreadListener(ActionListener listenForDeleteThreadListener, int index) {
+        leftColourChooser.threadListRows.addDeleteThreadListener(index,listenForDeleteThreadListener);
+    }
+
 
 
     public void displayCustomColourPicker() {
@@ -103,8 +113,7 @@ public class TartanView {
         try {
             File f1 = new File("Test.java");
             String path = f1.getCanonicalPath();
-            System.out.println(path);
-
+            //System.out.println(path);
             //frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src/tartan/TartanUI/images/2.jpg")))));
         } catch (IOException e) {
             e.printStackTrace();
@@ -173,5 +182,17 @@ public class TartanView {
         leftColourChooser.resetTartan();
         tartanDisplay.resetTartan();
 
+    }
+
+    public ThreadListRow getChosenRow(int rowIndex) {
+
+        return leftColourChooser.getChosenRow(rowIndex);
+    }
+
+
+
+
+    public void removeThreadRow(int rowIndex) {
+        leftColourChooser.removeThreadRow(rowIndex);
     }
 } // TartanView

@@ -3,15 +3,14 @@ package tartan.TartanUI;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 /**
  * Created by Mohim on 16/02/2015.
  */
 public class ThreadListRow extends JPanel {
 
-
-
-    private JLabel lblColourName;
+    private JLabel lblColourName,lblRowIndex;
     private JButton btnColourBox,
                     btnCross,
                     btnUpdate;
@@ -19,17 +18,43 @@ public class ThreadListRow extends JPanel {
     private int index = 0; // To display numbered rows.
     private JSpinner sprThreadCount;
 
+
+    public void addUpdateThreadListener(int index, ActionListener l)
+    {
+        btnUpdate.addActionListener(l);
+        btnUpdate.putClientProperty("RowIndex",index);
+    }
+
+    public int getUpdateRowIndex()
+    {
+        return Integer.parseInt(btnUpdate.getClientProperty("RowIndex").toString());
+
+    }
+
+    public void addDeleteThreadListener(int rowIndex, ActionListener l)
+    {
+        btnCross.addActionListener(l);
+        btnCross.putClientProperty("RowIndex",index);
+    }
+
+    public int getThreadCount()
+    {
+        return Integer.parseInt(sprThreadCount.getValue().toString());
+    }
+
+
     private void init(int requiredIndex,Color colour,int threadCount, String colourName)
     {
 
-        lblColourName = new JLabel("<html><font color='white'><b>" + requiredIndex  + ": "
-                                   + colourName + "</b></font></html>");
+        lblRowIndex = new JLabel("<html><font color='white'><b>" + requiredIndex  + ": "  + "</b></font></html>");
+        lblColourName = new JLabel("<html><font color='white'><b>" + colourName  + ": "  + "</b></font></html>");
         btnColourBox = new JButton();
 
         int current =threadCount;
         int min = 1;
         int max = 99;
         int step = 1;
+        index= requiredIndex;
         SpinnerNumberModel jsrThreadCountModel = new SpinnerNumberModel(current, min, max, step);
         sprThreadCount = new JSpinner(jsrThreadCountModel);
 
@@ -51,6 +76,7 @@ public class ThreadListRow extends JPanel {
 
         this.setLayout(new MigLayout());
         this.setBackground(Color.DARK_GRAY);
+        this.add(lblRowIndex,"width 50");
         this.add(lblColourName,"width 200");
         this.add(btnColourBox,"width 100"); //MAKE THE COLOUR DROP DOWN
         this.add(sprThreadCount,"width 100");
@@ -58,7 +84,18 @@ public class ThreadListRow extends JPanel {
         this.add(btnUpdate,"width 100");
     }
 
+    public Color getThreadColour() {
+        return btnColourBox.getBackground();
+    }
 
+    public void setRowIndex(int requiredRowIndex) {
+        index = requiredRowIndex;
+        lblRowIndex.setText("<html><font color='white'><b>" + index  + ": "  + "</b></font></html>");
+        btnCross.putClientProperty("RowIndex",index);
+        btnUpdate.putClientProperty("RowIndex",index);
+    }
 
-
+    public int getRowIndex() {
+        return index;
+    }
 }

@@ -173,21 +173,21 @@ public class Tartan {
         threads.add(tt);
         threadCounts = new double[]{};
         threadCounts = computeThreadSizes(threads);
-        //this.toString();
 
-//        String threadAll = "";
-//
-//        for (TartanThread item : threads)
-//            threadAll += item.toString() + ",";
 
-//        System.out.println( "tartan.Tartan: \n" +
-//                "OriginalThreads: " + originalThreadList + "\n" +
-//                "Real Threads: " + threadAll + "\n" +
-//                "IsSymmetrical: " + isSymmetrical + "\n" +
-//                "settCount: " + settCount + "\n" +
-//                "Width: " + width + "\n" +
-//                "Height: " + height + "\n" +
-//                "threadSizesActual: " + getRealThreadSizes() + "\n");
+    }
 
+    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount, String chosenColourName) {
+        TartanThread tt = new TartanThread(chosenColour,chosenThreadCount,chosenColourName);
+
+        threads.set(rowIndex,tt);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
+    }
+
+    public void removeThread(int rowIndex) {
+        threads.remove(rowIndex);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
     }
 }

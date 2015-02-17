@@ -62,6 +62,7 @@ public class TartanController {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
                     theView.leftColourChooser.updateSinglePaletteColour(null,null);
 
+
                 }
 
             } catch (NumberFormatException ex) {
@@ -137,6 +138,9 @@ public class TartanController {
                     theModel.addTartanThread(colour, threadCount, colourName);
                     theView.updateTartan(theModel.getTartan());
                     theView.addThreadToList(colour,threadCount,colourName);
+                    int lastIndex = theModel.getTartan().getThreadSizesCount()-1;
+                    theView.addUpdateThreadListener(new UpdateThreadListener(),lastIndex);
+                    theView.addDeleteThreadListener(new DeleteThreadListener(), lastIndex);
                 }
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
@@ -152,6 +156,54 @@ public class TartanController {
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
+            }
+        }
+    } // ChooseColourListener
+
+    class UpdateThreadListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+
+                JButton currentJB = (JButton) e.getSource();
+                int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
+                ThreadListRow chosenRow = theView.getChosenRow(rowIndex);
+                Color chosenColour = chosenRow.getThreadColour();
+                int chosenThreadCount = chosenRow.getThreadCount();
+
+                //////////////////THIS NEEDS TO GET CORRECT COLOUR PALETTE
+                String chosenColourName = chosenRow.getName();
+
+                theModel.updateThreadDetails(rowIndex,chosenColour,chosenThreadCount,chosenColourName);
+
+                theView.updateTartan(theModel.getTartan());
+
+                //theView.displayErrorMessage("updateThreadListener");
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+
+            }
+        }
+    } // UpdateThreadListener
+
+    class DeleteThreadListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+
+                JButton currentJB = (JButton) e.getSource();
+                int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
+                theView.displayErrorMessage("Trying to remove: " + rowIndex + " from a modelThreadSizeOf: " + theModel.getTartan().getThreadList().size());
+
+                theView.removeThreadRow(rowIndex);
+                theModel.removeThreadRow(rowIndex);
+
+
+
+
+                theView.updateTartan(theModel.getTartan());
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+
             }
         }
     } // ChooseColourListener

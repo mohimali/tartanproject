@@ -66,9 +66,6 @@ public class TartanModel {
         //tartan.toString();
     }
 
-    public String testasda() {
-        return "asda";
-    }
 
 
     protected void removeTartanThread(int index) {
@@ -100,5 +97,14 @@ public class TartanModel {
         tartanThreadList = new ArrayList<TartanThread>();
         tartan = new Tartan(tartanSize);
 
+    }
+
+
+    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount, String chosenColourName) {
+        tartan.updateThreadDetails(rowIndex,chosenColour,chosenThreadCount,chosenColourName);
+    }
+
+    public void removeThreadRow(int rowIndex) {
+        tartan.removeThread(rowIndex);
     }
 }

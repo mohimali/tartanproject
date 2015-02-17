@@ -4,6 +4,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
 
 /**
  * Created by Mohim on 01/02/2015.
@@ -26,6 +27,7 @@ public class ThreadChooser extends JPanel {
     Palettes palettes;
     SinglePalette singlePalette;
 
+    JScrollPane jScrollPane;
     boolean singlePaletteStatus;
 
     public void init() {
@@ -34,6 +36,11 @@ public class ThreadChooser extends JPanel {
                 (int) palettes.getPreferredSize().getHeight() + modifier,palettes.getFirstColourName());
         singlePaletteStatus = true;
         threadListRows = new ThreadList();
+
+        jScrollPane = new JScrollPane(threadListRows);
+        jScrollPane.getVerticalScrollBar().setUnitIncrement(7);
+
+        //this.add(jScrollPane, BorderLayout.CENTER);
         int current =1;
         int min = 1;
         int max = 99;
@@ -65,7 +72,7 @@ public class ThreadChooser extends JPanel {
     }
     public ThreadChooser() {
 
-        init();
+
 
         //CREATE LEFT_CHOOSER
         this.setBackground(Color.DARK_GRAY);
@@ -73,6 +80,7 @@ public class ThreadChooser extends JPanel {
                 "", // Column constraints
                 "[]10[]10[]30[]10[]")); // Row constraints);
 
+        init();
         btnChooseColour = new JButton("Choose Colour");
         btnAddThread = new JButton("Add Thread");
         btnCustomColourChooser = new JButton("<html><font color='green'>Custom Colour</font></html>");
@@ -91,7 +99,8 @@ public class ThreadChooser extends JPanel {
         this.add(lblThreadCount, "align left");
         this.add(sprThreadCount, "align left");
         this.add(btnAddThread, "align left,wrap");
-        this.add(threadListRows,"span,align left"+width+height2);
+        //this.add(threadListRows,"span,align left"+width+height2);
+        this.add(jScrollPane,"span,align left"+width+height2);
 
         this.setBorder(BorderFactory.createTitledBorder(
                 BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.WHITE, 1)),
@@ -135,5 +144,19 @@ public class ThreadChooser extends JPanel {
     public void resetTartan() {
 
         threadListRows.resetRows();
+    }
+
+    public Color getRowThreadColour(int rowIndex) {
+        return threadListRows.getRowThreadColour(rowIndex);
+    }
+
+    public ThreadListRow getChosenRow(int rowIndex) {
+        return threadListRows.getChosenRow(rowIndex);
+    }
+
+
+
+    public void removeThreadRow(int rowIndex) {
+        threadListRows.removeThreadRow(rowIndex);
     }
 }

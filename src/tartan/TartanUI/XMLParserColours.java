@@ -18,7 +18,7 @@ public class XMLParserColours extends DefaultHandler{
     private ArrayList<PaletteColour> coloursList;
     private String tempVal;
     private PaletteColour tempCol;
-
+    private String parsePath = "src/tartan/TartanUI/xml/palette.xml";
     public XMLParserColours(){
         coloursList = new ArrayList<PaletteColour>();
         parseDocument();
@@ -39,7 +39,14 @@ public class XMLParserColours extends DefaultHandler{
             SAXParser sp = spf.newSAXParser();
 
             //parse the file and also register this class for call backs
-            sp.parse("src/tartan/TartanUI/xml/palette.xml", this);
+
+            String test1 ="xml/palette.xml";
+            //System.out.println(this.getClass().getResource(test1).getPath());
+            String newTest = this.getClass().getResource(test1).getPath();
+            System.out.println("test");
+            //System.out.println("me" + test);
+
+            sp.parse(newTest, this);
 
         }catch(SAXException se) {
             se.printStackTrace();

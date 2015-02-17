@@ -1,0 +1,36 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="Tartan:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Tartan_jar</output-path>
+    <root id="archive" name="Tartan.jar">
+      <element id="module-output" name="Tartan" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/js.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/xml-apis.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-css.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-dom.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-ext.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-gvt.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-xml.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-anim.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-codec.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/xalan-2.6.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-bridge.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-parser.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-script.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-svggen.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/xerces_2_5_0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/xml-apis-ext.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-svg-dom.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-awt-util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-gui-util.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/pdf-transcoder.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-extension.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../batik-1.7/lib/batik-transcoder.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/../jgoodies-common-1.8.1/jgoodies-common-1.8.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/tartan/lib/swingx-core-1.6.2-AutoCompletition.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/src/tartan/lib/miglayout-4.0-swing.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$USER_HOME$/Downloads/ColorPicker (1).jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
