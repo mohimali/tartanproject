@@ -4,6 +4,7 @@ import net.miginfocom.swing.MigLayout;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 /**
@@ -158,5 +159,9 @@ public class ThreadChooser extends JPanel {
 
     public void removeThreadRow(int rowIndex) {
         threadListRows.removeThreadRow(rowIndex);
+    }
+
+    public void addUpdateColourRowListener(int index,ActionListener l) {
+        threadListRows.addUpdateColourRowListener(index,l);
     }
 }

@@ -13,5 +13,6 @@
     <orderEntry type="library" name="swingx-core-1.6.2" level="application" />
     <orderEntry type="library" name="miglayout-4.0-swing" level="application" />
     <orderEntry type="library" name="ColorPicker (1)" level="application" />
+    <orderEntry type="library" name="batik-anim1" level="application" />
   </component>
 </module>

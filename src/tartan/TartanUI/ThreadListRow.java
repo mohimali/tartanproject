@@ -37,6 +37,12 @@ public class ThreadListRow extends JPanel {
         btnCross.putClientProperty("RowIndex",index);
     }
 
+    public void addColourThreadListener(int rowIndex,ActionListener l)
+    {
+        btnColourBox.addActionListener(l);
+        btnColourBox.putClientProperty("RowIndex",index);
+    }
+
     public int getThreadCount()
     {
         return Integer.parseInt(sprThreadCount.getValue().toString());
@@ -93,6 +99,7 @@ public class ThreadListRow extends JPanel {
         lblRowIndex.setText("<html><font color='white'><b>" + index  + ": "  + "</b></font></html>");
         btnCross.putClientProperty("RowIndex",index);
         btnUpdate.putClientProperty("RowIndex",index);
+        btnColourBox.putClientProperty("RowIndex",index);
     }
 
     public int getRowIndex() {

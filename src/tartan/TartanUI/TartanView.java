@@ -190,7 +190,10 @@ public class TartanView {
     }
 
 
-
+public void addUpdateColourRowListener(ActionListener l,int index)
+{
+    leftColourChooser.addUpdateColourRowListener(index,l);
+}
 
     public void removeThreadRow(int rowIndex) {
         leftColourChooser.removeThreadRow(rowIndex);

@@ -27,6 +27,7 @@ public class TartanController {
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
         this.theView.addResetTartanListener(new ResetTartanListener());
+
     }
 
     class ResetTartanListener implements ActionListener {
@@ -141,6 +142,7 @@ public class TartanController {
                     int lastIndex = theModel.getTartan().getThreadSizesCount()-1;
                     theView.addUpdateThreadListener(new UpdateThreadListener(),lastIndex);
                     theView.addDeleteThreadListener(new DeleteThreadListener(), lastIndex);
+                    theView.addUpdateColourRowListener(new UpdateColourRowListener(), lastIndex);
                 }
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
@@ -196,8 +198,25 @@ public class TartanController {
                 theView.removeThreadRow(rowIndex);
                 theModel.removeThreadRow(rowIndex);
 
+                theView.updateTartan(theModel.getTartan());
 
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
 
+            }
+        }
+    } // DeleteThreadListener
+
+    class UpdateColourRowListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+
+                JButton currentJB = (JButton) e.getSource();
+                int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
+                theView.displayErrorMessage("Trying to update: " + rowIndex + " from a modelThreadSizeOf: " + theModel.getTartan().getThreadList().size());
+
+                //theView.removeThreadRow(rowIndex);
+                //theModel.removeThreadRow(rowIndex);
 
                 theView.updateTartan(theModel.getTartan());
 
@@ -206,6 +225,5 @@ public class TartanController {
 
             }
         }
-    } // ChooseColourListener
-
+    } // UpdateColourRowListener
 } // TartanController class
