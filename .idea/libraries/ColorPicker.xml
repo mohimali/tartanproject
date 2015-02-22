@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="ColorPicker">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/ColorPicker.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/ColorPicker.jar!/" />
+    </SOURCES>
+  </library>
+</component>

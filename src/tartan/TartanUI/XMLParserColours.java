@@ -37,16 +37,25 @@ public class XMLParserColours extends DefaultHandler{
 
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
-
             //parse the file and also register this class for call backs
 
-            String test1 ="xml/palette.xml";
-            //System.out.println(this.getClass().getResource(test1).getPath());
-            String newTest = this.getClass().getResource(test1).getPath();
-            System.out.println("test");
+
+            //System.out.println("XMLLoad: "  + this.getClass().getResource("resources/xml/palette.xml"));
             //System.out.println("me" + test);
 
-            sp.parse(newTest, this);
+            try{
+                // CHECK IF THIER IS A FILE ALREADY WITH CUSTOM DATA
+                sp.parse("palette.xml", this);
+                System.out.println("Using file");
+            }
+            catch(Exception e)
+            {
+                // ELSE USE EMBED FROM .JAR
+                String tempURL = this.getClass().getResource("resources/xml/palette.xml").toString();
+                System.out.println("Using resource");
+                sp.parse(tempURL, this);
+            }
+
 
         }catch(SAXException se) {
             se.printStackTrace();

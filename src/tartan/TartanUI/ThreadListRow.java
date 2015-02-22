@@ -80,7 +80,7 @@ public class ThreadListRow extends JPanel {
 
         btnColourBox.setBackground(colour);
         btnColourBox.setPreferredSize(new Dimension(25,25));
-        btnCross.setIcon(new ImageIcon("src/tartan/TartanUI/images/cross.png"));
+        btnCross.setIcon(new ImageIcon(this.getClass().getResource("resources/images/cross.png")));
 
     }
 

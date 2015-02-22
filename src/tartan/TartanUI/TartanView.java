@@ -62,7 +62,7 @@ public class TartanView {
         String name;
         if (newColor != null) {
             name = JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
-            if ((name != null) && (name.equals(""))) {
+            if ((name != null) && (!name.equals(""))) {
                 leftColourChooser.updateCustomPaletteColour(newColor, name);
                 JOptionPane.showMessageDialog(null,
                         "Colour " + name + " has been added",

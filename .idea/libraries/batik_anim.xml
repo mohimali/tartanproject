@@ -1,0 +1,37 @@
+<component name="libraryTable">
+  <library name="batik-anim">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-anim.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-awt-util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-bridge.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-codec.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-css.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-dom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-ext.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-extension.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-gui-util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-gvt.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-parser.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-script.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-svg-dom.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-svggen.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-transcoder.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/batik-xml.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/ColorPicker.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/js.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/miglayout-4.0-swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/pdf-transcoder.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/swingx-core-1.6.2-AutoCompletition.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/xalan-2.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/xerces_2_5_0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/xml-apis-ext.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/xml-apis.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/tartan/lib/ColorPicker.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -182,10 +182,10 @@ public class XMLSaveColours {
             //to generate output to console use this serializer
             //XMLSerializer serializer = new XMLSerializer(System.out, format);
 
-
+            //System.out.println("XMLSave: "  + this.getClass().getResource("resources/xml/palette.xml"));
             //to generate a file output use fileoutputstream instead of system.out
             XMLSerializer serializer = new XMLSerializer(
-                    new FileOutputStream(new File("src/tartan/TartanUI/xml/palette.xml")), format);
+                    new FileOutputStream(new File("palette.xml")), format);
 
 
             serializer.serialize(dom);
