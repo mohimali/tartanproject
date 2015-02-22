@@ -2,6 +2,7 @@ package tartan.TartanUI;
 
 
 import javax.swing.JFrame;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;    //for addController()
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
@@ -12,6 +13,7 @@ import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
 import javax.swing.*;
+import javax.swing.border.BevelBorder;
 
 
 public class TartanView {
@@ -20,6 +22,7 @@ public class TartanView {
 
     ThreadChooser leftColourChooser;
     TartanDisplay tartanDisplay;
+    private JMenuBar menuBar;
 
 
     // If the btnAddThread is then go the the controller
@@ -119,6 +122,8 @@ public class TartanView {
             e.printStackTrace();
         }
 
+
+
         Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         mainWindow.setLayout(new MigLayout("", // Layout Constraints
@@ -134,6 +139,9 @@ public class TartanView {
         mainWindow.add(leftColourChooser, "aligny top");
         mainWindow.add(tartanDisplay, "wrap, aligny top,growy");
 
+        setUpMenuBars();
+        frame.setJMenuBar(menuBar);
+
 
         // ADD WINDOW CLOSING LISTENERS
         frame.addWindowListener(new WindowAdapter() {
@@ -145,9 +153,47 @@ public class TartanView {
             }
         });
 
+
         frame.pack();
         frame.setVisible(true);
     } // initComponents
+
+    class MenuAction extends AbstractAction {
+
+        public MenuAction(String text, Icon icon) {
+            super(text, icon);
+        }
+
+        public void actionPerformed(ActionEvent e) {
+            try {
+               System.out.print("clicked");
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+    private void setUpMenuBars() {
+        menuBar = new JMenuBar();
+        JMenu formatMenu = new JMenu("File");
+        formatMenu.setMnemonic('J');
+        //System.out.println("samsung: "  + this.getClass().getResource("resources/images/1.gif"));
+        MenuAction newTartanAction = new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png")));
+        MenuAction saveTartanAction = new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png")));
+        MenuAction loadTartanAction = new MenuAction("Load existing Tartan",new ImageIcon(this.getClass().getResource("resources/images/load.png")));
+        MenuAction uploadTartanAction = new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png")));
+
+
+        JMenuItem item;
+        item = formatMenu.add(newTartanAction);
+        item = formatMenu.add(saveTartanAction); // CHANGE LATER
+        item = formatMenu.add(loadTartanAction); // CHANGE LATER
+        item = formatMenu.add(uploadTartanAction); // CHANGE LATER
+
+        menuBar.add(formatMenu);
+        menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));
+
+    }
 
     private void saveCustomColours() {
         int dlgButton = JOptionPane.YES_NO_OPTION;

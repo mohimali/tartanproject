@@ -37,6 +37,8 @@ public class TartanMVC {
                 theModel = new TartanModel();
                 theView = new TartanView();
                 theController = new TartanController(theView, theModel);
+
+
             }
         });
 
