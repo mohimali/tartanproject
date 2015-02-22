@@ -11,7 +11,6 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -21,6 +20,7 @@ public class TartanView {
 
     ThreadChooser leftColourChooser;
     TartanDisplay tartanDisplay;
+
 
     // If the btnAddThread is then go the the controller
     // and do the actionPerformed method.
@@ -197,5 +197,30 @@ public void addUpdateColourRowListener(ActionListener l,int index)
 
     public void removeThreadRow(int rowIndex) {
         leftColourChooser.removeThreadRow(rowIndex);
+    }
+
+    public void allowColourPalette(String myName,int rowIndex) {
+        leftColourChooser.allowColourPalette(myName,rowIndex);
+        leftColourChooser.updateComponentsStatus(false);
+    }
+
+    public int getCurrentMode() {
+        return leftColourChooser.getCurrentMode();
+    }
+
+    public int getCurrentRowIndex() {
+        return leftColourChooser.getCurrentRowIndex();
+    }
+
+    public void resetMode(String myName) {
+        leftColourChooser.resetMode(myName);
+    }
+
+    public void setEnabledAllComponents() {
+        leftColourChooser.updateComponentsStatus(true);
+    }
+
+    public void updateColourRow(int myRowIndex, Color myColour,String myName) {
+        leftColourChooser.updateColourRow(myRowIndex,myColour,myName);
     }
 } // TartanView

@@ -12,6 +12,10 @@ import java.util.ArrayList;
  */
 public class ThreadChooser extends JPanel {
 
+    private static int PALETTE_MODE = 0;
+    private static int ROW_COLOUR_MODE = 1;
+    private int currentMode = 0;
+    private int rowToBeChanged = 0;
     JButton btnAddThread,
             btnChooseColour,
             btnCustomColourChooser,
@@ -30,6 +34,7 @@ public class ThreadChooser extends JPanel {
 
     JScrollPane jScrollPane;
     boolean singlePaletteStatus;
+    private String oldColourNameSelected="";
 
     public void init() {
         palettes = new Palettes(noOfPalettesX, noOfPalettesY, eachPaletteSize);
@@ -163,5 +168,44 @@ public class ThreadChooser extends JPanel {
 
     public void addUpdateColourRowListener(int index,ActionListener l) {
         threadListRows.addUpdateColourRowListener(index,l);
+    }
+
+    public void allowColourPalette(String myName,int rowIndex) {
+        singlePalette.setVisible(false);
+        palettes.setVisible(true);
+        currentMode = ROW_COLOUR_MODE;
+        oldColourNameSelected = myName;
+        palettes.setColourByName(myName);
+        rowToBeChanged = rowIndex;
+    }
+
+    public int getCurrentMode()
+    {
+        return currentMode;
+    }
+
+    public String getOldColourToBeChanged(){
+        return oldColourNameSelected;
+    }
+
+    public void updateComponentsStatus(boolean status) {
+        btnAddThread.setEnabled(status);
+        btnChooseColour.setEnabled(status);
+        btnCustomColourChooser.setEnabled(status);
+        btnResetTartan.setEnabled(status);
+        threadListRows.setEnabledStatus(status);
+    }
+
+    public int getCurrentRowIndex() {
+        return rowToBeChanged;
+    }
+
+    public void resetMode(String myName) {
+        currentMode = 0;
+        palettes.resetHighlight(myName);
+    }
+
+    public void updateColourRow(int myRowIndex, Color myColour,String myName) {
+        threadListRows.updateColourRow(myRowIndex,myColour,myName);
     }
 }

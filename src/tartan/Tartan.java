@@ -190,4 +190,11 @@ public class Tartan {
         threadCounts = new double[]{};
         threadCounts = computeThreadSizes(threads);
     }
+
+    public void updateColourDetails(int myRowIndex, Color myColour, String myName) {
+        TartanThread tt = new TartanThread(myColour,threads.get(myRowIndex).getThreadCount(),myName);
+        threads.set(myRowIndex,tt);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
+    }
 }

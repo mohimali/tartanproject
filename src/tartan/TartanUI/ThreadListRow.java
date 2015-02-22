@@ -18,7 +18,7 @@ public class ThreadListRow extends JPanel {
     private int index = 0; // To display numbered rows.
     private JSpinner sprThreadCount;
 
-
+    String myColourName;
     public void addUpdateThreadListener(int index, ActionListener l)
     {
         btnUpdate.addActionListener(l);
@@ -37,23 +37,33 @@ public class ThreadListRow extends JPanel {
         btnCross.putClientProperty("RowIndex",index);
     }
 
-    public void addColourThreadListener(int rowIndex,ActionListener l)
-    {
+    public void addUpdateColourListener(int index, ActionListener l) {
         btnColourBox.addActionListener(l);
         btnColourBox.putClientProperty("RowIndex",index);
-    }
+        btnColourBox.putClientProperty("Name",myColourName);
+
+        System.out.println("RABBIE: " + myColourName);
+    } // addUpdateColourListener
 
     public int getThreadCount()
     {
         return Integer.parseInt(sprThreadCount.getValue().toString());
     }
 
+    public void updateColour(Color myColour,String myName)
+    {
+        myColourName = myName;
+        btnColourBox.putClientProperty("Name",myName);
+        btnColourBox.setBackground(myColour);
+        lblColourName.setText("<html><font color='white'><b>" + myName  + ": "  + "</b></font></html>");
+    }
 
     private void init(int requiredIndex,Color colour,int threadCount, String colourName)
     {
 
         lblRowIndex = new JLabel("<html><font color='white'><b>" + requiredIndex  + ": "  + "</b></font></html>");
         lblColourName = new JLabel("<html><font color='white'><b>" + colourName  + ": "  + "</b></font></html>");
+        myColourName = colourName;
         btnColourBox = new JButton();
 
         int current =threadCount;
@@ -104,5 +114,14 @@ public class ThreadListRow extends JPanel {
 
     public int getRowIndex() {
         return index;
+    }
+
+
+    public void disableComponents(boolean enabledStatus) {
+
+        btnColourBox.setEnabled(enabledStatus);
+        btnCross.setEnabled(enabledStatus);
+        btnUpdate.setEnabled(enabledStatus);
+        sprThreadCount.setEnabled(enabledStatus);
     }
 }

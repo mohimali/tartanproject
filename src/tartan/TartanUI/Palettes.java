@@ -24,8 +24,7 @@ public class Palettes extends JPanel {
     int tempColourIndex = 0;
     boolean customColourChangedStatus = false;
 
-    public Color getFirstColour()
-    {
+    public Color getFirstColour() {
         if (palettes != null && palettes[0] != null && palettes[0][0] != null)
             return palettes[0][0].getBackground();
         else
@@ -33,9 +32,8 @@ public class Palettes extends JPanel {
 
     }
 
-    public String getFirstColourName()
-    {
-        if (palettes != null && palettes[0] != null && palettes[0][0] != null )
+    public String getFirstColourName() {
+        if (palettes != null && palettes[0] != null && palettes[0][0] != null)
             return palettes[0][0].getClientProperty("Name").toString();
 
         return "Invalid Colour";
@@ -43,10 +41,10 @@ public class Palettes extends JPanel {
     }
 
 
-    public boolean getCustomColourChangedStatus()
-    {
+    public boolean getCustomColourChangedStatus() {
         return customColourChangedStatus;
     }
+
     public Palettes(int width, int height, int eachPaletteSize) {
         this.setLayout(new GridLayout(height, width));
         this.setOpaque(true);
@@ -64,7 +62,7 @@ public class Palettes extends JPanel {
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
-                    palettes[lastX][lastY].putClientProperty("Name",coloursArray.get(coloursArrayIndex).getName());
+                    palettes[lastX][lastY].putClientProperty("Name", coloursArray.get(coloursArrayIndex).getName());
                     this.add(palettes[lastX][lastY]);
                     coloursArrayIndex++;
                 } else {
@@ -100,7 +98,7 @@ public class Palettes extends JPanel {
             palettes[tempX][tempY].setEnabled(true);
             palettes[tempX][tempY].setText("");
             palettes[tempX][tempY].setBackground(colour);
-            palettes[tempX][tempY].putClientProperty("Name",name);
+            palettes[tempX][tempY].putClientProperty("Name", name);
             tempX++;
             tempColourIndex++;
 
@@ -108,8 +106,8 @@ public class Palettes extends JPanel {
             //padded zeros
             String rgb = PaletteColour.getRGBFormat(colour);
 
-            PaletteColour newColour = new PaletteColour("Colour",coloursArray.size()+1,name,
-                    rgb,1);
+            PaletteColour newColour = new PaletteColour("Colour", coloursArray.size() + 1, name,
+                    rgb, 1);
             coloursArray.add(newColour);
             customColourChangedStatus = true;
         }
@@ -117,8 +115,7 @@ public class Palettes extends JPanel {
 
     }
 
-    public void saveCustomColours()
-    {
+    public void saveCustomColours() {
         //Save the colour
 
         xsc.updateColoursXML(coloursArray);
@@ -138,4 +135,33 @@ public class Palettes extends JPanel {
     }
 
 
+    public void setColourByName(String colourByName) {
+
+        for (int y = 0; y < palettes[0].length/*4*/; y++) {
+            for (int x = 0; x < palettes.length/*10*/; x++) {
+                if ((palettes[x][y].getClientProperty("Name") != null)
+                        && (palettes[x][y].getClientProperty("Name").toString() == colourByName)) {
+                    palettes[x][y].setBorder(BorderFactory.createEtchedBorder(Color.YELLOW, Color.WHITE));
+                }
+            }
+
+
+        } // OUTSIDE FOR
+
+
+    } // setColourByName
+
+    public void resetHighlight(String myName) {
+        for (int y = 0; y < palettes[0].length/*4*/; y++) {
+            for (int x = 0; x < palettes.length/*10*/; x++) {
+                if ((palettes[x][y].getClientProperty("Name") != null)
+                        && (palettes[x][y].getClientProperty("Name").toString() == myName)) {
+                    palettes[x][y].setBorder(BorderFactory.createEmptyBorder());
+
+                }
+            }
+        } // OUTSIDE FOR
+
+
+    }
 }

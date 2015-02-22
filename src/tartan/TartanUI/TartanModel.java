@@ -107,4 +107,9 @@ public class TartanModel {
     public void removeThreadRow(int rowIndex) {
         tartan.removeThread(rowIndex);
     }
+
+
+    public void updateColourRow(int myRowIndex, Color myColour, String myName) {
+        tartan.updateColourDetails(myRowIndex,myColour,myName);
+    }
 }

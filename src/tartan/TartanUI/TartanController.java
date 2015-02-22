@@ -61,7 +61,7 @@ public class TartanController {
 
                 if (e.getSource() instanceof JButton) {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
-                    theView.leftColourChooser.updateSinglePaletteColour(null,null);
+                    theView.leftColourChooser.updateSinglePaletteColour(null, null);
 
 
                 }
@@ -84,8 +84,6 @@ public class TartanController {
                 if (e.getSource() instanceof JButton) {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
                     theView.displayCustomColourPicker();
-
-
                 }
 
             } catch (NumberFormatException ex) {
@@ -106,12 +104,33 @@ public class TartanController {
 
                 if (e.getSource() instanceof JButton) {
 
+                    // 0 Means colour palette mode, 1 means row colour updating mode
+                    int myMode = theView.getCurrentMode();
+                    int myRowIndex = theView.getCurrentRowIndex();
+
                     JButton currentJB = (JButton) e.getSource();
                     String myName = currentJB.getClientProperty("Name").toString();
                     Color myColour = currentJB.getBackground();
 
-                    theView.leftColourChooser.updateSinglePaletteColour(myColour,myName);
 
+                    theView.leftColourChooser.updateSinglePaletteColour(myColour, myName);
+
+                    // may need rowIndex.
+                    if (myMode == 1)
+                    {
+                        theView.resetMode(theView.getColourName());
+                        theView.setEnabledAllComponents();
+                        theView.updateColourRow(myRowIndex,myColour,myName);
+
+                        //update model
+                        theModel.updateColourRow(myRowIndex,myColour,myName);
+                    }
+
+
+
+
+                    // UPDATE THE MODEL AS WELL !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
+                    //////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
                 }
 
             } catch (NumberFormatException ex) {
@@ -138,9 +157,9 @@ public class TartanController {
 
                     theModel.addTartanThread(colour, threadCount, colourName);
                     theView.updateTartan(theModel.getTartan());
-                    theView.addThreadToList(colour,threadCount,colourName);
-                    int lastIndex = theModel.getTartan().getThreadSizesCount()-1;
-                    theView.addUpdateThreadListener(new UpdateThreadListener(),lastIndex);
+                    theView.addThreadToList(colour, threadCount, colourName);
+                    int lastIndex = theModel.getTartan().getThreadSizesCount() - 1;
+                    theView.addUpdateThreadListener(new UpdateThreadListener(), lastIndex);
                     theView.addDeleteThreadListener(new DeleteThreadListener(), lastIndex);
                     theView.addUpdateColourRowListener(new UpdateColourRowListener(), lastIndex);
                 }
@@ -154,7 +173,7 @@ public class TartanController {
     class ChooseColourListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             try {
-                theView.leftColourChooser.updateSinglePaletteColour(null,null);
+                theView.leftColourChooser.updateSinglePaletteColour(null, null);
             } catch (NumberFormatException ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
@@ -175,7 +194,7 @@ public class TartanController {
                 //////////////////THIS NEEDS TO GET CORRECT COLOUR PALETTE
                 String chosenColourName = chosenRow.getName();
 
-                theModel.updateThreadDetails(rowIndex,chosenColour,chosenThreadCount,chosenColourName);
+                theModel.updateThreadDetails(rowIndex, chosenColour, chosenThreadCount, chosenColourName);
 
                 theView.updateTartan(theModel.getTartan());
 
@@ -213,10 +232,12 @@ public class TartanController {
 
                 JButton currentJB = (JButton) e.getSource();
                 int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
-                theView.displayErrorMessage("Trying to update: " + rowIndex + " from a modelThreadSizeOf: " + theModel.getTartan().getThreadList().size());
+                Color myColour = currentJB.getBackground();
+                String myName = currentJB.getClientProperty("Name").toString();
+                theView.displayErrorMessage("Trying to updateColour: " + rowIndex + " with name: " + myName);
 
-                //theView.removeThreadRow(rowIndex);
-                //theModel.removeThreadRow(rowIndex);
+                // ENSURE COLOUR IS FOUND OR NOT FOUND AND HENCE DEFAULT TO BLACK ANY
+                theView.allowColourPalette(myName,rowIndex);
 
                 theView.updateTartan(theModel.getTartan());
 

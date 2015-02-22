@@ -12,9 +12,9 @@ import java.util.ArrayList;
 public class ThreadList extends JPanel{
 
     ArrayList<ThreadListRow> threadListRow;
-    JScrollPane js;
-    JPanel jp;
     int lastIndex = 1;
+    private boolean enabledStatus;
+
     public void init()
     {
         this.removeAll();
@@ -30,6 +30,10 @@ public class ThreadList extends JPanel{
 
     public void addDeleteThreadListener(int index, ActionListener listenForDeleteThreadListener) {
         threadListRow.get(index).addDeleteThreadListener(index,listenForDeleteThreadListener);
+    }
+
+    public void addUpdateColourRowListener(int index,ActionListener l) {
+        threadListRow.get(index).addUpdateColourListener(index,l);
     }
 
     public ThreadList()
@@ -114,7 +118,19 @@ public class ThreadList extends JPanel{
 
     }
 
-    public void addUpdateColourRowListener(int index,ActionListener l) {
-        //threadListRow.get(index);
+
+    public void setEnabledStatus(boolean enabledStatus) {
+
+        for(ThreadListRow row : threadListRow)
+        {
+            row.disableComponents(enabledStatus);
+        }
+
+    }
+
+    public void updateColourRow(int myRowIndex, Color myColour, String myName) {
+        threadListRow.get(myRowIndex).updateColour(myColour,myName);
+
+
     }
 }
