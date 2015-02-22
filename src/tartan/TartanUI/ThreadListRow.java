@@ -41,8 +41,6 @@ public class ThreadListRow extends JPanel {
         btnColourBox.addActionListener(l);
         btnColourBox.putClientProperty("RowIndex",index);
         btnColourBox.putClientProperty("Name",myColourName);
-
-        System.out.println("RABBIE: " + myColourName);
     } // addUpdateColourListener
 
     public int getThreadCount()
@@ -54,6 +52,7 @@ public class ThreadListRow extends JPanel {
     {
         myColourName = myName;
         btnColourBox.putClientProperty("Name",myName);
+
         btnColourBox.setBackground(myColour);
         lblColourName.setText("<html><font color='white'><b>" + myName  + ": "  + "</b></font></html>");
     }

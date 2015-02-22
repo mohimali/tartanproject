@@ -157,11 +157,24 @@ public class Palettes extends JPanel {
                 if ((palettes[x][y].getClientProperty("Name") != null)
                         && (palettes[x][y].getClientProperty("Name").toString() == myName)) {
                     palettes[x][y].setBorder(BorderFactory.createEmptyBorder());
+                    System.out.println("resetHighlight" + myName);
 
                 }
             }
         } // OUTSIDE FOR
 
 
+    }
+
+    public void resetAllHighlight() {
+        for (int y = 0; y < palettes[0].length/*4*/; y++) {
+            for (int x = 0; x < palettes.length/*10*/; x++) {
+                if (palettes[x][y].getClientProperty("Name") != null) {
+                    palettes[x][y].setBorder(BorderFactory.createEmptyBorder());
+
+
+                }
+            }
+        } // OUTSIDE FOR
     }
 }

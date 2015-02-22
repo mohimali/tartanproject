@@ -53,8 +53,6 @@ public class TartanDisplay extends JPanel {
 
     public void addTartanToDisplay(Tartan newTartan)
     {
-        System.out.println("Adding Thread");
-
         svgTartan = new SVGTartan(newTartan);
         doc = svgTartan.getSVGTartan();
 
@@ -68,7 +66,6 @@ public class TartanDisplay extends JPanel {
 
 
     public void updateTartan(Tartan newTartan) {
-        System.out.println("Updating Tartan Paint");
         addTartanToDisplay(newTartan);
 
 

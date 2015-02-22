@@ -110,7 +110,7 @@ public class TartanController {
 
                     JButton currentJB = (JButton) e.getSource();
                     String myName = currentJB.getClientProperty("Name").toString();
-                    Color myColour = currentJB.getBackground();
+                    Color myColour = currentJB.getBackground(); // FULL PALETTE COLOUR REQUIRED
 
 
                     theView.leftColourChooser.updateSinglePaletteColour(myColour, myName);
@@ -118,19 +118,14 @@ public class TartanController {
                     // may need rowIndex.
                     if (myMode == 1)
                     {
-                        theView.resetMode(theView.getColourName());
+
+                        theView.resetMode(theView.getOldColourToBeChanged());
                         theView.setEnabledAllComponents();
                         theView.updateColourRow(myRowIndex,myColour,myName);
-
-                        //update model
-                        theModel.updateColourRow(myRowIndex,myColour,myName);
                     }
 
-
-
-
-                    // UPDATE THE MODEL AS WELL !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11
-                    //////////!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    theView.resetMode(theView.getOldColourToBeChanged());
+                    theView.resetAllColourPalettes();
                 }
 
             } catch (NumberFormatException ex) {
@@ -234,10 +229,13 @@ public class TartanController {
                 int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
                 Color myColour = currentJB.getBackground();
                 String myName = currentJB.getClientProperty("Name").toString();
-                theView.displayErrorMessage("Trying to updateColour: " + rowIndex + " with name: " + myName);
+                //theView.displayErrorMessage("Trying to updateColour: " + rowIndex + " with name: " + myName);
 
                 // ENSURE COLOUR IS FOUND OR NOT FOUND AND HENCE DEFAULT TO BLACK ANY
-                theView.allowColourPalette(myName,rowIndex);
+
+                theView.resetAllColourPalettes();
+
+                theView.allowColourPalette(myName,rowIndex,myColour);
 
                 theView.updateTartan(theModel.getTartan());
 

@@ -170,13 +170,15 @@ public class ThreadChooser extends JPanel {
         threadListRows.addUpdateColourRowListener(index,l);
     }
 
-    public void allowColourPalette(String myName,int rowIndex) {
+    public void allowColourPalette(String myName,int rowIndex,Color myColour) {
         singlePalette.setVisible(false);
         palettes.setVisible(true);
         currentMode = ROW_COLOUR_MODE;
         oldColourNameSelected = myName;
         palettes.setColourByName(myName);
         rowToBeChanged = rowIndex;
+        updateColourRow(rowIndex, myColour, myName);
+        singlePaletteStatus = false;
     }
 
     public int getCurrentMode()
@@ -201,11 +203,16 @@ public class ThreadChooser extends JPanel {
     }
 
     public void resetMode(String myName) {
-        currentMode = 0;
+        currentMode = PALETTE_MODE;
         palettes.resetHighlight(myName);
     }
 
     public void updateColourRow(int myRowIndex, Color myColour,String myName) {
         threadListRows.updateColourRow(myRowIndex,myColour,myName);
+
+    }
+
+    public void resetAllColourPalettes() {
+        palettes.resetAllHighlight();
     }
 }

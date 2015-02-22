@@ -24,7 +24,6 @@ public class ThreadList extends JPanel{
 
     public void addThreadChangedListener(int index, ActionListener l)
     {
-        System.out.println("threadIndex: " + index);
         threadListRow.get(index).addUpdateThreadListener(index, l);
     }
 

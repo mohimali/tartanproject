@@ -199,8 +199,8 @@ public void addUpdateColourRowListener(ActionListener l,int index)
         leftColourChooser.removeThreadRow(rowIndex);
     }
 
-    public void allowColourPalette(String myName,int rowIndex) {
-        leftColourChooser.allowColourPalette(myName,rowIndex);
+    public void allowColourPalette(String myName,int rowIndex,Color myColour) {
+        leftColourChooser.allowColourPalette(myName,rowIndex,myColour);
         leftColourChooser.updateComponentsStatus(false);
     }
 
@@ -222,5 +222,13 @@ public void addUpdateColourRowListener(ActionListener l,int index)
 
     public void updateColourRow(int myRowIndex, Color myColour,String myName) {
         leftColourChooser.updateColourRow(myRowIndex,myColour,myName);
+    }
+
+    public void resetAllColourPalettes() {
+        leftColourChooser.resetAllColourPalettes();
+    }
+
+    public String getOldColourToBeChanged() {
+        return  leftColourChooser.getOldColourToBeChanged();
     }
 } // TartanView
