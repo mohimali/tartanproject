@@ -167,8 +167,8 @@ public class Tartan {
     }
 
 
-    public void addThread(Color myColour, int myThreadCount, String myColourName) {
-        TartanThread tt = new TartanThread(myColour,myThreadCount,myColourName);
+    public void addThread(Color myColour, int myThreadCount, String myColourName,String colourShortHand) {
+        TartanThread tt = new TartanThread(myColour,colourShortHand,myThreadCount,myColourName);
 
         threads.add(tt);
         threadCounts = new double[]{};
@@ -177,8 +177,9 @@ public class Tartan {
 
     }
 
-    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount, String chosenColourName) {
-        TartanThread tt = new TartanThread(chosenColour,chosenThreadCount,chosenColourName);
+    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount,
+                                    String chosenColourName,String colourShortHand) {
+        TartanThread tt = new TartanThread(chosenColour,colourShortHand,chosenThreadCount,chosenColourName);
 
         threads.set(rowIndex,tt);
         threadCounts = new double[]{};
@@ -191,8 +192,8 @@ public class Tartan {
         threadCounts = computeThreadSizes(threads);
     }
 
-    public void updateColourDetails(int myRowIndex, Color myColour, String myName) {
-        TartanThread tt = new TartanThread(myColour,threads.get(myRowIndex).getThreadCount(),myName);
+    public void updateColourDetails(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        TartanThread tt = new TartanThread(myColour,colourShortHand,threads.get(myRowIndex).getThreadCount(),myName);
         threads.set(myRowIndex,tt);
         threadCounts = new double[]{};
         threadCounts = computeThreadSizes(threads);

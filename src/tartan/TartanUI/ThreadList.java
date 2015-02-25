@@ -48,9 +48,9 @@ public class ThreadList extends JPanel{
 
     } // ThreadList constructor
 
-    public void addThreadToList(Color colour,int threadCount, String colourName)
+    public void addThreadToList(Color colour,int threadCount, String colourName,String colourShortHand)
     {
-        ThreadListRow currentRow = new ThreadListRow(lastIndex,colour,threadCount,colourName);
+        ThreadListRow currentRow = new ThreadListRow(lastIndex,colour,threadCount,colourName,colourShortHand);
         threadListRow.add(currentRow);
         addThreadRow(currentRow);
         lastIndex++;
@@ -127,8 +127,8 @@ public class ThreadList extends JPanel{
 
     }
 
-    public void updateColourRow(int myRowIndex, Color myColour, String myName) {
-        threadListRow.get(myRowIndex).updateColour(myColour,myName);
+    public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        threadListRow.get(myRowIndex).updateColour(myColour,myName,colourShortHand);
 
 
     }

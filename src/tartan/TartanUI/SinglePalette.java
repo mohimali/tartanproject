@@ -15,7 +15,7 @@ public class SinglePalette extends JButton {
     Color paletteColour;
     Dimension dimension;
     String colourName;
-
+    String colourShortHand;
     public Color getPaletteColour()
     {
         return paletteColour;
@@ -33,6 +33,15 @@ public class SinglePalette extends JButton {
 
     }
 
+    public String getColourShortHand()
+    {
+        return colourShortHand;
+    }
+
+    public void setColourShortHand(String colourShortHand){
+        this.colourShortHand = colourShortHand;
+    }
+
     public String getColourName()
     {
         return colourName;
@@ -40,11 +49,12 @@ public class SinglePalette extends JButton {
     }
 
 
-    public void updatePaletteColour(Color requiredColour,String requiredColourName)
+    public void updatePaletteColour(Color requiredColour,String requiredColourName,String requiredShortHand)
     {
         paletteColour = requiredColour;
         this.setBackground(requiredColour);
         colourName = requiredColourName;
+        colourShortHand = requiredShortHand;
     }
 
     public void updatePaletteSize(int requiredSizeWidth,

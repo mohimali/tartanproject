@@ -19,6 +19,19 @@ public class ThreadListRow extends JPanel {
     private JSpinner sprThreadCount;
 
     String myColourName;
+
+    String myColourShortHand = "";
+
+    public String getMyColourShortHand()
+    {
+        return myColourShortHand;
+    }
+
+    public void setColourShortHand(String colourShortHand)
+    {
+        this.myColourShortHand = colourShortHand;
+    }
+
     public void addUpdateThreadListener(int index, ActionListener l)
     {
         btnUpdate.addActionListener(l);
@@ -41,6 +54,7 @@ public class ThreadListRow extends JPanel {
         btnColourBox.addActionListener(l);
         btnColourBox.putClientProperty("RowIndex",index);
         btnColourBox.putClientProperty("Name",myColourName);
+        btnColourBox.putClientProperty("ShortHand",myColourShortHand);
     } // addUpdateColourListener
 
     public int getThreadCount()
@@ -48,13 +62,15 @@ public class ThreadListRow extends JPanel {
         return Integer.parseInt(sprThreadCount.getValue().toString());
     }
 
-    public void updateColour(Color myColour,String myName)
+    public void updateColour(Color myColour,String myName,String colourShortHand)
     {
         myColourName = myName;
         btnColourBox.putClientProperty("Name",myName);
-
+        btnColourBox.putClientProperty("ShortHand",colourShortHand);
+        this.myColourShortHand = colourShortHand;
         btnColourBox.setBackground(myColour);
         lblColourName.setText("<html><font color='white'><b>" + myName  + ": "  + "</b></font></html>");
+        btnColourBox.putClientProperty("ShortHand",myColourShortHand);
     }
 
     private void init(int requiredIndex,Color colour,int threadCount, String colourName)
@@ -81,11 +97,11 @@ public class ThreadListRow extends JPanel {
         btnColourBox.setBackground(colour);
         btnColourBox.setPreferredSize(new Dimension(25,25));
         btnCross.setIcon(new ImageIcon(this.getClass().getResource("resources/images/cross.png")));
-
+        btnColourBox.putClientProperty("ShortHand",myColourShortHand);
     }
 
 
-    public ThreadListRow(int requiredIndex,Color colour,int threadCount, String colourName)
+    public ThreadListRow(int requiredIndex,Color colour,int threadCount, String colourName,String myColourShortHand)
     {
         init(requiredIndex, colour,threadCount,colourName);
 
@@ -97,6 +113,9 @@ public class ThreadListRow extends JPanel {
         this.add(sprThreadCount,"width 100");
         this.add(btnCross,"width 100");
         this.add(btnUpdate,"width 100");
+
+        this.myColourShortHand = myColourShortHand;
+
     }
 
     public Color getThreadColour() {

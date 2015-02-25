@@ -15,7 +15,7 @@ public class Palettes extends JPanel {
     XMLParserColours xpc = new XMLParserColours();
     ArrayList<PaletteColour> coloursArray = xpc.getColoursArray();
     XMLSaveColours xsc = new XMLSaveColours();
-    int MAX = 40;
+    int MAX = 28;
     int coloursArrayIndex = 0;
     int lastX = 0;
     int lastY = 0;
@@ -59,10 +59,13 @@ public class Palettes extends JPanel {
             for (lastX = 0; lastX < palettes.length/*10*/; lastX++) {
                 if (coloursArrayIndex < coloursArray.size()) {
                     palettes[lastX][lastY] = new JButton("");
+
+                    System.out.println(coloursArrayIndex +  ": " + coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
                     palettes[lastX][lastY].putClientProperty("Name", coloursArray.get(coloursArrayIndex).getName());
+                    palettes[lastX][lastY].putClientProperty("ShortHand", coloursArray.get(coloursArrayIndex).getShortHand());
                     this.add(palettes[lastX][lastY]);
                     coloursArrayIndex++;
                 } else {
@@ -93,12 +96,15 @@ public class Palettes extends JPanel {
         }
     }
 
-    public void addNewCustomColour(Color colour, String name) {
+    public void addNewCustomColour(Color colour, String name,String shortHand) {
+        System.out.println("name: " +  name +  " ShortHand: " + shortHand);
+
         if (tempColourIndex < MAX) {
             palettes[tempX][tempY].setEnabled(true);
             palettes[tempX][tempY].setText("");
             palettes[tempX][tempY].setBackground(colour);
             palettes[tempX][tempY].putClientProperty("Name", name);
+
             tempX++;
             tempColourIndex++;
 
@@ -107,7 +113,7 @@ public class Palettes extends JPanel {
             String rgb = PaletteColour.getRGBFormat(colour);
 
             PaletteColour newColour = new PaletteColour("Colour", coloursArray.size() + 1, name,
-                    rgb, 1);
+                    rgb, shortHand,1);
             coloursArray.add(newColour);
             customColourChangedStatus = true;
         }

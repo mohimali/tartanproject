@@ -1,7 +1,5 @@
 package tartan.TartanUI;
 
-
-import java.awt.*;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -17,41 +15,31 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Text;
 
-//For jdk1.5 with built in xerces parser
+// xerces parser - jdk1.5
 import com.sun.org.apache.xml.internal.serialize.OutputFormat;
 import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
-//For JDK 1.3 or JDK 1.4  with xerces 2.7.1
-//import org.apache.xml.serialize.XMLSerializer;
-//import org.apache.xml.serialize.OutputFormat;
 
+//followed this guide http://www.java-samples.com/showtutorial.php?tutorialid=152
 public class XMLSaveColours {
 
     //No generics
     ArrayList<PaletteColour> paletteColours = new ArrayList<PaletteColour>();
     Document dom;
 
-
     public XMLSaveColours() {
-
         //initialize the list
-        loadData(null);
-
+        loadXMLFromArray(null);
         //Get a DOM object
         createDocument();
-
         createDOMTree();
-
-        //Save to file
-        //this.saveToFile();
-
     }
 
     public void updateColoursXML(ArrayList<PaletteColour> pal)
     {
         paletteColours = new ArrayList<PaletteColour>();
         //initialize the list
-        loadData(pal);
+        loadXMLFromArray(pal);
 
         //Get a DOM object
         createDocument();
@@ -69,7 +57,7 @@ public class XMLSaveColours {
     }
 
 
-    private void loadData(ArrayList<PaletteColour> coloursArray1){
+    private void loadXMLFromArray(ArrayList<PaletteColour> coloursArray1){
 
         //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colou1rs stored their
         ArrayList<PaletteColour> coloursArray;
@@ -96,8 +84,7 @@ public class XMLSaveColours {
     }
 
     /**
-     * Using JAXP in implementation independent manner create a document object
-     * using which we create a xml tree in memory
+     * Create XML TREE
      */
     private void createDocument() {
 
@@ -163,6 +150,14 @@ public class XMLSaveColours {
         Text codeText = dom.createTextNode(pc.getCode());
         codeEle.appendChild(codeText);
         colourEle.appendChild(codeEle);
+
+        //create code element and code text node and attach it to colourElement
+        Element shortHandEle = dom.createElement("ShortHand");
+        Text shortHandText = dom.createTextNode(pc.getShortHand());
+        codeEle.appendChild(shortHandText);
+        colourEle.appendChild(shortHandEle);
+
+
 
         return colourEle;
     }

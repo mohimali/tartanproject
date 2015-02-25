@@ -13,6 +13,7 @@ public class PaletteColour {
     private String name;
     private String code;
     private Color colour;
+    private String shortHand;
 
     static String commaSeparatedRGBPattern = "^(\\d{3}),(\\d{3}),(\\d{3})$";
     static final int HEXLENGTH = 8;
@@ -22,6 +23,16 @@ public class PaletteColour {
     public PaletteColour() {
     }
 
+
+    public String getShortHand()
+    {
+        return shortHand;
+    }
+
+    public void setShortHand(String requiredShortHand)
+    {
+        this.shortHand = requiredShortHand;
+    }
 
     public static String getRGBFormat(Color c) {
         String rgb = ("" + String.format("%03d", c.getRed()) + ","
@@ -35,7 +46,7 @@ public class PaletteColour {
     public static Color hexToColour(String colourCode) {
 
         //modified from http://sanjaal.com/java/751/java-utilities/rgb-to-hex-and-hex-to-rgb-conversion-using-java-and-regular-expressions/
-        Color rgbValue = Color.WHITE;//DEFAULT
+        Color rgbValue = Color.PINK;//DEFAULT
         Pattern hexPattern = Pattern.compile(hexaDecimalPattern);
         Matcher hexMatcher = hexPattern.matcher(colourCode);
 
@@ -77,22 +88,23 @@ public class PaletteColour {
 
 
     // CODE BEING PASSED IN IS HEX form 0x000000
-    public PaletteColour(String type, int id, String name, String code) {
+    public PaletteColour(String type, int id, String name, String code,String shortHand) {
         this.type = type;
         this.id = id;
         this.name = name;
         this.code = code;
         this.colour = this.hexToColour(code);
-
+        this.shortHand = shortHand;
 
     }
 
     //CODE BEING PASSED IN IS RGB in form "244,222,123" seperated by commas
     // if we are passed in the mode=1 then that means the code used is of type rgb so we need to convert accordingly
-    public PaletteColour(String type, int id, String name, String code, int mode) {
+    public PaletteColour(String type, int id, String name, String code,String shortHand, int mode) {
         this.type = type;
         this.id = id;
         this.name = name;
+        this.shortHand = shortHand;
         if (mode == 1) {
             System.out.println("Step1: " + code);
             this.code = this.rgbToHex(code);

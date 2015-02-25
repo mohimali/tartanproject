@@ -57,10 +57,7 @@ public class TartanDisplay extends JPanel {
         doc = svgTartan.getSVGTartan();
 
         // Display the document.
-        //canvas = new JSVGCanvas(); // holds doc with graphics
         canvas.setSVGDocument(doc); // adds doc to canvas
-        //canvas.repaint();
-        //this.repaint();
     }
 
 

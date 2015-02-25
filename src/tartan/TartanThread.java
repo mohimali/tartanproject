@@ -13,17 +13,18 @@ public class TartanThread {
     Color colour;
     int threadCount;
     String colourName = "";
-
-    public TartanThread(Color requiredThreadColour, int requiredThreadCount) {
+    String colourShortHand = "";
+    public TartanThread(Color requiredThreadColour, String requiredColourShortHand ,int requiredThreadCount) {
         colour = requiredThreadColour;
         threadCount = requiredThreadCount;
-
+        colourShortHand = requiredColourShortHand;
     }
 
-    public TartanThread(Color requiredThreadColour, int requiredThreadCount, String requiredColourName) {
+    public TartanThread(Color requiredThreadColour, String requiredColourShortHand , int requiredThreadCount, String requiredColourName) {
         colour = requiredThreadColour;
         threadCount = requiredThreadCount;
         colourName = requiredColourName;
+        colourShortHand = requiredColourShortHand;
     }
 
 

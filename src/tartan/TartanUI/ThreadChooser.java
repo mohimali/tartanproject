@@ -25,7 +25,7 @@ public class ThreadChooser extends JPanel {
     JSpinner sprThreadCount;
 
     ThreadList threadListRows;
-    int noOfPalettesX = 10;
+    int noOfPalettesX = 7;
     int noOfPalettesY = 4;
     int eachPaletteSize = 25;
     int modifier = 0;
@@ -71,10 +71,10 @@ public class ThreadChooser extends JPanel {
         palettes.saveCustomColours();
     }
 
-    public void addThreadToList(Color colour,int threadCount, String colourName)
+    public void addThreadToList(Color colour,int threadCount, String colourName, String colourShortHand)
     {
         //ID ,ColourName, ThreadCount, Cross, Update
-        threadListRows.addThreadToList(colour, threadCount, colourName);
+        threadListRows.addThreadToList(colour, threadCount, colourName, colourShortHand);
     }
     public ThreadChooser() {
 
@@ -115,7 +115,7 @@ public class ThreadChooser extends JPanel {
     }
 
 
-    void updateSinglePaletteColour(Color newColour,String newColourName) {
+    void updateSinglePaletteColour(Color newColour,String newColourName,String shortHand) {
 
         singlePaletteStatus = !singlePaletteStatus;
         if (singlePaletteStatus) {
@@ -123,22 +123,22 @@ public class ThreadChooser extends JPanel {
             palettes.setVisible(false);
 
             if (newColour != null && newColour != null)
-                singlePalette.updatePaletteColour(newColour,newColourName);
+                singlePalette.updatePaletteColour(newColour,newColourName,shortHand);
         } else {
             singlePalette.setVisible(false);
             palettes.setVisible(true);
         }
     }
 
-    public void updateCustomPaletteColour(Color newColour, String name) {
+    public void updateCustomPaletteColour(Color newColour, String name,String shortHand) {
         if (!singlePaletteStatus) {
             singlePaletteStatus = true;
             singlePalette.setVisible(true);
             palettes.setVisible(false);
         }
         if (newColour != null) {
-            singlePalette.updatePaletteColour(newColour,name);
-            palettes.addNewCustomColour(newColour, name);
+            singlePalette.updatePaletteColour(newColour,name,shortHand);
+            palettes.addNewCustomColour(newColour, name,shortHand);
         }
     } // updateCustomPaletteColour
 
@@ -170,14 +170,14 @@ public class ThreadChooser extends JPanel {
         threadListRows.addUpdateColourRowListener(index,l);
     }
 
-    public void allowColourPalette(String myName,int rowIndex,Color myColour) {
+    public void allowColourPalette(String myName,int rowIndex,Color myColour,String colourShortHand) {
         singlePalette.setVisible(false);
         palettes.setVisible(true);
         currentMode = ROW_COLOUR_MODE;
         oldColourNameSelected = myName;
         palettes.setColourByName(myName);
         rowToBeChanged = rowIndex;
-        updateColourRow(rowIndex, myColour, myName);
+        updateColourRow(rowIndex, myColour, myName,colourShortHand);
         singlePaletteStatus = false;
     }
 
@@ -207,12 +207,16 @@ public class ThreadChooser extends JPanel {
         palettes.resetHighlight(myName);
     }
 
-    public void updateColourRow(int myRowIndex, Color myColour,String myName) {
-        threadListRows.updateColourRow(myRowIndex,myColour,myName);
+    public void updateColourRow(int myRowIndex, Color myColour,String myName,String colourShortHand) {
+        threadListRows.updateColourRow(myRowIndex,myColour,myName,colourShortHand);
 
     }
 
     public void resetAllColourPalettes() {
         palettes.resetAllHighlight();
+    }
+
+    public String getColourShortHand() {
+        return singlePalette.getColourShortHand();
     }
 }

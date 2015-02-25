@@ -59,7 +59,7 @@ public class ThreadFactory {
             while (m.find()) {
                 String colourToken = m.group(1);  // Thread Color
                 String sizeToken = m.group(2); // Thread Size
-                threads.add(new TartanThread(myColor.get(colourToken), Integer.parseInt(sizeToken)));
+                threads.add(new TartanThread(myColor.get(colourToken), "X", Integer.parseInt(sizeToken)));
             }
             index++;
         } // OUTER WHILE

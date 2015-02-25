@@ -16,10 +16,19 @@ import java.awt.geom.Rectangle2D;
 public class SVGTartan {
 
     SVGDocument doc;
+    Tartan tartan1 = new Tartan(400);// FOR EAGER INSTANTIATION
 
     public SVGTartan() {
 
+        // Create an SVG document.
+        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+        String svgNS = SVGDOMImplementation.SVG_NAMESPACE_URI;
+        doc = (SVGDocument) impl.createDocument(svgNS, "svg", null);
 
+        // Create a converter for this document.
+        SVGGraphics2D svgGenerator = new SVGGraphics2D(doc);
+
+        this.paintTartan(svgGenerator, tartan1); // FOR EAGER INSTANTIATION
 
     }
 
@@ -126,11 +135,6 @@ public class SVGTartan {
 
 
     } // paintTartan
-
-
-
-
-
 
 
 } // SVGTartan Class

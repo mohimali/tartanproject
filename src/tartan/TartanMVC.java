@@ -17,8 +17,6 @@ public class TartanMVC {
 
     public static void main(String[] args) {
 
-        //theView.setVisible(true);
-
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -37,7 +35,6 @@ public class TartanMVC {
                 theModel = new TartanModel();
                 theView = new TartanView();
                 theController = new TartanController(theView, theModel);
-
 
             }
         });

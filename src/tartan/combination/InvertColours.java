@@ -33,7 +33,7 @@ public class InvertColours extends UnaryOperation {
 
             Color invertTColour = new Color(invertTransformed);
 
-            TartanThread newC = new TartanThread(invertTColour, originalSize);
+            TartanThread newC = new TartanThread(invertTColour,"X", originalSize);
             newThreads.add(newC);
         }
 

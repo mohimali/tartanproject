@@ -2,11 +2,12 @@ package tartan.TartanUI;
 
 
 import javax.swing.JFrame;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;    //for addController()
+
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
+
 import java.awt.*;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -23,7 +24,8 @@ public class TartanView {
     ThreadChooser leftColourChooser;
     TartanDisplay tartanDisplay;
     private JMenuBar menuBar;
-
+    JMenu formatMenu;
+    JMenuItem item;
 
     // If the btnAddThread is then go the the controller
     // and do the actionPerformed method.
@@ -47,31 +49,43 @@ public class TartanView {
         leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
     }
 
-    public void addUpdateThreadListener(ActionListener listenForUpdateThreadButton,int index) {
+    public void addUpdateThreadListener(ActionListener listenForUpdateThreadButton, int index) {
         leftColourChooser.threadListRows.addThreadChangedListener(index, listenForUpdateThreadButton);
     }
 
     public void addDeleteThreadListener(ActionListener listenForDeleteThreadListener, int index) {
-        leftColourChooser.threadListRows.addDeleteThreadListener(index,listenForDeleteThreadListener);
+        leftColourChooser.threadListRows.addDeleteThreadListener(index, listenForDeleteThreadListener);
     }
-
 
 
     public void displayCustomColourPicker() {
         Color newColor = ColorPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
         String name;
+        String shortHand;
         if (newColor != null) {
             name = JOptionPane.showInputDialog("Enter your new Custom colour e.g BlackMist");
             if ((name != null) && (!name.equals(""))) {
-                leftColourChooser.updateCustomPaletteColour(newColor, name);
-                JOptionPane.showMessageDialog(null,
-                        "Colour " + name + " has been added",
-                        "Message", JOptionPane.INFORMATION_MESSAGE);
+                shortHand = JOptionPane.showInputDialog("Enter a 1 or more letters to represent your colour. e.g LB indicates LightBlue.");
+
+                if ((shortHand != null) && (!shortHand.equals(""))) {
+                    leftColourChooser.updateCustomPaletteColour(newColor, name, shortHand);
+                    JOptionPane.showMessageDialog(null,
+                            "Colour " + name + " has been added",
+                            "Message", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null,
+                            "You have not chosen a suitable letter/s to represent your colour. Colour has not been added.",
+                            "Message", JOptionPane.INFORMATION_MESSAGE);
+                } // short hand
+
+
             } else {
                 JOptionPane.showMessageDialog(null,
                         "You have not chosen the name for your colour. Colour has not been added.",
                         "Message", JOptionPane.INFORMATION_MESSAGE);
-            }
+            } // colour picker
         }
     }
 
@@ -98,13 +112,11 @@ public class TartanView {
         }
     }
 
-    public String getThreadCount()
-    {
+    public String getThreadCount() {
         return leftColourChooser.getThreadCount();
     }
 
-    public Color getThreadColour()
-    {
+    public Color getThreadColour() {
         return leftColourChooser.getThreadColour();
     }
 
@@ -121,7 +133,6 @@ public class TartanView {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
 
         Container mainWindow = frame.getContentPane();
@@ -158,38 +169,24 @@ public class TartanView {
         frame.setVisible(true);
     } // initComponents
 
-    class MenuAction extends AbstractAction {
 
-        public MenuAction(String text, Icon icon) {
-            super(text, icon);
-        }
 
-        public void actionPerformed(ActionEvent e) {
-            try {
-               System.out.print("clicked");
-            } catch (Exception ex) {
-                ex.printStackTrace();
-            }
+    public void showSaveFileDialog() {
+        JFileChooser fc = new JFileChooser();
+        fc.setDialogTitle("Save your tartan");
+
+        int option = fc.showSaveDialog(frame);
+        if (option == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fc.getSelectedFile();
+            System.out.println("Save to: " + fileToSave.getAbsolutePath());
         }
     }
 
+
     private void setUpMenuBars() {
         menuBar = new JMenuBar();
-        JMenu formatMenu = new JMenu("File");
+        formatMenu = new JMenu("File");
         formatMenu.setMnemonic('J');
-        //System.out.println("samsung: "  + this.getClass().getResource("resources/images/1.gif"));
-        MenuAction newTartanAction = new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png")));
-        MenuAction saveTartanAction = new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png")));
-        MenuAction loadTartanAction = new MenuAction("Load existing Tartan",new ImageIcon(this.getClass().getResource("resources/images/load.png")));
-        MenuAction uploadTartanAction = new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png")));
-
-
-        JMenuItem item;
-        item = formatMenu.add(newTartanAction);
-        item = formatMenu.add(saveTartanAction); // CHANGE LATER
-        item = formatMenu.add(loadTartanAction); // CHANGE LATER
-        item = formatMenu.add(uploadTartanAction); // CHANGE LATER
-
         menuBar.add(formatMenu);
         menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));
 
@@ -219,12 +216,11 @@ public class TartanView {
         tartanDisplay.updateTartan(newTartan);
     }
 
-    public void addThreadToList(Color colour, int threadCount, String colourName) {
-        leftColourChooser.addThreadToList(colour,threadCount,colourName);
+    public void addThreadToList(Color colour, int threadCount, String colourName,String colourShortHand) {
+        leftColourChooser.addThreadToList(colour, threadCount, colourName,colourShortHand);
     }
 
-    public void resetTartan()
-    {
+    public void resetTartan() {
         leftColourChooser.resetTartan();
         tartanDisplay.resetTartan();
 
@@ -236,17 +232,16 @@ public class TartanView {
     }
 
 
-public void addUpdateColourRowListener(ActionListener l,int index)
-{
-    leftColourChooser.addUpdateColourRowListener(index,l);
-}
+    public void addUpdateColourRowListener(ActionListener l, int index) {
+        leftColourChooser.addUpdateColourRowListener(index, l);
+    }
 
     public void removeThreadRow(int rowIndex) {
         leftColourChooser.removeThreadRow(rowIndex);
     }
 
-    public void allowColourPalette(String myName,int rowIndex,Color myColour) {
-        leftColourChooser.allowColourPalette(myName,rowIndex,myColour);
+    public void allowColourPalette(String myName, int rowIndex, Color myColour,String colourShortHand) {
+        leftColourChooser.allowColourPalette(myName, rowIndex, myColour,colourShortHand);
         leftColourChooser.updateComponentsStatus(false);
     }
 
@@ -266,8 +261,8 @@ public void addUpdateColourRowListener(ActionListener l,int index)
         leftColourChooser.updateComponentsStatus(true);
     }
 
-    public void updateColourRow(int myRowIndex, Color myColour,String myName) {
-        leftColourChooser.updateColourRow(myRowIndex,myColour,myName);
+    public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        leftColourChooser.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
     }
 
     public void resetAllColourPalettes() {
@@ -275,6 +270,16 @@ public void addUpdateColourRowListener(ActionListener l,int index)
     }
 
     public String getOldColourToBeChanged() {
-        return  leftColourChooser.getOldColourToBeChanged();
+        return leftColourChooser.getOldColourToBeChanged();
+    }
+
+    public void addActionMenu(Action menuAction) {
+        formatMenu.add(menuAction);
+        menuBar.setBorder(new BevelBorder(BevelBorder.RAISED));
+
+    }
+
+    public String getColourShortHand() {
+        return leftColourChooser.getColourShortHand();
     }
 } // TartanView

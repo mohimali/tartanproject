@@ -35,7 +35,7 @@ public class BrighterColours extends UnaryOperation {
                 brighterColour = brighterColour.brighter();
             }
 
-            TartanThread newC = new TartanThread(brighterColour, originalSize);
+            TartanThread newC = new TartanThread(brighterColour,"X", originalSize);
             newThreads.add(newC);
         }
 

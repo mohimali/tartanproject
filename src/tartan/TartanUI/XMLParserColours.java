@@ -18,11 +18,9 @@ public class XMLParserColours extends DefaultHandler{
     private ArrayList<PaletteColour> coloursList;
     private String tempVal;
     private PaletteColour tempCol;
-    private String parsePath = "src/tartan/TartanUI/xml/palette.xml";
     public XMLParserColours(){
         coloursList = new ArrayList<PaletteColour>();
         parseDocument();
-        //printColours(); //REMOVE LATER
     }
 
     public ArrayList getColoursArray() {
@@ -114,6 +112,12 @@ public class XMLParserColours extends DefaultHandler{
         else if (qName.equalsIgnoreCase("Code"))
         {
             tempCol.setCode(tempVal);
+            System.out.println("Code: " + tempVal);
+        }
+        else if(qName.equalsIgnoreCase("ShortHand"))
+        {
+            tempCol.setShortHand(tempVal);
+            System.out.println("ShortHand: " + tempVal);
         }
 
     }

@@ -35,7 +35,7 @@ public class DarkerColours extends UnaryOperation {
             }
 
 
-            TartanThread newC = new TartanThread(darkerColour, originalSize);
+            TartanThread newC = new TartanThread(darkerColour,"UNARY", originalSize);
             newThreads.add(newC);
         }
 

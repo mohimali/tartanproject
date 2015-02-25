@@ -59,10 +59,10 @@ public class TartanModel {
         return tartan.getThreadList();
     }
 
-    public void addTartanThread(Color myColour, int myThreadCount, String myColourName) {
+    public void addTartanThread(Color myColour, int myThreadCount, String myColourName,String colourShortHand) {
 
-        TartanThread newThread = new TartanThread(myColour, myThreadCount, myColourName);
-        tartan.addThread(myColour, myThreadCount, myColourName);
+        TartanThread newThread = new TartanThread(myColour,colourShortHand, myThreadCount, myColourName);
+        tartan.addThread(myColour, myThreadCount, myColourName,colourShortHand);
         //tartan.toString();
     }
 
@@ -100,8 +100,9 @@ public class TartanModel {
     }
 
 
-    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount, String chosenColourName) {
-        tartan.updateThreadDetails(rowIndex,chosenColour,chosenThreadCount,chosenColourName);
+    public void updateThreadDetails(int rowIndex, Color chosenColour, int chosenThreadCount,
+                                    String colourShortHand, String chosenColourName) {
+        tartan.updateThreadDetails(rowIndex,chosenColour,chosenThreadCount,chosenColourName,colourShortHand);
     }
 
     public void removeThreadRow(int rowIndex) {
@@ -109,7 +110,7 @@ public class TartanModel {
     }
 
 
-    public void updateColourRow(int myRowIndex, Color myColour, String myName) {
-        tartan.updateColourDetails(myRowIndex,myColour,myName);
+    public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        tartan.updateColourDetails(myRowIndex,myColour,myName,colourShortHand);
     }
 }
