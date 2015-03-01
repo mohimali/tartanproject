@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<SettSpec>
+    <SettCount>4</SettCount>
+    <Thread>
+        <ID>1</ID>
+        <ColourName>red</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>DR</ColourShortHand>
+		<ThreadCount>29</ThreadCount>
+    </Thread>
+    <Thread>
+        <ID>2</ID>
+        <ColourName>blue</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>dd</ColourShortHand>
+		<ThreadCount>20</ThreadCount>
+    </Thread>
+    <Thread>
+        <ID>3</ID>
+        <ColourName>green</ColourName>
+        <ColourCode>0xFFF00F</ColourCode>
+        <ColourShortHand>ab</ColourShortHand>
+		<ThreadCount>33</ThreadCount>
+    </Thread>
+    <Thread>
+        <ID>4</ID>
+        <ColourName>orange</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>cd</ColourShortHand>
+		<ThreadCount>55</ThreadCount>
+    </Thread>
+</SettSpec>

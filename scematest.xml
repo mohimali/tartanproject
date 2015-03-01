@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<SettSpec>
+    <SettSize>2</SettSize>
+    <Thread>
+        <ID>1</ID>
+        <ColourName>red</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>DR</ColourShortHand>
+    </Thread>
+    <Thread>
+        <ID>2</ID>
+        <ColourName>red</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>DR</ColourShortHand>
+    </Thread>
+    <Thread>
+        <ID>3</ID>
+        <ColourName>red</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>DR</ColourShortHand>
+    </Thread>
+    <Thread>
+        <ID>4</ID>
+        <ColourName>red</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>DR</ColourShortHand>
+    </Thread>
+</SettSpec>
