@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  */
 public class ThreadListRow extends JPanel {
 
-    private JLabel lblColourName,lblRowIndex;
+    private JLabel lblColourName,lblRowIndex,lblColourShortHand;
     private JButton btnColourBox,
                     btnCross,
                     btnUpdate;
@@ -64,20 +64,23 @@ public class ThreadListRow extends JPanel {
 
     public void updateColour(Color myColour,String myName,String colourShortHand)
     {
+        //myRowIndex, myColour, myName, colourShortHand
         myColourName = myName;
         btnColourBox.putClientProperty("Name",myName);
         btnColourBox.putClientProperty("ShortHand",colourShortHand);
         this.myColourShortHand = colourShortHand;
         btnColourBox.setBackground(myColour);
         lblColourName.setText("<html><font color='white'><b>" + myName  + ": "  + "</b></font></html>");
-        btnColourBox.putClientProperty("ShortHand",myColourShortHand);
+        btnColourBox.putClientProperty("ShortHand",colourShortHand);
+        lblColourShortHand.setText("<html><font color='white'><b>" + colourShortHand  + ": "  + "</b></font></html>");
     }
 
-    private void init(int requiredIndex,Color colour,int threadCount, String colourName)
+    private void init(int requiredIndex,Color colour,int threadCount, String colourName,String colourShortHand)
     {
 
         lblRowIndex = new JLabel("<html><font color='white'><b>" + requiredIndex  + ": "  + "</b></font></html>");
         lblColourName = new JLabel("<html><font color='white'><b>" + colourName  + ": "  + "</b></font></html>");
+        lblColourShortHand = new JLabel("<html><font color='white'><b>" + colourShortHand  + ": "  + "</b></font></html>");
         myColourName = colourName;
         btnColourBox = new JButton();
 
@@ -97,24 +100,27 @@ public class ThreadListRow extends JPanel {
         btnColourBox.setBackground(colour);
         btnColourBox.setPreferredSize(new Dimension(25,25));
         btnCross.setIcon(new ImageIcon(this.getClass().getResource("resources/images/cross.png")));
-        btnColourBox.putClientProperty("ShortHand",myColourShortHand);
+        btnColourBox.putClientProperty("ShortHand",colourShortHand);
     }
 
 
     public ThreadListRow(int requiredIndex,Color colour,int threadCount, String colourName,String myColourShortHand)
     {
-        init(requiredIndex, colour,threadCount,colourName);
+        this.myColourShortHand = myColourShortHand;
+        init(requiredIndex, colour,threadCount,colourName,myColourShortHand);
 
         this.setLayout(new MigLayout());
         this.setBackground(Color.DARK_GRAY);
         this.add(lblRowIndex,"width 50");
-        this.add(lblColourName,"width 200");
+        this.add(lblColourName,"width 100");
         this.add(btnColourBox,"width 100"); //MAKE THE COLOUR DROP DOWN
+        this.add(lblColourShortHand,"width 50");
         this.add(sprThreadCount,"width 100");
         this.add(btnCross,"width 100");
         this.add(btnUpdate,"width 100");
 
-        this.myColourShortHand = myColourShortHand;
+
+
 
     }
 

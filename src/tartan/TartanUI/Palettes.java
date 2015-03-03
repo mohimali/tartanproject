@@ -40,6 +40,14 @@ public class Palettes extends JPanel {
 
     }
 
+    public String getFirstColourShortHand()
+    {
+        if (palettes != null && palettes[0] != null && palettes[0][0] != null)
+            return palettes[0][0].getClientProperty("ShortHand").toString();
+
+        return "NO_SHORTHAND";
+    }
+
 
     public boolean getCustomColourChangedStatus() {
         return customColourChangedStatus;
@@ -60,7 +68,7 @@ public class Palettes extends JPanel {
                 if (coloursArrayIndex < coloursArray.size()) {
                     palettes[lastX][lastY] = new JButton("");
 
-                    System.out.println(coloursArrayIndex +  ": " + coloursArray.get(coloursArrayIndex).getColour());
+                    //System.out.println(coloursArrayIndex +  ": " + coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setPreferredSize(new Dimension(eachPaletteSize, eachPaletteSize));
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
@@ -104,6 +112,7 @@ public class Palettes extends JPanel {
             palettes[tempX][tempY].setText("");
             palettes[tempX][tempY].setBackground(colour);
             palettes[tempX][tempY].putClientProperty("Name", name);
+            palettes[tempX][tempY].putClientProperty("ShortHand", shortHand);
 
             tempX++;
             tempColourIndex++;
@@ -183,4 +192,6 @@ public class Palettes extends JPanel {
             }
         } // OUTSIDE FOR
     }
+
+
 }

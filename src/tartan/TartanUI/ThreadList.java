@@ -60,7 +60,7 @@ public class ThreadList extends JPanel{
     private void addThreadRow(ThreadListRow newThreadListRow)
     {
         // ADD THE NEW ROW
-        this.add(newThreadListRow, "wrap,width 300");
+        this.add(newThreadListRow, "wrap,width 470");
     }
     public void resetRows()
     {
@@ -128,6 +128,7 @@ public class ThreadList extends JPanel{
     }
 
     public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        //myRowIndex, myColour, myName, colourShortHand
         threadListRow.get(myRowIndex).updateColour(myColour,myName,colourShortHand);
 
 

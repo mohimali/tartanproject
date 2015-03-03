@@ -26,6 +26,8 @@ public class TartanView {
     private JMenuBar menuBar;
     JMenu formatMenu;
     JMenuItem item;
+    ColorPicker colourPicker = new ColorPicker();
+
 
     // If the btnAddThread is then go the the controller
     // and do the actionPerformed method.
@@ -59,7 +61,7 @@ public class TartanView {
 
 
     public void displayCustomColourPicker() {
-        Color newColor = ColorPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
+        Color newColor = colourPicker.showDialog(frame, leftColourChooser.singlePalette.getPaletteColour());
         String name;
         String shortHand;
         if (newColor != null) {
@@ -171,17 +173,6 @@ public class TartanView {
 
 
 
-    public void showSaveFileDialog() {
-        JFileChooser fc = new JFileChooser();
-        fc.setDialogTitle("Save your tartan");
-
-        int option = fc.showSaveDialog(frame);
-        if (option == JFileChooser.APPROVE_OPTION) {
-            File fileToSave = fc.getSelectedFile();
-            System.out.println("Save to: " + fileToSave.getAbsolutePath());
-        }
-    }
-
 
     private void setUpMenuBars() {
         menuBar = new JMenuBar();
@@ -262,6 +253,7 @@ public class TartanView {
     }
 
     public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+        //myRowIndex, myColour, myName, colourShortHand
         leftColourChooser.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
     }
 

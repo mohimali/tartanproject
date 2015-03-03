@@ -29,4 +29,11 @@
         <ColourShortHand>cd</ColourShortHand>
 		<ThreadCount>55</ThreadCount>
     </Thread>
+	<Thread>
+        <ID>5</ID>
+        <ColourName>orange</ColourName>
+        <ColourCode>0xFFFFFF</ColourCode>
+        <ColourShortHand>cd</ColourShortHand>
+		<ThreadCount>55</ThreadCount>
+    </Thread>
 </SettSpec>

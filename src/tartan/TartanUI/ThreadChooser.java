@@ -39,7 +39,7 @@ public class ThreadChooser extends JPanel {
     public void init() {
         palettes = new Palettes(noOfPalettesX, noOfPalettesY, eachPaletteSize);
         singlePalette = new SinglePalette(palettes.getFirstColour(), (int) palettes.getPreferredSize().getWidth() + modifier,
-                (int) palettes.getPreferredSize().getHeight() + modifier,palettes.getFirstColourName());
+                (int) palettes.getPreferredSize().getHeight() + modifier,palettes.getFirstColourName(),palettes.getFirstColourShortHand());
         singlePaletteStatus = true;
         threadListRows = new ThreadList();
 
@@ -208,6 +208,7 @@ public class ThreadChooser extends JPanel {
     }
 
     public void updateColourRow(int myRowIndex, Color myColour,String myName,String colourShortHand) {
+        //myRowIndex, myColour, myName, colourShortHand
         threadListRows.updateColourRow(myRowIndex,myColour,myName,colourShortHand);
 
     }

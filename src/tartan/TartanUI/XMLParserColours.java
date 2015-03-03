@@ -112,12 +112,12 @@ public class XMLParserColours extends DefaultHandler{
         else if (qName.equalsIgnoreCase("Code"))
         {
             tempCol.setCode(tempVal);
-            System.out.println("Code: " + tempVal);
+            //System.out.println("Code: " + tempVal);
         }
         else if(qName.equalsIgnoreCase("ShortHand"))
         {
             tempCol.setShortHand(tempVal);
-            System.out.println("ShortHand: " + tempVal);
+            //System.out.println("ShortHand: " + tempVal);
         }
 
     }

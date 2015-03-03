@@ -9,21 +9,14 @@ import javax.xml.XMLConstants;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
-import javax.xml.transform.dom.DOMSource;
+
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import javax.xml.validation.Validator;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import com.sun.org.apache.xerces.internal.jaxp.SAXParserImpl;
-import com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl;
-
-// xerces parser - jdk1.5
-import com.sun.org.apache.xml.internal.serialize.OutputFormat;
-import com.sun.org.apache.xml.internal.serialize.XMLSerializer;
 
 /*
 **  followed this guide http://www.java-samples.com/showtutorial.php?tutorialid=152
@@ -33,17 +26,28 @@ public class XMLParserTartan extends DefaultHandler {
     private ArrayList<TartanThread> threadList;
     private String tempVal;
     private TartanThread tempThread;
-    private int settCount;
-    boolean errorsDetected = false;
+    private int settCount = 2;
+    private boolean errorsDetected = false;
     private String errorMessages = "";
 
-    public String getErrorMessages()
+
+    public XMLParserTartan(String fileName) {
+        threadList = new ArrayList<TartanThread>();
+        parseDocument(fileName);
+    }
+
+    public boolean getErrorsDetected()
     {
-        return errorMessages;
+        return errorsDetected;
     }
     public XMLParserTartan() {
         threadList = new ArrayList<TartanThread>();
-        parseDocument();
+        //parseDocument(fileName);
+    }
+
+
+    public String getErrorMessages() {
+        return errorMessages;
     }
 
     public ArrayList getThreadList() {
@@ -51,7 +55,18 @@ public class XMLParserTartan extends DefaultHandler {
     }
 
 
-    private void parseDocument() {
+    public void parseXMLFile(String fileName) {
+        threadList = new ArrayList<TartanThread>();
+        tempVal = "";
+        settCount = 2;
+
+        errorsDetected = false;
+        errorMessages = "";
+
+        parseDocument(fileName);
+    }
+
+    private void parseDocument(String fileName) {
 
         //File myFile = new File("SettSchema.xml");
         //System.out.println(myFile.getAbsoluteFile());
@@ -59,7 +74,8 @@ public class XMLParserTartan extends DefaultHandler {
 
         // FIX FOR UPDATED XERCES ELSE WONT LET ME SET SCHEMA
         System.setProperty("javax.xml.parsers.SAXParserFactory", "com.sun.org.apache.xerces.internal.jaxp.SAXParserFactoryImpl");
-
+        errorMessages = "";
+        errorsDetected = false;
 
         try {
             //Schema schema = null;
@@ -67,7 +83,10 @@ public class XMLParserTartan extends DefaultHandler {
             SchemaFactory factory = SchemaFactory.newInstance(language);
             SAXParserFactory spf = SAXParserFactory.newInstance();
 
-            Schema schema = factory.newSchema(new File("SettSchema.xml"));
+            String schemaFileLocation = this.getClass().getResource("resources/xml/SettSchema.xml").toString();
+            //System.out.println("schemaFileLocation: " + schemaFileLocation);
+
+            Schema schema = factory.newSchema(new StreamSource(schemaFileLocation));
 
             spf.setSchema(schema);
 
@@ -77,7 +96,7 @@ public class XMLParserTartan extends DefaultHandler {
             Validator validator = schema.newValidator();
             validator.getErrorHandler();
             try {
-                validator.validate(new StreamSource("sett1.xml"));
+                validator.validate(new StreamSource(fileName));
             } catch (Exception e) {
                 errorsDetected = true;
                 errorMessages += e.getMessage() + "\n";
@@ -87,14 +106,11 @@ public class XMLParserTartan extends DefaultHandler {
             //parse the file and also register this class for call backs
 
 
-            //System.out.println("XMLLoad: "  + this.getClass().getResource("resources/xml/palette.xml"));
-            //System.out.println("me" + test);
-
             try {
 
                 if (!errorsDetected) {
-                    sp.parse("sett1.xml", this);
-                    System.out.println("Using sett1.xml");
+                    sp.parse(fileName, this);
+                    //System.out.println("Using sett1.xml");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -111,7 +127,7 @@ public class XMLParserTartan extends DefaultHandler {
     }
 
 
-    private void printThreads() {
+    public void printThreads() {
 
         System.out.println("No of threads '" + threadList.size() + "'.");
         System.out.println("SettCount '" + settCount + "'.");
@@ -162,7 +178,8 @@ public class XMLParserTartan extends DefaultHandler {
             //tempThread.setID(Integer.parseInt(tempVal));
         } else if (qName.equalsIgnoreCase("ColourName")) {
             tempThread.setColourName(tempVal);
-        } else if (qName.equalsIgnoreCase("ColourCode")) {
+        } else if (
+                qName.equalsIgnoreCase("ColourCode")) {
             tempThread.setColourCode(tempVal);
             //System.out.println("Code: " + tempVal);
         } else if (qName.equalsIgnoreCase("ColourShortHand")) {
@@ -177,12 +194,21 @@ public class XMLParserTartan extends DefaultHandler {
     }
 
     public static void main(String[] args) {
-        XMLParserTartan xpt = new XMLParserTartan();
+        XMLParserTartan xpt = new XMLParserTartan("sett1.xml");
 
         xpt.printThreads();
 
         xpt.printErrorMessages();
 
+        if( xpt.getErrorsDetected() == false)
+            System.out.println("false");
+        else if (xpt.getErrorsDetected() == true)
+            System.out.println("true");
+        else System.out.println("unkown");
+
     }
 
+    public int getSettCount() {
+        return settCount;
+    }
 }

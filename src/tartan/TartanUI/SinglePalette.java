@@ -22,7 +22,7 @@ public class SinglePalette extends JButton {
     }
 
     public SinglePalette(Color requiredColour,int requiredSizeWidth,
-                         int requiredSizeHeight,String requiredColourName)
+                         int requiredSizeHeight,String requiredColourName,String requiredColourShortHand)
     {
         paletteColour = new Color(requiredColour.getRGB());
         dimension = new Dimension(requiredSizeWidth, requiredSizeHeight);
@@ -30,6 +30,7 @@ public class SinglePalette extends JButton {
         this.setBackground(requiredColour);
         this.setPreferredSize(dimension);
         this.setBorder(BorderFactory.createRaisedBevelBorder());
+        this.colourShortHand = requiredColourShortHand;
 
     }
 

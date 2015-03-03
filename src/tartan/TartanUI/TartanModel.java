@@ -20,6 +20,7 @@ public class TartanModel {
     private Tartan tartan = new Tartan(tartanSize);
 
     private static String originalThreads = "K4,G4,O4,R50,K50,Y4,B2,M1,P1,M10";
+
     //NOTE COULD USE DIFFFERENT COLOURS STANDARD MODERN, ETC AND THESE COULD BE SEPARE TABS IN LIST YO
 
     public static void main(String[] args) {
@@ -111,6 +112,23 @@ public class TartanModel {
 
 
     public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+
+        //myRowIndex, myColour, myName, colourShortHand
         tartan.updateColourDetails(myRowIndex,myColour,myName,colourShortHand);
+    }
+
+
+
+    public void updateSettCount(int mySettCount) {
+        tartan.updateSettCount(mySettCount);
+    }
+
+    public void replaceThreadList(ArrayList<TartanThread> myNewThreads, int mySettCount, int dimension, boolean symmetric) {
+        tartan = new Tartan(myNewThreads,mySettCount,dimension,symmetric);
+       
+    }
+
+    public int getSettCount() {
+        return tartan.getSettCount();
     }
 }

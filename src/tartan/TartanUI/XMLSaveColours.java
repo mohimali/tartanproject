@@ -59,7 +59,7 @@ public class XMLSaveColours {
 
     private void loadXMLFromArray(ArrayList<PaletteColour> coloursArray1){
 
-        //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colou1rs stored their
+        //EXTRACT THE ORIGINAL XML INFO FROM palette.xml and use the colours stored their
         ArrayList<PaletteColour> coloursArray;
 
         // FIRST CASE IS GETTING FROM XML FILE
@@ -154,7 +154,7 @@ public class XMLSaveColours {
         //create code element and code text node and attach it to colourElement
         Element shortHandEle = dom.createElement("ShortHand");
         Text shortHandText = dom.createTextNode(pc.getShortHand());
-        codeEle.appendChild(shortHandText);
+        shortHandEle.appendChild(shortHandText);
         colourEle.appendChild(shortHandEle);
 
 

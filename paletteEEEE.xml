@@ -76,7 +76,7 @@
         <Id>13</Id>
         <Name>Purple</Name>
         <Code>0x800080</Code>
-        <ShortHand>G</ShortHand>
+        <ShortHand>P</ShortHand>
     </Colour>
     <Colour type="Colour">
         <Id>14</Id>
@@ -131,5 +131,11 @@
         <Name>Brown</Name>
         <Code>0xA52A2A</Code>
         <ShortHand>T</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>23</Id>
+        <Name>sss</Name>
+        <Code>0x0096ff00</Code>
+        <ShortHand>aq</ShortHand>
     </Colour>
 </Palette>

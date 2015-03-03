@@ -33,13 +33,22 @@ public class TartanThread {
         colour = requiredThreadColour;
         threadCount = requiredThreadCount;
         colourShortHand = requiredColourShortHand;
+        colourCode = rgbToHex(getRGBFormat(requiredThreadColour));
     }
 
     public TartanThread(Color requiredThreadColour, String requiredColourShortHand , int requiredThreadCount, String requiredColourName) {
+
+        //myColour,colourShortHand,threadcount,myName
         colour = requiredThreadColour;
         threadCount = requiredThreadCount;
         colourName = requiredColourName;
         colourShortHand = requiredColourShortHand;
+        colourCode = rgbToHex(getRGBFormat(requiredThreadColour));
+    }
+
+    public String getColourCode()
+    {
+        return colourCode;
     }
 
     public static String getRGBFormat(Color c) {
@@ -137,5 +146,9 @@ public class TartanThread {
 
     public void setThreadCount(int threadCount) {
         this.threadCount = threadCount;
+    }
+
+    public String getColourShortHand() {
+        return colourShortHand;
     }
 }

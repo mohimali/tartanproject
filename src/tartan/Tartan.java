@@ -193,6 +193,8 @@ public class Tartan {
     }
 
     public void updateColourDetails(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+
+        //myRowIndex, myColour, myName, colourShortHand
         TartanThread tt = new TartanThread(myColour,colourShortHand,threads.get(myRowIndex).getThreadCount(),myName);
         threads.set(myRowIndex,tt);
         threadCounts = new double[]{};
