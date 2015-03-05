@@ -13,6 +13,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 
@@ -279,5 +280,18 @@ public class TartanView {
 
     public int getSettCount() {
         return leftColourChooser.getSettCount();
+    }
+
+    public void addConfigUpdateListener(ActionListener configUpdateListener) {
+        tartanDisplay.addConfigUpdateListener(configUpdateListener);
+    }
+
+    public ArrayList<PaletteColour> getAllColourPalettes() {
+        return leftColourChooser.getAllColourPalettes();
+
+    }
+
+    public String getSettConfig() {
+        return tartanDisplay.getSettConfig();
     }
 } // TartanView

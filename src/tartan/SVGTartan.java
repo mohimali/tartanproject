@@ -78,14 +78,14 @@ public class SVGTartan {
     }
 
     public void paintTartan(Graphics2D g2d, Tartan tartan1) {
-        System.out.println("Sett CountX: " + tartan1.getSettCount());
+        //System.out.println("Sett CountX: " + tartan1.getSettCount());
         int alpha1 = 100;
         int alpha2 = 0;
         // PRINT WARP  downwards
 
 
         for (int i = 0; i < tartan1.getSettCount(); i += 1) {
-            System.out.println("INDEX : " + i);
+            //System.out.println("INDEX : " + i);
             //forwards pattern
             int tempIndex = 0;
 

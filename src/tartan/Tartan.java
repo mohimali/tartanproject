@@ -124,8 +124,8 @@ public class Tartan {
 
         }
 
-        System.out.println("length: "+newThreadSizes.length);
-        System.out.println(index);
+        //System.out.println("length: "+newThreadSizes.length);
+        //System.out.println(index);
 
 
         return newThreadSizes;
@@ -226,5 +226,9 @@ public class Tartan {
         threads.set(myRowIndex, tt);
         threadCounts = new double[]{};
         threadCounts = computeThreadSizes(threads);
+    }
+
+    public boolean getSymmetric() {
+        return isSymmetrical;
     }
 }

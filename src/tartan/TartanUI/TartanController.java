@@ -1,6 +1,7 @@
 package tartan.TartanUI;
 
 import tartan.TartanThread;
+import tartan.ThreadFactory;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +22,8 @@ public class TartanController {
     private XMLParserTartan xpTartan = new XMLParserTartan();
     private XMLSaveTartan xsTartan = new XMLSaveTartan();
 
+    ThreadFactory threadFactory = new ThreadFactory();
+
     public TartanController(TartanView theView, TartanModel theModel) {
 
         this.theModel = theModel;
@@ -36,11 +39,53 @@ public class TartanController {
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
         this.theView.addResetTartanListener(new ResetTartanListener());
         this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
+        this.theView.addConfigUpdateListener(new ConfigUpdateListener());
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
         this.theView.addActionMenu(new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png"))));
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
         this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
     }
+
+    class ConfigUpdateListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
+
+                    String settConfig = theView.getSettConfig();
+                    ArrayList<PaletteColour> myColours = theView.getAllColourPalettes();
+
+
+                    threadFactory.buildThreadX(settConfig, myColours);
+
+                    if (threadFactory.getDetectedErrors()) {
+                        //System.out.print(threadFactory.getAccumulatedErrors());
+                        theView.displayErrorMessage("The Sett " + settConfig + " is not recognised. \n" +
+                                threadFactory.getAccumulatedErrors());
+                    } else {
+                        theModel.replaceThreadList(threadFactory.getThreadList(),
+                                theModel.getSettCount(),
+                                theModel.getTartan().getDimensions(),
+                                theModel.getTartan().getSymmetric());
+
+                        theView.resetTartan();
+                        populateViewsThreadList(theModel.getTartanThreadList());
+                        theView.updateTartan(theModel.getTartan());
+                    }
+
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+            }
+
+        }
+
+    } //ConfigUpdateListener class
 
 
     class MenuAction extends AbstractAction {
@@ -97,7 +142,7 @@ public class TartanController {
                         theView.resetTartan();
 
                         ArrayList<TartanThread> myNewThreads = xpTartan.getThreadList();
-                        int noOfThreads = myNewThreads.size();
+
                         int mySettCount = xpTartan.getSettCount();
 
                         // UPDATE THE MODEL
@@ -113,20 +158,7 @@ public class TartanController {
                         //theModel.addTartanThread(colour, threadCount, colourName, colourShortHand);
                         //theView.updateTartan(theModel.getTartan());
 
-                        for (int i = 0; i < noOfThreads; i++) {
-                            TartanThread currentThread = myNewThreads.get(i);
-
-                            Color colour = currentThread.getColour();
-                            int threadCount = currentThread.getThreadCount();
-                            String colourName = currentThread.getColourName();
-                            String colourShortHand = currentThread.getColourShortHand();
-
-
-                            theView.addThreadToList(colour, threadCount, colourName, colourShortHand);
-                            theView.addUpdateThreadListener(new UpdateThreadListener(), i);
-                            theView.addDeleteThreadListener(new DeleteThreadListener(), i);
-                            theView.addUpdateColourRowListener(new UpdateColourRowListener(), i);
-                        }
+                        populateViewsThreadList(myNewThreads);
 
                     } else {
                         // DISPLAY ERROR MESSAGE Sett isnt valid
@@ -149,6 +181,24 @@ public class TartanController {
         }
 
     } // menuaction
+
+    private void populateViewsThreadList(ArrayList<TartanThread> myNewThreads)
+    {
+        for (int i = 0; i < myNewThreads.size(); i++) {
+            TartanThread currentThread = myNewThreads.get(i);
+
+            Color colour = currentThread.getColour();
+            int threadCount = currentThread.getThreadCount();
+            String colourName = currentThread.getColourName();
+            String colourShortHand = currentThread.getColourShortHand();
+
+
+            theView.addThreadToList(colour, threadCount, colourName, colourShortHand);
+            theView.addUpdateThreadListener(new UpdateThreadListener(), i);
+            theView.addDeleteThreadListener(new DeleteThreadListener(), i);
+            theView.addUpdateColourRowListener(new UpdateColourRowListener(), i);
+        }
+    }
 
     class ResetTartanListener implements ActionListener {
 
@@ -305,9 +355,7 @@ public class TartanController {
                 } else {
 
 
-
-                    if (theModel.getTartan().getThreadList().size() ==0)
-                    {
+                    if (theModel.getTartan().getThreadList().size() == 0) {
                         theModel.updateSettCount(theView.getSettCount());
                     }
                     theModel.addTartanThread(colour, threadCount, colourName, colourShortHand);

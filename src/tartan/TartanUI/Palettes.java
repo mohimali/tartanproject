@@ -24,6 +24,10 @@ public class Palettes extends JPanel {
     int tempColourIndex = 0;
     boolean customColourChangedStatus = false;
 
+    public ArrayList<PaletteColour> getColoursArray()
+    {
+        return coloursArray;
+    }
     public Color getFirstColour() {
         if (palettes != null && palettes[0] != null && palettes[0][0] != null)
             return palettes[0][0].getBackground();
