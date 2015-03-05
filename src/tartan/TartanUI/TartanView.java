@@ -74,9 +74,7 @@ public class TartanView {
                     JOptionPane.showMessageDialog(null,
                             "Colour " + name + " has been added",
                             "Message", JOptionPane.INFORMATION_MESSAGE);
-                }
-                else
-                {
+                } else {
                     JOptionPane.showMessageDialog(null,
                             "You have not chosen a suitable letter/s to represent your colour. Colour has not been added.",
                             "Message", JOptionPane.INFORMATION_MESSAGE);
@@ -172,8 +170,6 @@ public class TartanView {
     } // initComponents
 
 
-
-
     private void setUpMenuBars() {
         menuBar = new JMenuBar();
         formatMenu = new JMenu("File");
@@ -207,8 +203,8 @@ public class TartanView {
         tartanDisplay.updateTartan(newTartan);
     }
 
-    public void addThreadToList(Color colour, int threadCount, String colourName,String colourShortHand) {
-        leftColourChooser.addThreadToList(colour, threadCount, colourName,colourShortHand);
+    public void addThreadToList(Color colour, int threadCount, String colourName, String colourShortHand) {
+        leftColourChooser.addThreadToList(colour, threadCount, colourName, colourShortHand);
     }
 
     public void resetTartan() {
@@ -231,8 +227,8 @@ public class TartanView {
         leftColourChooser.removeThreadRow(rowIndex);
     }
 
-    public void allowColourPalette(String myName, int rowIndex, Color myColour,String colourShortHand) {
-        leftColourChooser.allowColourPalette(myName, rowIndex, myColour,colourShortHand);
+    public void allowColourPalette(String myName, int rowIndex, Color myColour, String colourShortHand) {
+        leftColourChooser.allowColourPalette(myName, rowIndex, myColour, colourShortHand);
         leftColourChooser.updateComponentsStatus(false);
     }
 
@@ -252,7 +248,7 @@ public class TartanView {
         leftColourChooser.updateComponentsStatus(true);
     }
 
-    public void updateColourRow(int myRowIndex, Color myColour, String myName,String colourShortHand) {
+    public void updateColourRow(int myRowIndex, Color myColour, String myName, String colourShortHand) {
         //myRowIndex, myColour, myName, colourShortHand
         leftColourChooser.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
     }
@@ -273,5 +269,15 @@ public class TartanView {
 
     public String getColourShortHand() {
         return leftColourChooser.getColourShortHand();
+    }
+
+    public void addSettCountUpdateListener(ActionListener settCountUpdateListener) {
+        leftColourChooser.addSettCountUpdateListener(settCountUpdateListener);
+
+
+    }
+
+    public int getSettCount() {
+        return leftColourChooser.getSettCount();
     }
 } // TartanView

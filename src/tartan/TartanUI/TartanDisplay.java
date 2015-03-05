@@ -58,6 +58,8 @@ public class TartanDisplay extends JPanel {
 
         // Display the document.
         canvas.setSVGDocument(doc); // adds doc to canvas
+
+        tartanDimensions = new Dimension(newTartan.getDimensions(),newTartan.getDimensions());
     }
 
 

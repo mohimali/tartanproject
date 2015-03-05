@@ -37,8 +37,8 @@ public class TartanThread {
     }
 
     public TartanThread(Color requiredThreadColour, String requiredColourShortHand , int requiredThreadCount, String requiredColourName) {
+        //chosenColour,colourShortHand,chosenThreadCount,chosenColourName
 
-        //myColour,colourShortHand,threadcount,myName
         colour = requiredThreadColour;
         threadCount = requiredThreadCount;
         colourName = requiredColourName;

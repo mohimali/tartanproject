@@ -21,6 +21,7 @@ public class ThreadListRow extends JPanel {
     String myColourName;
 
     String myColourShortHand = "";
+    private String colourName;
 
     public String getMyColourShortHand()
     {
@@ -147,5 +148,9 @@ public class ThreadListRow extends JPanel {
         btnCross.setEnabled(enabledStatus);
         btnUpdate.setEnabled(enabledStatus);
         sprThreadCount.setEnabled(enabledStatus);
+    }
+
+    public String getColourName() {
+        return myColourName;
     }
 }

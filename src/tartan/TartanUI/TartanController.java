@@ -35,6 +35,7 @@ public class TartanController {
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
         this.theView.addResetTartanListener(new ResetTartanListener());
+        this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
         this.theView.addActionMenu(new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png"))));
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
@@ -76,7 +77,7 @@ public class TartanController {
 
                         System.out.println("fileToSave: " + fileToSave.getAbsoluteFile());
 
-                        xsTartan.updateTartanXML(theModel.getTartanThreadList(),theModel.getSettCount(),fileToSave.getAbsolutePath());
+                        xsTartan.updateTartanXML(theModel.getTartanThreadList(), theModel.getSettCount(), fileToSave.getAbsolutePath());
 
                     }
 
@@ -171,6 +172,34 @@ public class TartanController {
 
     } //ResetTartanListener class
 
+    class SettCountUpdateListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
+                    //theModel.resetTartan();
+                    //theView.resetTartan();
+                    int mySettCount = theView.getSettCount();
+                    theModel.updateSettCount(mySettCount);
+
+                    //theView.resetTartan();
+                    theView.updateTartan(theModel.getTartan());
+                    //theView.displayErrorMessage("working");
+
+
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+            }
+
+        }
+
+    } //SettCountUpdateListener class
+
 
     class SinglePaletteListener implements ActionListener {
 
@@ -242,8 +271,8 @@ public class TartanController {
                         theView.setEnabledAllComponents();
                         theModel.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
                         theView.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
-                        System.out.println("myRowIndex: "+ myRowIndex + " myColour: " +
-                                            myColour + " myName: " + myName + " colourShortHand: " +  colourShortHand);
+                        System.out.println("myRowIndex: " + myRowIndex + " myColour: " +
+                                myColour + " myName: " + myName + " colourShortHand: " + colourShortHand);
 
                         theView.updateTartan(theModel.getTartan());
                     }
@@ -275,6 +304,12 @@ public class TartanController {
                     theView.displayErrorMessage("You Need a number less then 99 for the thread count.");
                 } else {
 
+
+
+                    if (theModel.getTartan().getThreadList().size() ==0)
+                    {
+                        theModel.updateSettCount(theView.getSettCount());
+                    }
                     theModel.addTartanThread(colour, threadCount, colourName, colourShortHand);
                     theView.updateTartan(theModel.getTartan());
                     theView.addThreadToList(colour, threadCount, colourName, colourShortHand);
@@ -311,9 +346,11 @@ public class TartanController {
                 Color chosenColour = chosenRow.getThreadColour();
                 int chosenThreadCount = chosenRow.getThreadCount();
                 String colourShortHand = chosenRow.getMyColourShortHand();
-
+                String chosenColourName = chosenRow.getColourName();
+                //System.out.println("stupid name  : " + chosenColourName);
+                //System.out.println("stupid short had : " + colourShortHand);
                 //////////////////THIS NEEDS TO GET CORRECT COLOUR PALETTE
-                String chosenColourName = chosenRow.getName();
+
 
                 theModel.updateThreadDetails(rowIndex, chosenColour, chosenThreadCount, chosenColourName, colourShortHand);
 
@@ -333,7 +370,7 @@ public class TartanController {
 
                 JButton currentJB = (JButton) e.getSource();
                 int rowIndex = Integer.parseInt(currentJB.getClientProperty("RowIndex").toString());
-                theView.displayErrorMessage("Trying to remove: " + rowIndex + " from a modelThreadSizeOf: " + theModel.getTartan().getThreadList().size());
+                //theView.displayErrorMessage("Trying to remove: " + rowIndex + " from a modelThreadSizeOf: " + theModel.getTartan().getThreadList().size());
 
                 theView.removeThreadRow(rowIndex);
                 theModel.removeThreadRow(rowIndex);

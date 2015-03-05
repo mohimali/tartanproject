@@ -19,10 +19,10 @@ public class ThreadChooser extends JPanel {
     JButton btnAddThread,
             btnChooseColour,
             btnCustomColourChooser,
-            btnResetTartan;
+            btnResetTartan,btnUpdateSettCount;
 
-    JLabel lblThreadCount;
-    JSpinner sprThreadCount;
+    JLabel lblThreadCount,lblUpdateSettCount;
+    JSpinner sprThreadCount,sprSettCount;
 
     ThreadList threadListRows;
     int noOfPalettesX = 7;
@@ -54,7 +54,15 @@ public class ThreadChooser extends JPanel {
         SpinnerNumberModel jsrThreadCountModel = new SpinnerNumberModel(current, min, max, step);
         sprThreadCount = new JSpinner(jsrThreadCountModel);
 
+        current = 2;
+
+        SpinnerNumberModel jsrSettCountModel = new SpinnerNumberModel(current, min, max, step);
+
+        sprSettCount = new JSpinner(jsrSettCountModel);
         btnResetTartan = new JButton("Reset Tartan");
+
+        btnUpdateSettCount = new JButton("Update \n Sett Count");
+        lblUpdateSettCount = new JLabel("<html><font color='white'><b>Sett Count</b></font></html>");
     }
 
     protected String getThreadCount()
@@ -104,7 +112,10 @@ public class ThreadChooser extends JPanel {
         this.add(btnResetTartan, "Wrap,align left,Wrap,hidemode 3, span 2");
         this.add(lblThreadCount, "align left");
         this.add(sprThreadCount, "align left");
-        this.add(btnAddThread, "align left,wrap");
+        this.add(btnAddThread, "align left,Wrap");
+        this.add(lblUpdateSettCount, "align left");
+        this.add(sprSettCount, "align left");
+        this.add(btnUpdateSettCount, "align left, Wrap");
         //this.add(threadListRows,"span,align left"+width+height2);
         this.add(jScrollPane,"span,align left"+width+height2);
 
@@ -219,5 +230,13 @@ public class ThreadChooser extends JPanel {
 
     public String getColourShortHand() {
         return singlePalette.getColourShortHand();
+    }
+
+    public void addSettCountUpdateListener(ActionListener settCountUpdateListener) {
+        btnUpdateSettCount.addActionListener(settCountUpdateListener);
+    }
+
+    public int getSettCount() {
+        return Integer.parseInt(sprSettCount.getValue().toString());
     }
 }

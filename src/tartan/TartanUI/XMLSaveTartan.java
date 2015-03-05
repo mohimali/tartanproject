@@ -41,6 +41,7 @@ public class XMLSaveTartan {
         index = 1;
         threads = new ArrayList<TartanThread>();
         threads = threadData;
+        this.settCount = settCount;
         //initialize the list
         //loadXMLFromArray(null);
 
@@ -93,6 +94,11 @@ public class XMLSaveTartan {
         Element rootEle = dom.createElement("SettSpec");
         dom.appendChild(rootEle);
 
+        Element settSizeEle = dom.createElement("SettCount");
+        Text settSizeText = dom.createTextNode(this.settCount + "");
+        settSizeEle.appendChild(settSizeText);
+        rootEle.appendChild(settSizeEle);
+
         //No enhanced for
         Iterator it  = threads.iterator();
         while(it.hasNext()) {
@@ -131,7 +137,7 @@ public class XMLSaveTartan {
         threadEle.appendChild(codeEle);
 
         //create code element and code text node and attach it to colourElement
-        Element shortHandEle = dom.createElement("ShortHand");
+        Element shortHandEle = dom.createElement("ColourShortHand");
         Text shortHandText = dom.createTextNode(pc.getColourShortHand());
         shortHandEle.appendChild(shortHandText);
         threadEle.appendChild(shortHandEle);
