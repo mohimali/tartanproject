@@ -5,6 +5,8 @@ import org.w3c.css.sac.ElementSelector;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.plaf.ColorUIResource;
 import java.awt.*;
 
 public class Palettes extends JPanel {
@@ -24,10 +26,10 @@ public class Palettes extends JPanel {
     int tempColourIndex = 0;
     boolean customColourChangedStatus = false;
 
-    public ArrayList<PaletteColour> getColoursArray()
-    {
+    public ArrayList<PaletteColour> getColoursArray() {
         return coloursArray;
     }
+
     public Color getFirstColour() {
         if (palettes != null && palettes[0] != null && palettes[0][0] != null)
             return palettes[0][0].getBackground();
@@ -44,8 +46,7 @@ public class Palettes extends JPanel {
 
     }
 
-    public String getFirstColourShortHand()
-    {
+    public String getFirstColourShortHand() {
         if (palettes != null && palettes[0] != null && palettes[0][0] != null)
             return palettes[0][0].getClientProperty("ShortHand").toString();
 
@@ -65,12 +66,13 @@ public class Palettes extends JPanel {
         palettes = new JButton[width][height];
         this.setBorder(BorderFactory.createRaisedBevelBorder());
 
+
         //tempY= 3;
         outerloop:
         for (lastY = 0; lastY < palettes[0].length/*4*/; lastY++) {
             for (lastX = 0; lastX < palettes.length/*10*/; lastX++) {
                 if (coloursArrayIndex < coloursArray.size()) {
-                    palettes[lastX][lastY] = new JButton("");
+                    palettes[lastX][lastY] =  new JButton("") ;
 
                     //System.out.println(coloursArrayIndex +  ": " + coloursArray.get(coloursArrayIndex).getColour());
                     palettes[lastX][lastY].setBackground(coloursArray.get(coloursArrayIndex).getColour());
@@ -78,6 +80,10 @@ public class Palettes extends JPanel {
                     palettes[lastX][lastY].setBorder(BorderFactory.createEmptyBorder());
                     palettes[lastX][lastY].putClientProperty("Name", coloursArray.get(coloursArrayIndex).getName());
                     palettes[lastX][lastY].putClientProperty("ShortHand", coloursArray.get(coloursArrayIndex).getShortHand());
+                    palettes[lastX][lastY].setToolTipText("Color: " + coloursArray.get(coloursArrayIndex).getName()
+                            + " ShortHand: " + coloursArray.get(coloursArrayIndex).getShortHand());
+
+
                     this.add(palettes[lastX][lastY]);
                     coloursArrayIndex++;
                 } else {
@@ -108,8 +114,8 @@ public class Palettes extends JPanel {
         }
     }
 
-    public void addNewCustomColour(Color colour, String name,String shortHand) {
-        System.out.println("name: " +  name +  " ShortHand: " + shortHand);
+    public void addNewCustomColour(Color colour, String name, String shortHand) {
+        System.out.println("name: " + name + " ShortHand: " + shortHand);
 
         if (tempColourIndex < MAX) {
             palettes[tempX][tempY].setEnabled(true);
@@ -117,6 +123,8 @@ public class Palettes extends JPanel {
             palettes[tempX][tempY].setBackground(colour);
             palettes[tempX][tempY].putClientProperty("Name", name);
             palettes[tempX][tempY].putClientProperty("ShortHand", shortHand);
+            palettes[lastX][lastY].setToolTipText("Color: " + name
+                    + " ShortHand: " + shortHand);
 
             tempX++;
             tempColourIndex++;
@@ -126,7 +134,7 @@ public class Palettes extends JPanel {
             String rgb = PaletteColour.getRGBFormat(colour);
 
             PaletteColour newColour = new PaletteColour("Colour", coloursArray.size() + 1, name,
-                    rgb, shortHand,1);
+                    rgb, shortHand, 1);
             coloursArray.add(newColour);
             customColourChangedStatus = true;
         }

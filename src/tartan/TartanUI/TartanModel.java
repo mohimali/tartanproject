@@ -27,8 +27,8 @@ public class TartanModel {
         Tartan t = new Tartan(400,1);
 
         t.addThread(Color.red, 2, "ASDA", "a");
-        t.addThread(Color.red, 1, "BASDA","b");
-        t.addThread(Color.red, 1, "BASDA","b");
+        t.addThread(Color.green, 1, "BASDA","b");
+        t.addThread(Color.blue, 1, "BASDA","b");
         System.out.println(t);
 
 

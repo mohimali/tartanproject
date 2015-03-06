@@ -9,14 +9,14 @@ import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
-
+import javax.swing.ImageIcon;
 
 public class TartanView {
 
@@ -24,41 +24,12 @@ public class TartanView {
 
     ThreadChooser leftColourChooser;
     TartanDisplay tartanDisplay;
+    TartanCombine tartanCombine;
     private JMenuBar menuBar;
     JMenu formatMenu;
     JMenuItem item;
     ColorPicker colourPicker = new ColorPicker();
-
-
-    // If the btnAddThread is then go the the controller
-    // and do the actionPerformed method.
-    void addThreadListener(ActionListener listenForAddThreadButton) {
-        leftColourChooser.btnAddThread.addActionListener(listenForAddThreadButton);
-    }
-
-    void addChooseColourListener(ActionListener listenForChooseColourButton) {
-        leftColourChooser.btnChooseColour.addActionListener(listenForChooseColourButton);
-    }
-
-    void addCustomColourListener(ActionListener listenForAddCustomColourButton) {
-        leftColourChooser.btnCustomColourChooser.addActionListener(listenForAddCustomColourButton);
-    }
-
-    void addResetTartanListener(ActionListener listenForResetTartanButton) {
-        leftColourChooser.btnResetTartan.addActionListener(listenForResetTartanButton);
-    }
-
-    public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
-        leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
-    }
-
-    public void addUpdateThreadListener(ActionListener listenForUpdateThreadButton, int index) {
-        leftColourChooser.threadListRows.addThreadChangedListener(index, listenForUpdateThreadButton);
-    }
-
-    public void addDeleteThreadListener(ActionListener listenForDeleteThreadListener, int index) {
-        leftColourChooser.threadListRows.addDeleteThreadListener(index, listenForDeleteThreadListener);
-    }
+    JTabbedPane mainTabPane;
 
 
     public void displayCustomColourPicker() {
@@ -125,16 +96,6 @@ public class TartanView {
         frame = new JFrame("Tartan Designer");
         frame.setSize(1000, 600);
 
-        // "src/tartan/TartanUI/images/a.jpg"
-        try {
-            File f1 = new File("Test.java");
-            String path = f1.getCanonicalPath();
-            //System.out.println(path);
-            //frame.setContentPane(new JLabel(new ImageIcon(ImageIO.read(new File("src/tartan/TartanUI/images/2.jpg")))));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
 
         Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -142,14 +103,16 @@ public class TartanView {
                 "[]80[]", // Column constraints
                 "[]10[]")); // Row constraints);
 
+
         mainWindow.setBackground(Color.GRAY);
+
 
         //CREATE LEFT_CHOOSER
         leftColourChooser = new ThreadChooser();
         tartanDisplay = new TartanDisplay();
-
-        mainWindow.add(leftColourChooser, "aligny top");
-        mainWindow.add(tartanDisplay, "wrap, aligny top,growy");
+        tartanCombine = new TartanCombine();
+        createTabs(leftColourChooser, tartanDisplay, tartanCombine);
+        frame.add(mainTabPane, "Wrap,span");
 
         setUpMenuBars();
         frame.setJMenuBar(menuBar);
@@ -169,6 +132,52 @@ public class TartanView {
         frame.pack();
         frame.setVisible(true);
     } // initComponents
+
+    private void createTabs(JPanel tartanDesignerChooser, JPanel tartanDesignerDisplay, JPanel tartanCombinerMainWindow) {
+        mainTabPane = new JTabbedPane();
+
+
+        ImageIcon imgTartanCreation = new ImageIcon(this.getClass().getResource("resources/images/new.png"));
+        ImageIcon imgTartanCombination = new ImageIcon(this.getClass().getResource("resources/images/load.png"));
+
+
+        JPanel tartanDesigner = new JPanel(new MigLayout("", // Layout Constraints
+                "[]80[]", // Column constraints
+                "[]10[]")); // Row constraints);
+
+        JPanel tartanCombiner = new JPanel(new MigLayout("", // Layout Constraints
+                "[]80[]", // Column constraints
+                "[]10[]")); // Row constraints);
+
+
+        tartanDesigner.add(tartanDesignerChooser, "aligny top");
+        tartanDesigner.add(tartanDesignerDisplay, "wrap, aligny top,growy");
+
+        tartanDesigner.setBackground(Color.darkGray);
+        tartanCombiner.add(tartanCombinerMainWindow, "growx");
+        tartanCombiner.setBackground(Color.darkGray);
+
+        mainTabPane.addTab("Tartan Designer", imgTartanCreation, tartanDesigner,
+                "Stuff");
+
+        mainTabPane.addTab("Tartan Combiner", imgTartanCombination, tartanCombiner,
+                "Stuff");
+
+
+        //mainTabPane.addTab("Combine TartansX", imgTartanCombination, right, "Stuff");
+
+        mainTabPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+
+    }
+
+    protected JComponent makeTextPanel(String text) {
+        JPanel panel = new JPanel(false);
+        JLabel filler = new JLabel(text);
+        filler.setHorizontalAlignment(JLabel.CENTER);
+        panel.setLayout(new GridLayout(1, 1));
+        panel.add(filler);
+        return panel;
+    }
 
 
     private void setUpMenuBars() {
@@ -293,5 +302,39 @@ public class TartanView {
 
     public String getSettConfig() {
         return tartanDisplay.getSettConfig();
+    }
+
+    // If the btnAddThread is then go the the controller
+    // and do the actionPerformed method.
+    void addThreadListener(ActionListener listenForAddThreadButton) {
+        leftColourChooser.btnAddThread.addActionListener(listenForAddThreadButton);
+    }
+
+    void addChooseColourListener(ActionListener listenForChooseColourButton) {
+        leftColourChooser.btnChooseColour.addActionListener(listenForChooseColourButton);
+    }
+
+    void addCustomColourListener(ActionListener listenForAddCustomColourButton) {
+        leftColourChooser.btnCustomColourChooser.addActionListener(listenForAddCustomColourButton);
+    }
+
+    void addResetTartanListener(ActionListener listenForResetTartanButton) {
+        leftColourChooser.btnResetTartan.addActionListener(listenForResetTartanButton);
+    }
+
+    public void addSinglePaletteListener(ActionListener listenForAddCustomColourButton) {
+        leftColourChooser.singlePalette.addActionListener(listenForAddCustomColourButton);
+    }
+
+    public void addUpdateThreadListener(ActionListener listenForUpdateThreadButton, int index) {
+        leftColourChooser.threadListRows.addThreadChangedListener(index, listenForUpdateThreadButton);
+    }
+
+    public void addDeleteThreadListener(ActionListener listenForDeleteThreadListener, int index) {
+        leftColourChooser.threadListRows.addDeleteThreadListener(index, listenForDeleteThreadListener);
+    }
+
+    public void addRefreshTartansList(ActionListener refreshTartansList) {
+        tartanCombine.addRefreshTartansList(refreshTartansList);
     }
 } // TartanView

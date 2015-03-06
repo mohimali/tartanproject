@@ -38,6 +38,7 @@ public class TartanController {
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
         this.theView.addResetTartanListener(new ResetTartanListener());
+        this.theView.addRefreshTartansList(new RefreshTartansList());
         this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
         this.theView.addConfigUpdateListener(new ConfigUpdateListener());
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
@@ -45,6 +46,25 @@ public class TartanController {
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
         this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
     }
+
+    class RefreshTartansList implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+
+                    theView.displayErrorMessage("Working");
+                }
+
+            } catch (NumberFormatException ex) {
+                System.out.println(ex);
+            }
+
+        }
+
+    } //RefreshTartansList class
 
     class ConfigUpdateListener implements ActionListener {
 
