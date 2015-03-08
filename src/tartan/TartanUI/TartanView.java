@@ -17,6 +17,8 @@ import java.util.ArrayList;
 import javax.swing.*;
 import javax.swing.border.BevelBorder;
 import javax.swing.ImageIcon;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
 public class TartanView {
 
@@ -167,6 +169,15 @@ public class TartanView {
         //mainTabPane.addTab("Combine TartansX", imgTartanCombination, right, "Stuff");
 
         mainTabPane.setTabLayoutPolicy(JTabbedPane.SCROLL_TAB_LAYOUT);
+
+        mainTabPane.addChangeListener(new ChangeListener() {
+            public void stateChanged(ChangeEvent e) {
+                System.out.println("Tab: " + mainTabPane.getSelectedIndex());
+                tartanCombine.updateTabChangedStatus(true);
+
+                // Prints the string 3 times if there are 3 tabs etc
+            }
+        });
 
     }
 

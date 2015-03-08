@@ -18,7 +18,7 @@ public class TartanMVC {
 
 
     public static void main(String[] args) {
-
+        /*
         UIManager.put("ToolTip[Enabled].backgroundPainter", Color.darkGray); //#fff7c8
 
         try {
@@ -30,7 +30,7 @@ public class TartanMVC {
                 }
             }
         } catch (Exception e) {
-        }
+        } */
 
         /*
         /* Create and display the form */
