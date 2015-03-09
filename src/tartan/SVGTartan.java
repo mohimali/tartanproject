@@ -91,9 +91,10 @@ public class SVGTartan {
 
             for (int x = 0; x < tartan1.getThreadSizesCount(); x += 1) {
                 g2d.setPaint(tartan1.getThreadColour(x));
-                g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(tempIndex)/tartan1.getSettCount(), tartan1.getDimensions()) {
+                g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(tempIndex) / tartan1.getSettCount(), tartan1.getDimensions()) {
                 });
-                g2d.translate(tartan1.getThreadSizes(tempIndex)/tartan1.getSettCount(), 0);
+                g2d.translate(tartan1.getThreadSizes(tempIndex) / tartan1.getSettCount(), 0);
+                System.out.println(tartan1.getThreadSizes(tempIndex)/tartan1.getSettCount());
                 tempIndex++;
             } //forwards for
 

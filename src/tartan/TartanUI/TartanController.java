@@ -217,6 +217,8 @@ public class TartanController {
             theView.addUpdateThreadListener(new UpdateThreadListener(), i);
             theView.addDeleteThreadListener(new DeleteThreadListener(), i);
             theView.addUpdateColourRowListener(new UpdateColourRowListener(), i);
+
+
         }
     }
 

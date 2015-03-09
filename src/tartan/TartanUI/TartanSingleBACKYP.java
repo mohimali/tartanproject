@@ -1,7 +1,6 @@
 package tartan.TartanUI;
 
 import net.miginfocom.swing.MigLayout;
-import org.apache.batik.svggen.SVGGraphics2D;
 import org.apache.batik.swing.JSVGCanvas;
 import org.w3c.dom.svg.SVGDocument;
 import tartan.SVGTartan;
@@ -10,25 +9,12 @@ import tartan.Tartan;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import javax.swing.*;
-import javax.swing.event.MouseInputAdapter;
-import java.awt.*;
-import java.awt.datatransfer.DataFlavor;
-import java.awt.datatransfer.Transferable;
-import java.awt.datatransfer.UnsupportedFlavorException;
-import java.awt.dnd.*;
-import java.awt.event.ActionListener;
 import java.awt.geom.Rectangle2D;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.TooManyListenersException;
 
 
-public class TartanSingle extends JPanel implements MouseListener {
+public class TartanSingleBACKYP extends JPanel implements MouseListener {
     JPanel borderContainer = new JPanel(new MigLayout());
     SVGTartan svgTartan;
     SVGDocument doc;
@@ -64,14 +50,13 @@ public class TartanSingle extends JPanel implements MouseListener {
         canvas.setOpaque(true);
         canvas.setBackground(Color.blue);
 
-        canvas.setTransferHandler(null);
         this.setBackground(Color.green);
         this.setPreferredSize(tartanDimensions);
 
 
     }
 
-    public TartanSingle(Tartan ts) {
+    public TartanSingleBACKYP(Tartan ts) {
         currentTartan = ts;
         this.setLayout(new MigLayout(""));
         this.setBorder(BorderFactory.createEmptyBorder());
@@ -84,7 +69,7 @@ public class TartanSingle extends JPanel implements MouseListener {
 
     }
 
-    public TartanSingle(int index, Tartan tartanx) {
+    public TartanSingleBACKYP(int index, Tartan tartanx) {
         currentTartan = tartanx;
         this.setLayout(new MigLayout(""));
         this.setBorder(BorderFactory.createEmptyBorder());

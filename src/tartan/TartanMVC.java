@@ -6,8 +6,6 @@ import tartan.TartanUI.TartanView;
 
 import javax.swing.*;
 
-import javax.swing.UIManager.*;
-import javax.swing.border.Border;
 import java.awt.*;
 
 public class TartanMVC {
@@ -18,11 +16,13 @@ public class TartanMVC {
 
 
     public static void main(String[] args) {
-        /*
+
         UIManager.put("ToolTip[Enabled].backgroundPainter", Color.darkGray); //#fff7c8
+
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                System.out.println(info);
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(new ToolTipLookAndFeel());
                     //UIManager.put("ToolTip.background", Color.red); //#fff7c8
@@ -30,7 +30,7 @@ public class TartanMVC {
                 }
             }
         } catch (Exception e) {
-        } */
+        }
 
         /*
         /* Create and display the form */

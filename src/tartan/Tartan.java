@@ -181,12 +181,14 @@ public class Tartan {
     public String getRealThreadSizes() {
         String sizes = "";
         //System.out.println("stup1: " + threadCounts.length);
-
+        int total = 0;
         for (int x=0;x<threadCounts.length;x++) {
             sizes += (threadCounts[x] + ", ");
+            total += threadCounts[x];
             //System.out.println("index: " + x);
         }
 
+        sizes += "\ntotal: " + total;
 
         return sizes;
     }

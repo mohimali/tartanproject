@@ -222,6 +222,7 @@ public class TartanView {
 
     public void updateTartan(Tartan newTartan) {
         tartanDisplay.updateTartan(newTartan);
+        leftColourChooser.updateUI();
     }
 
     public void addThreadToList(Color colour, int threadCount, String colourName, String colourShortHand) {
