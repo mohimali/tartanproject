@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef4475fb-c7db-4f4d-9e0e-bc01f408c032" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingleBACKYP.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/SVGTartan.java" afterPath="$PROJECT_DIR$/src/tartan/SVGTartan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/Tartan.java" afterPath="$PROJECT_DIR$/src/tartan/Tartan.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanCombine.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanCombine.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanMVC.java" afterPath="$PROJECT_DIR$/src/tartan/TartanMVC.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" afterPath="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Tartan.iws" />
@@ -44,40 +40,43 @@
       <file leaf-file-name="TartanCombine.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanCombine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5641026" vertical-offset="4630" max-vertical-offset="5797">
-              <caret line="288" column="23" selection-start-line="288" selection-start-column="23" selection-end-line="288" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.33333334" vertical-offset="3147" max-vertical-offset="4199">
+              <caret line="275" column="35" selection-start-line="275" selection-start-column="32" selection-end-line="275" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6858#6859#0" expanded="true" />
-                <element signature="e#6899#6900#0" expanded="true" />
+                <element signature="method#addRefreshTartansList#0;class#TartanCombine#0" expanded="false" />
+                <element signature="class#TransferableTartan#0;class#TartanCombine#0" expanded="false" />
+                <element signature="class#DragGestureListImp#0;class#TartanCombine#0" expanded="false" />
+                <element signature="method#dragGestureRecognized#0;class#DragGestureListImp#0;class#TartanCombine#0" expanded="false" />
+                <element signature="class#DragGestureListImp1#0;class#TartanCombine#0" expanded="false" />
+                <element signature="e#6473#6474#0" expanded="true" />
+                <element signature="e#6514#6515#0" expanded="true" />
+                <element signature="method#installUI#0;class#8848:9937" expanded="false" />
+                <element signature="method#uninstallUI#0;class#8848:9937" expanded="false" />
+                <element signature="method#eventDispatched#0;class#8848:9937" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TestME.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/test/TestME.java">
+      <file leaf-file-name="TartanMVC.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanMVC.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.862069" vertical-offset="644" max-vertical-offset="1972">
-              <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="935">
+              <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#3342#3354#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JLayerSample.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/test/JLayerSample.java">
+      <file leaf-file-name="XMLSaveColours.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.965517" vertical-offset="243" max-vertical-offset="1190">
-              <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2154#2262#0" expanded="true" />
-                <element signature="e#2261#2262#0" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="1701" max-vertical-offset="3281">
+              <caret line="121" column="56" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="56" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -85,8 +84,8 @@
       <file leaf-file-name="TartanView.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-20.896551" vertical-offset="5327" max-vertical-offset="6069">
-              <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+            <state vertical-scroll-proportion="-30.413794" vertical-offset="3963" max-vertical-offset="6069">
+              <caret line="285" column="29" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2470#2471#0" expanded="true" />
@@ -126,27 +125,65 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TartanSingle.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java">
+      <file leaf-file-name="TartanController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.034483" vertical-offset="1566" max-vertical-offset="4896">
-              <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+            <state vertical-scroll-proportion="-35.689655" vertical-offset="2399" max-vertical-offset="8653">
+              <caret line="204" column="44" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1361#1362#0" expanded="true" />
-                <element signature="e#1397#1398#0" expanded="true" />
-                <element signature="e#8143#8144#0" expanded="true" />
-                <element signature="e#8182#8183#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TartanSingleBACKYP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingleBACKYP.java">
+      <file leaf-file-name="TartanSingle.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4386">
-              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+            <state vertical-scroll-proportion="-26.758621" vertical-offset="1672" max-vertical-offset="5236">
+              <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1458#1459#0" expanded="true" />
+                <element signature="e#1494#1495#0" expanded="true" />
+                <element signature="e#3242#3243#0" expanded="true" />
+                <element signature="e#3298#3299#0" expanded="true" />
+                <element signature="e#3373#3374#0" expanded="true" />
+                <element signature="e#3429#3430#0" expanded="true" />
+                <element signature="e#8324#8325#0" expanded="true" />
+                <element signature="e#8363#8364#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainClass.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/test/MainClass.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1700">
+              <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+              <folding>
+                <element signature="e#2677#2946#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/test/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="2448">
+              <caret line="50" column="19" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="19" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MouseHoverDemo.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/tartan/test/MouseHoverDemo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="833">
+              <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="57" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -201,15 +238,15 @@
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/BorderHoverJPanel.java" />
         <option value="$PROJECT_DIR$/src/tartan/Tartan.java" />
         <option value="$PROJECT_DIR$/src/tartan/SVGTartan.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanMVC.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanDisplay.java" />
         <option value="$PROJECT_DIR$/src/tartan/test/JLayerSample.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingleBACKYP.java" />
-        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java" />
         <option value="$PROJECT_DIR$/src/tartan/test/RubberBandUI.java" />
         <option value="$PROJECT_DIR$/src/tartan/test/TestME.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanMVC.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java" />
+        <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java" />
         <option value="$PROJECT_DIR$/src/tartan/TartanUI/TartanCombine.java" />
       </list>
     </option>
@@ -1009,12 +1046,12 @@
       <workItem from="1425671252080" duration="14365000" />
       <workItem from="1425754555206" duration="21439000" />
       <workItem from="1425828082427" duration="29099000" />
-      <workItem from="1425909681673" duration="20800000" />
+      <workItem from="1425909681673" duration="24010000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="470159000" />
+    <option name="totallyTimeSpent" value="473369000" />
   </component>
   <component name="TodoView" selected-index="0">
     <todo-panel id="selected-file">
@@ -1038,7 +1075,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32843137" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1051,7 +1088,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.0" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3120915" sideWeight="0.8139183" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3120915" sideWeight="0.8139183" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32352942" sideWeight="0.4995197" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23524962" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1116,7 +1153,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="34" />
+      <option name="time" value="36" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1131,41 +1168,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/SaveFileDialogExample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="214" max-vertical-offset="952">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/lang/System.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="183" max-vertical-offset="20485">
-          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/resources/xml/test.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1020">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/META-INF/MANIFEST.MF">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13821138" vertical-offset="0" max-vertical-offset="369">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16802168" vertical-offset="1995" max-vertical-offset="3570">
-          <caret line="121" column="56" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/SinglePalette.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="183" max-vertical-offset="1020">
@@ -1177,13 +1179,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2839" max-vertical-offset="3587">
           <caret line="186" column="53" selection-start-line="186" selection-start-column="53" selection-end-line="186" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveTartan.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1836" max-vertical-offset="3179">
-          <caret line="141" column="48" selection-start-line="141" selection-start-column="48" selection-end-line="141" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -1343,16 +1338,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5833333" vertical-offset="4794" max-vertical-offset="16898">
           <caret line="325" column="26" selection-start-line="325" selection-start-column="26" selection-end-line="325" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.310345" vertical-offset="459" max-vertical-offset="2720">
-          <caret line="50" column="19" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="19" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1364,32 +1350,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/MouseHoverDemo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.65831435" vertical-offset="102" max-vertical-offset="833">
-          <caret line="30" column="21" selection-start-line="30" selection-start-column="21" selection-end-line="30" selection-end-column="21" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/Palettes.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.6993166" vertical-offset="206" max-vertical-offset="3468">
           <caret line="67" column="0" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/MainClass.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8463415" vertical-offset="1234" max-vertical-offset="2091">
-          <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2299#2587#0" expanded="false" />
-            <element signature="e#2586#2587#0" expanded="false" />
-            <element signature="e#2677#2946#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1442,14 +1407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingleBACKYP.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4386">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/jre/lib/rt.jar!/sun/awt/windows/WMouseDragGestureRecognizer.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.7197802" vertical-offset="1166" max-vertical-offset="1530">
@@ -1466,42 +1423,172 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java">
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/TestME.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.034483" vertical-offset="1566" max-vertical-offset="4896">
-          <caret line="99" column="16" selection-start-line="99" selection-start-column="16" selection-end-line="99" selection-end-column="16" />
+        <state vertical-scroll-proportion="-8.862069" vertical-offset="644" max-vertical-offset="1972">
+          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1361#1362#0" expanded="true" />
-            <element signature="e#1397#1398#0" expanded="true" />
-            <element signature="e#8143#8144#0" expanded="true" />
-            <element signature="e#8182#8183#0" expanded="true" />
+            <element signature="e#3342#3354#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/UsingRegexFormatter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.605598" vertical-offset="0" max-vertical-offset="425">
+          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/event/InvocationEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73421055" vertical-offset="4515" max-vertical-offset="6698">
+          <caret line="310" column="26" selection-start-line="310" selection-start-column="26" selection-end-line="310" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/event/ActionEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-9.2" vertical-offset="4074" max-vertical-offset="4454">
+          <caret line="59" column="13" selection-start-line="59" selection-start-column="13" selection-end-line="59" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/java/awt/event/ActionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5973684" vertical-offset="215" max-vertical-offset="595">
+          <caret line="49" column="35" selection-start-line="49" selection-start-column="35" selection-end-line="49" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/AbstractButton.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33157894" vertical-offset="30797" max-vertical-offset="50405">
+          <caret line="1924" column="48" selection-start-line="1924" selection-start-column="34" selection-end-line="1924" selection-end-column="48" />
+          <folding>
+            <element signature="e#68195#68196#0" expanded="false" />
+            <element signature="e#68252#68253#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/JLayerSample.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.965517" vertical-offset="243" max-vertical-offset="1190">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#2154#2262#0" expanded="false" />
+            <element signature="e#2261#2262#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveTartan.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="306" max-vertical-offset="3179">
+          <caret line="38" column="94" selection-start-line="38" selection-start-column="94" selection-end-line="38" selection-end-column="94" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/XMLSaveColours.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1701" max-vertical-offset="3281">
+          <caret line="121" column="56" selection-start-line="121" selection-start-column="56" selection-end-line="121" selection-end-column="56" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanMVC.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="935">
-          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="357" max-vertical-offset="935">
+          <caret line="24" column="18" selection-start-line="24" selection-start-column="18" selection-end-line="24" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/MainClass.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="857" max-vertical-offset="1700">
+          <caret line="95" column="13" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+          <folding>
+            <element signature="e#2677#2946#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1139" max-vertical-offset="2448">
+          <caret line="50" column="19" selection-start-line="50" selection-start-column="18" selection-end-line="50" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/test/MouseHoverDemo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="833">
+          <caret line="47" column="3" selection-start-line="47" selection-start-column="3" selection-end-line="57" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_31/src.zip!/javax/swing/JComponent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33157894" vertical-offset="28400" max-vertical-offset="91715">
+          <caret line="1789" column="16" selection-start-line="1789" selection-start-column="16" selection-end-line="1789" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingleBACKYP.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="4386">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanSingle.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-26.758621" vertical-offset="1672" max-vertical-offset="5236">
+          <caret line="144" column="11" selection-start-line="144" selection-start-column="11" selection-end-line="144" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1458#1459#0" expanded="true" />
+            <element signature="e#1494#1495#0" expanded="true" />
+            <element signature="e#3242#3243#0" expanded="true" />
+            <element signature="e#3298#3299#0" expanded="true" />
+            <element signature="e#3373#3374#0" expanded="true" />
+            <element signature="e#3429#3430#0" expanded="true" />
+            <element signature="e#8324#8325#0" expanded="true" />
+            <element signature="e#8363#8364#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.33903134" vertical-offset="1581" max-vertical-offset="8109">
-          <caret line="95" column="38" selection-start-line="95" selection-start-column="38" selection-end-line="95" selection-end-column="38" />
-          <folding />
+        <state vertical-scroll-proportion="-35.689655" vertical-offset="2399" max-vertical-offset="8653">
+          <caret line="204" column="44" selection-start-line="204" selection-start-column="24" selection-end-line="204" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanView.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-20.896551" vertical-offset="5327" max-vertical-offset="6069">
-          <caret line="349" column="0" selection-start-line="349" selection-start-column="0" selection-end-line="349" selection-end-column="0" />
+        <state vertical-scroll-proportion="-30.413794" vertical-offset="3963" max-vertical-offset="6069">
+          <caret line="285" column="29" selection-start-line="285" selection-start-column="25" selection-end-line="285" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#2470#2471#0" expanded="true" />
@@ -1540,45 +1627,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/JLayerSample.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.965517" vertical-offset="243" max-vertical-offset="1190">
-          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2154#2262#0" expanded="true" />
-            <element signature="e#2261#2262#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/TestME.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.862069" vertical-offset="644" max-vertical-offset="1972">
-          <caret line="53" column="16" selection-start-line="53" selection-start-column="16" selection-end-line="53" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3342#3354#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/tartan/test/UsingRegexFormatter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.605598" vertical-offset="0" max-vertical-offset="425">
-          <caret line="14" column="45" selection-start-line="14" selection-start-column="45" selection-end-line="14" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/tartan/TartanUI/TartanCombine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5641026" vertical-offset="4630" max-vertical-offset="5797">
-          <caret line="288" column="23" selection-start-line="288" selection-start-column="23" selection-end-line="288" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.33333334" vertical-offset="3147" max-vertical-offset="4199">
+          <caret line="275" column="35" selection-start-line="275" selection-start-column="32" selection-end-line="275" selection-end-column="35" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#6858#6859#0" expanded="true" />
-            <element signature="e#6899#6900#0" expanded="true" />
+            <element signature="method#addRefreshTartansList#0;class#TartanCombine#0" expanded="false" />
+            <element signature="class#TransferableTartan#0;class#TartanCombine#0" expanded="false" />
+            <element signature="class#DragGestureListImp#0;class#TartanCombine#0" expanded="false" />
+            <element signature="method#dragGestureRecognized#0;class#DragGestureListImp#0;class#TartanCombine#0" expanded="false" />
+            <element signature="class#DragGestureListImp1#0;class#TartanCombine#0" expanded="false" />
+            <element signature="e#6473#6474#0" expanded="true" />
+            <element signature="e#6514#6515#0" expanded="true" />
+            <element signature="method#installUI#0;class#8848:9937" expanded="false" />
+            <element signature="method#uninstallUI#0;class#8848:9937" expanded="false" />
+            <element signature="method#eventDispatched#0;class#8848:9937" expanded="false" />
           </folding>
         </state>
       </provider>

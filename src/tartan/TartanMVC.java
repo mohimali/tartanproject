@@ -22,7 +22,7 @@ public class TartanMVC {
 
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info);
+                //System.out.println(info);
                 if ("Nimbus".equals(info.getName())) {
                     UIManager.setLookAndFeel(new ToolTipLookAndFeel());
                     //UIManager.put("ToolTip.background", Color.red); //#fff7c8
@@ -32,7 +32,7 @@ public class TartanMVC {
         } catch (Exception e) {
         }
 
-        /*
+
         /* Create and display the form */
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {

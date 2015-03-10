@@ -22,6 +22,7 @@ public class TartanController {
     private XMLParserTartan xpTartan = new XMLParserTartan();
     private XMLSaveTartan xsTartan = new XMLSaveTartan();
 
+    String currentFileDirectory = "";
     ThreadFactory threadFactory = new ThreadFactory();
 
     public TartanController(TartanView theView, TartanModel theModel) {
@@ -128,7 +129,17 @@ public class TartanController {
 
 
                     saveFile.setDialogTitle("Save your tartan");
+
+
+                    if (!currentFileDirectory.isEmpty());
+                    {
+                        File filex = new File(currentFileDirectory);
+                        saveFile.setCurrentDirectory(filex);
+                    }
+
                     int option = saveFile.showSaveDialog(null);
+
+
 
                     if (option == JFileChooser.APPROVE_OPTION) {
                         File fileToSave;
@@ -141,7 +152,7 @@ public class TartanController {
                         }
 
                         System.out.println("fileToSave: " + fileToSave.getAbsoluteFile());
-
+                        currentFileDirectory = fileToSave.getAbsolutePath();
                         xsTartan.updateTartanXML(theModel.getTartanThreadList(), theModel.getSettCount(), fileToSave.getAbsolutePath());
 
                     }
@@ -151,9 +162,21 @@ public class TartanController {
                 else if (command == "Load existing Tartan") {
 
 
+                    if (!currentFileDirectory.isEmpty());
+                    {
+                        File filex = new File(currentFileDirectory);
+                        openFile.setCurrentDirectory(filex);
+                    }
+
                     openFile.showOpenDialog(null);
+
+
                     System.out.println("getting file: " + openFile.getSelectedFile().getAbsolutePath());
                     xpTartan.parseXMLFile(openFile.getSelectedFile().getAbsolutePath());
+
+
+
+
                     System.out.println(xpTartan.getErrorMessages());
                     boolean errorsDetected = xpTartan.getErrorsDetected();
 
@@ -179,7 +202,7 @@ public class TartanController {
                         //theView.updateTartan(theModel.getTartan());
 
                         populateViewsThreadList(myNewThreads);
-
+                        currentFileDirectory = openFile.getSelectedFile().getAbsolutePath();
                     } else {
                         // DISPLAY ERROR MESSAGE Sett isnt valid
                         theView.displayErrorMessage("Not a valid tartan Sett");

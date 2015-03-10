@@ -16,6 +16,7 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
+import javax.swing.event.MouseInputListener;
 import java.awt.*;
 import java.awt.datatransfer.DataFlavor;
 import java.awt.datatransfer.Transferable;
@@ -34,8 +35,11 @@ public class TartanSingle extends JPanel implements MouseListener {
     SVGDocument doc;
     JSVGCanvas canvas;
     Dimension tartanDimensions;
-    Border blackBorder = BorderFactory.createLineBorder(Color.red, 5);
-    Border greenBorder = BorderFactory.createLineBorder(Color.red, 5);
+
+    Color background = Color.darkGray;
+
+    Border highlightBorder = BorderFactory.createLineBorder(Color.green, 3);
+    Border originalBorder = BorderFactory.createLineBorder(Color.black, 3);
     int tartanID = 0;
     boolean updateDetected = true;
 
@@ -51,6 +55,8 @@ public class TartanSingle extends JPanel implements MouseListener {
 
         tartanDimensions = new Dimension(tartan.getDimensions(), tartan.getDimensions());
 
+
+
         svgTartan = new SVGTartan(tartan);
         doc = svgTartan.getSVGTartan();
 
@@ -62,10 +68,10 @@ public class TartanSingle extends JPanel implements MouseListener {
         canvas.setPreferredSize(tartanDimensions);
 
         canvas.setOpaque(true);
-        canvas.setBackground(Color.blue);
+        canvas.setBackground(Color.white);
 
         canvas.setTransferHandler(null);
-        this.setBackground(Color.green);
+        this.setBackground(background);
         this.setPreferredSize(tartanDimensions);
 
 
@@ -73,8 +79,11 @@ public class TartanSingle extends JPanel implements MouseListener {
 
     public TartanSingle(Tartan ts) {
         currentTartan = ts;
+        addMouseListener(this);
+
+
         this.setLayout(new MigLayout(""));
-        this.setBorder(BorderFactory.createEmptyBorder());
+        //this.setBorder(BorderFactory.createEmptyBorder());
 
         tartanID = 0;
 
@@ -85,14 +94,56 @@ public class TartanSingle extends JPanel implements MouseListener {
     }
 
     public TartanSingle(int index, Tartan tartanx) {
+        addMouseListener(this);
+
+
+
         currentTartan = tartanx;
         this.setLayout(new MigLayout(""));
-        this.setBorder(BorderFactory.createEmptyBorder());
+        //this.setBorder(BorderFactory.createEmptyBorder());
         tartanID = index;
         final JPanel outside = this;
 
 
         doCreationCanvas(tartanx);
+
+        canvas.addMouseListener(new MouseInputListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                outside.dispatchEvent(e);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                outside.dispatchEvent(e);
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+
+            }
+        });
+
         this.add(canvas,"push, align center");
 
     }
@@ -110,32 +161,6 @@ public class TartanSingle extends JPanel implements MouseListener {
         tartanDimensions = new Dimension(newTartan.getDimensions(), newTartan.getDimensions());
     }
 
-    /*
-
-    public void addTartanToDisplay(Tartan newTartan) {
-
-        currentTartan = newTartan;
-        //svgTartan = new SVGTartan(newTartan);
-        //doc = svgTartan.getSVGTartan();
-        tartanDimensions = new Dimension(newTartan.getDimensions(), newTartan.getDimensions());
-        //MUST MATCH TARTAN DIMENSIONS
-        canvas.setPreferredSize(tartanDimensions);
-
-        this.setPreferredSize(tartanDimensions);
-        // Display the document.
-        canvas.setSVGDocument(doc); // adds doc to canvas
-        SVGGraphics2D svgGenerator = new SVGGraphics2D(doc);
-
-        //this.paintTartan(svgGenerator,currentTartan);
-        //paintComponent1();
-        this.add(canvas);
-        updateDetected = true;
-
-        //updateUI();
-        //this.repaint();
-
-
-    } */
 
 
 
@@ -267,16 +292,17 @@ public class TartanSingle extends JPanel implements MouseListener {
 
     }
 
-    @Override
-    public void mouseEntered(MouseEvent e) {
-        System.out.println("Panel entered");
 
+    @Override
+    public void mouseEntered(MouseEvent e)
+    {
+        setBorder(highlightBorder);
     }
 
     @Override
-    public void mouseExited(MouseEvent e) {
-
-        System.out.println("Panel exited");
+    public void mouseExited(MouseEvent e)
+    {
+        setBorder(originalBorder);
     }
 
 
