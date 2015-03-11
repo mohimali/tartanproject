@@ -17,18 +17,18 @@ public class TartanModel {
     private ArrayList<TartanThread> tartanThreadList = new ArrayList<TartanThread>();
     private static int tartanSize = 400;
     private static int tartanSettCount = 2;
-    private Tartan tartan = new Tartan(tartanSize,tartanSettCount);
+    private Tartan tartan = new Tartan(tartanSize, tartanSettCount);
 
     private static String originalThreads = "K4,G4,O4,R50,K50,Y4,B2,M1,P1,M10";
 
     //NOTE COULD USE DIFFFERENT COLOURS STANDARD MODERN, ETC AND THESE COULD BE SEPARE TABS IN LIST YO
 
     public static void main(String[] args) {
-        Tartan t = new Tartan(400,1);
+        Tartan t = new Tartan(400, 1);
 
         t.addThread(Color.red, 2, "ASDA", "a");
-        t.addThread(Color.green, 1, "BASDA","b");
-        t.addThread(Color.blue, 1, "BASDA","b");
+        t.addThread(Color.green, 1, "BASDA", "b");
+        t.addThread(Color.blue, 1, "BASDA", "b");
         System.out.println(t);
 
 
@@ -42,7 +42,7 @@ public class TartanModel {
     }
 
     public void initTartan() {
-        Tartan tartan = new Tartan(originalThreads, 2, tartanSize, true);
+        Tartan tartan = new Tartan(originalThreads, 1, tartanSize, true);
         addTartan(tartan);
 
     }
@@ -93,9 +93,10 @@ public class TartanModel {
     public void resetTartan() {
 
         //RESET ALL VARIABLES
-        tartansList = new ArrayList<Tartan>();
+        //tartansList = new ArrayList<Tartan>();
         tartanThreadList = new ArrayList<TartanThread>();
-        tartan = new Tartan(tartanSize,tartanSettCount);
+        tartan = new Tartan(tartanSize, tartanSettCount);
+        tartansList.set(0, tartan);
 
     }
 
@@ -126,9 +127,29 @@ public class TartanModel {
     public void replaceThreadList(ArrayList<TartanThread> myNewThreads, int mySettCount, int dimension, boolean symmetric) {
         tartan = new Tartan(myNewThreads, mySettCount, dimension, symmetric);
 
+        tartansList.set(0, tartan);
+
     }
 
     public int getSettCount() {
         return tartan.getSettCount();
+    }
+
+    public void populateTartansList(ArrayList<Tartan> allTartans) {
+
+        tartansList = new ArrayList<Tartan>();
+
+        // Add Tartan from the first customise tartan page
+        tartansList.add(tartan);
+
+        for (Tartan myTartan : allTartans) {
+            tartansList.add(myTartan);
+
+        }
+
+    }
+
+    public ArrayList<Tartan> getTartansList() {
+        return tartansList;
     }
 }

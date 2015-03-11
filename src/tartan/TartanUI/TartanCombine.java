@@ -3,6 +3,7 @@ package tartan.TartanUI;
 import javafx.scene.input.MouseDragEvent;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
+import tartan.TartanThread;
 
 import javax.swing.*;
 import javax.swing.event.MouseInputAdapter;
@@ -22,141 +23,170 @@ import java.util.ArrayList;
  */
 public class TartanCombine extends JPanel {
 
-    JLabel lblNew = new JLabel("Here you can choose two tartans to combine");
-    JLabel lblPlus;
-
+    JLabel lblNew = new JLabel("<html><font color='white'><b>Here you can choose two tartans to combine</b></font></html>");
     JPanel allTartans;
+
+    String[] combinationAlgorithms = { "Algorithm 1", "Algorithm 2", "Algorithm 3", "Algorithm 4", "Algorithm 5" };
+
+    //Create the combo box, select item at index 4.
+//Indices start at 0, so 4 specifies the pig.
+    JComboBox combinationList;
+
     ArrayList<TartanSingle> tsArray = new ArrayList<TartanSingle>();
-    JButton btnRefreshTartanList;
+    JButton btnRefreshTartanList,btnCombineTartan;
     int noOfTartansWidth = 4;
 
-
-    TartanSingle tartanSingle, tartanSingle1, tartanSingle2;
-    TartanSingle tartanResult;
+    JLayer tartanResult;
     JLayer tartanFirstChoice;
     JLayer tartanSecondChoice;
 
+    JScrollPane jScrollPane;
 
-    int large = 300;
-    int largeOfset = large;
-
+    private static int NON_DROP_REGION = 0;
+    private static int DROP_REGION = 1;
+    int large = 330;
+    int largeOfset = large + 20;
     int medium = 150;
     int mediumOfset = medium + 20;
-
     int small = 100;
-    int smallOfset = small + 40;
+    int smallOfset = small + 20;
 
-    String mediumString = "width " + mediumOfset + ",height " + mediumOfset;
-    String smallString = "width " + smallOfset + ",height " + smallOfset + ",gap 30";
+    String tempMedium = mediumOfset + ":" + mediumOfset + ":"  + mediumOfset;
+    String tempSmall =  smallOfset + ":" + smallOfset + ":"  + smallOfset;
+    String tempLarge =  largeOfset + ":" + largeOfset + ":"  + largeOfset;
+
+    String mediumString = "width " + tempMedium + ",height " + tempMedium;
+    String mediumForButtonString = "width " + "75:75:75" + ",height " + "75:75:75";
+    String smallString = "width " + tempSmall + ",height " + tempSmall + "";
+    String largeString = "width " + tempLarge + ",height " + tempLarge + "";
 
     DataFlavor dataFlavor = new DataFlavor(Tartan.class,
             Tartan.class.getSimpleName());
 
-    private void setUpDragNDrop() {
+    String currentCombination = "";
 
-
-
-
-    }
 
     public void init() {
-        //height then width
 
-        Tartan t3 = new Tartan(small, 1);
-        t3.addThread(Color.pink, 10, "ASDA", "a");
-        t3.addThread(Color.white, 4, "BASDA", "b");
+        combinationList = new JComboBox(combinationAlgorithms);
+        combinationList.setSelectedIndex(4);
+        combinationList.addActionListener(new ActionListener() {
 
-        Tartan t = new Tartan(medium, 1);
-        t.addThread(Color.white, 10, "ASDA", "a");
-        t.addThread(Color.black, 1, "BASDA", "b");
-
-        Tartan t4 = new Tartan(medium, 1);
-        t4.addThread(Color.yellow, 10, "ASDA", "a");
-        t4.addThread(Color.orange, 4, "BASDA", "b");
-
-        Tartan t2 = new Tartan(large, 1);
-        t2.addThread(Color.blue, 10, "ASDA", "a");
-        t2.addThread(Color.green, 4, "BASDA", "b");
-
-        allTartans = new JPanel();
-        tartanSingle = new TartanSingle(0, t3);
-        tartanSingle1 = new TartanSingle(1, t3);
-        tartanSingle2 = new TartanSingle(2, t3);
-        //tartanResult = new TartanSingle(3);
-        //tartanFirstChoice = new TartanSingle(4,t);
-        //tartanSecondChoice = new TartanSingle(5,t4);
-        tartanFirstChoice = createLayer(18, t);
-        tartanSecondChoice = createLayer(18, t4);
-
-        btnRefreshTartanList = new JButton("Load Tartans");
+            public void actionPerformed(ActionEvent e) {
+                JComboBox jcmbType = (JComboBox) e.getSource();
+                String cmbType = (String) jcmbType.getSelectedItem();
+                System.out.println(cmbType);
+            }
+        });
 
 
+        allTartans = new JPanel(new MigLayout(""));
+
+        Tartan blankLargeTartan = new Tartan(large, 1);
+        Tartan blankMediumTartan = new Tartan(medium, 1);
+        Tartan blankSmallTartan = new Tartan(small, 1);
+
+        blankLargeTartan.addThread(Color.GRAY, 1, "Grey", "N");
+        blankMediumTartan.addThread(Color.GRAY, 1, "Grey", "N");
+        blankSmallTartan.addThread(Color.GRAY, 1, "Grey", "N");
+
+
+        tartanFirstChoice = createLayer(997, blankMediumTartan, medium, DROP_REGION);
+        tartanSecondChoice = createLayer(998, blankMediumTartan, medium, DROP_REGION);
+        tartanResult = createLayer(999, blankLargeTartan, large, NON_DROP_REGION);
+
+        btnRefreshTartanList = new JButton("<html><font color='white'>Refresh Tartans</font></html>");
         ImageIcon plus = new ImageIcon(this.getClass().getResource("resources/images/plus.png"));
-        lblPlus = new JLabel(plus);
-
+        btnCombineTartan = new JButton(plus);
+        btnCombineTartan.setPreferredSize(new Dimension(75,75));
+        btnCombineTartan.setBackground(Color.DARK_GRAY);
         allTartans.setBackground(Color.darkGray);
-        allTartans.setPreferredSize(new Dimension(900, 250));
+        allTartans.setPreferredSize(new Dimension(555, 250));
+
+        jScrollPane = new JScrollPane(allTartans);
+        jScrollPane.getVerticalScrollBar().setUnitIncrement(7);
+
+
+
+
+
     }
 
     public TartanCombine() {
-        init();
-
-        //Tartan tartan = new Tartan
-
         this.setLayout(new MigLayout(""));
-        this.setBackground(Color.cyan);
-        this.add(lblNew, "Wrap,span");
-        this.add(btnRefreshTartanList, "Wrap");
+        init();
+        String width = ",width 600:600:600";
+        String height = ",height 220:220:220";
 
-        this.add(tartanFirstChoice, mediumString);
+        String width2 = ",width 180:180:180";
+        String height2 = ",height 30:30:30";
 
+        String spanMedium = ", span 1 2";
 
-        //tartanFirstChoice.setBounds(0, 0, 400, 400);
-        this.add(lblPlus, "width 200, height 200");
-        this.add(tartanSecondChoice, mediumString + ",wrap");
-
-        //this.add(tartanResult, "wrap, width 320, height 320");
-
-        this.add(allTartans, "span 3,height 400, width 900");
+        this.setBackground(Color.darkGray);
+        //this.add(lblNew, "Wrap,span, dock south");
+        //this.add(btnRefreshTartanList, "Wrap,dock south");
 
 
-        allTartans.add(tartanSingle, smallString);
-        allTartans.add(tartanSingle1, smallString);
-        allTartans.add(tartanSingle2, smallString);
+        JPanel addPanel = new JPanel(new MigLayout(""));
+        addPanel.setPreferredSize(new Dimension(150, 150));
+        addPanel.setBorder(BorderFactory.createEmptyBorder());
+
+        JPanel leftPanel = new JPanel(new MigLayout(""));
+        //leftPanel.setPreferredSize(new Dimension(150, 150));
+        leftPanel.setBorder(BorderFactory.createEmptyBorder());
+        leftPanel.add(tartanFirstChoice);
+        leftPanel.add(combinationList);
+        leftPanel.add(btnCombineTartan);
+
+        //this.add(tartanFirstChoice,mediumString + spanMedium);
+        //addPanel.add(combinationList, "wrap" + width2 + height2);
+        //addPanel.add(btnCombineTartan, "wrap," + mediumForButtonString);
+        //this.add(addPanel,"wrap" + ",span 1 2");
+        this.add(tartanSecondChoice, mediumString + ",span 1 2" + "");
+        //this.add(tartanResult, largeString + ",wrap");
+        this.add(jScrollPane,"span 3,align left"+width+height + "");
 
 
-        setUpDragNDrop();
+
+
+
+
 
     }
 
-    public void populateAllTartans(Tartan[] tartansArray) {
-        for (int i = 0; i < tartansArray.length; i++) {
-            //this.addNewTartan(tartansArray[i]);
+    public void populateAllTartans(ArrayList<Tartan> tartansList) {
 
+        String wrap = ",wrap";
+        allTartans.removeAll();
+        allTartans.validate();
+        allTartans.repaint();
+        for (int index = 0; index < tartansList.size(); index++) {
+            Tartan myTartan = new Tartan(tartansList.get(index).getThreadList(),
+                    tartansList.get(index).getSettCount(), small, true);
+            myTartan.updateDimensions(small);
+            JLayer currentMiniTartan = createLayer(index, myTartan, small, NON_DROP_REGION);
 
-        }
+            // DO A NEW ROW IF NEEDED
+            if (((index + 1) % noOfTartansWidth) == 0) {
+                allTartans.add(currentMiniTartan, smallString + wrap);
+            } else {
+                allTartans.add(currentMiniTartan, smallString);
+            }
+        } // outside for
+        allTartans.repaint();
+        allTartans.updateUI();
     }
 
-    private void addNewTartan(Tartan tartan) {
-
-    }
 
     public void addRefreshTartansList(ActionListener refreshTartansList) {
         btnRefreshTartanList.addActionListener(refreshTartansList);
     }
 
-    public void updateTabChangedStatus(boolean tabChangedStatus) {
-        tartanSingle.setUpdateStatus(tabChangedStatus);
-        tartanSingle1.setUpdateStatus(tabChangedStatus);
-        tartanSingle2.setUpdateStatus(tabChangedStatus);
-        //tartanFirstChoice.setUpdateStatus(tabChangedStatus);
-        //tartanSecondChoice.setUpdateStatus(tabChangedStatus);
-        //tartanResult.setUpdateStatus(tabChangedStatus);
-        System.out.println("released");
-        //tartanFirstChoice.repaint();
-
-        // STORE ALL TARTANS WITHIN ARRAY THEN LOOP ON EACH TARTAN AND UPDATE ITS CHANGE STATUS FOR BUG FIX
+    public void addCombineTartansListener(ActionListener combineTartansListener) {
+        btnCombineTartan.addActionListener(combineTartansListener);
     }
+
 
     class TransferableTartan implements Transferable {
 
@@ -190,19 +220,19 @@ public class TartanCombine extends JPanel {
 
     class DragGestureListImp implements DragGestureListener {
 
-        DragGestureListImp()
-        {
+        DragGestureListImp() {
 
         }
+
         @Override
         public void dragGestureRecognized(DragGestureEvent event) {
 
-            System.out.println("triggered outside");
+            //System.out.println("triggered outside");
             Cursor cursor = null;
             JLayer myTartanX = (JLayer) event.getComponent();
             TartanSingle myTartan = (TartanSingle) myTartanX.getView();
 
-            System.out.println("About to print");
+            // System.out.println("About to print");
             //System.out.println(myTartan.getTartan().toString());
 
             if (event.getDragAction() == DnDConstants.ACTION_COPY) {
@@ -219,26 +249,27 @@ public class TartanCombine extends JPanel {
     class DragGestureListImp1 implements DragGestureListener {
 
         JLayer currentLayer;
-        DragGestureListImp1(JLayer aa )
-        {
+
+        DragGestureListImp1(JLayer aa) {
             currentLayer = aa;
         }
+
         @Override
         public void dragGestureRecognized(DragGestureEvent event) {
 
-            System.out.println("triggered inside canvas method");
+            //System.out.println("triggered inside canvas method");
             Cursor cursor = null;
             JLayer myTartanX = currentLayer;
             TartanSingle myTartan = (TartanSingle) myTartanX.getView();
 
-            System.out.println("About to print canvas");
+            // System.out.println("About to print canvas");
             //System.out.println(myTartan.getTartan().toString());
 
             if (event.getDragAction() == DnDConstants.ACTION_COPY) {
                 cursor = DragSource.DefaultCopyDrop;
             }
             Tartan tartan = myTartan.getTartan();
-
+            tartan.updateDimensions(medium);
             event.startDrag(cursor, new TransferableTartan(tartan));
         }
 
@@ -262,10 +293,10 @@ public class TartanCombine extends JPanel {
         public void drop(DropTargetDropEvent event) {
             try {
 
-                System.out.println("dropped Event");
+                //System.out.println("dropped Event");
                 Transferable tr = event.getTransferable();
                 Tartan an = (Tartan) tr.getTransferData(dataFlavor);
-                System.out.println("aa" + an);
+                //System.out.println("aa" + an);
                 if (event.isDataFlavorSupported(dataFlavor)) {
                     event.acceptDrop(DnDConstants.ACTION_COPY);
 
@@ -284,7 +315,9 @@ public class TartanCombine extends JPanel {
         } //drop
     } //MyDropTargetListImp
 
-    private JLayer<JComponent> createLayer(int index, Tartan tartanInserted) {
+    private JLayer<JComponent> createLayer(int index, Tartan tartanInserted, int layerSize, int type) {
+
+        tartanInserted.updateDimensions(layerSize);
         // This custom layerUI will intercept all mouseMotion events generated within its borders and delegate to the wrapped JPanel
 
         final LayerUI<JComponent> layerUI;
@@ -319,7 +352,9 @@ public class TartanCombine extends JPanel {
             }
 
 
-        };
+        }; //layerUI
+
+
         DragSource ds = new DragSource();
         // create a component to be decorated with the layer
         // This would be your custom component.
@@ -334,8 +369,12 @@ public class TartanCombine extends JPanel {
         ds.createDefaultDragGestureRecognizer(tempLayerUI,
                 DnDConstants.ACTION_COPY, new DragGestureListImp());
 
-        new MyDropTargetListImp(tempLayerUI);
+        // MAKE IT DROPPABLE IF ITS A DROP REGION
+        if (type == DROP_REGION) {
+            new MyDropTargetListImp(tempLayerUI);
+        }
 
+        setBorder(BorderFactory.createEmptyBorder());
         // create the layer for the panel using our custom layerUI
         return tempLayerUI;
     }

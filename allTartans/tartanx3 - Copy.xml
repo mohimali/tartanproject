@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SettSpec>
-    <SettCount>5</SettCount>
+    <SettCount>2</SettCount>
     <Thread>
         <ID>1</ID>
-        <ColourName>DarkPurple</ColourName>
-        <ColourCode>0x00800080</ColourCode>
-        <ColourShortHand>DP</ColourShortHand>
+        <ColourName>Black</ColourName>
+        <ColourCode>0x00000000</ColourCode>
+        <ColourShortHand>K</ColourShortHand>
         <ThreadCount>11</ThreadCount>
     </Thread>
     <Thread>
@@ -21,5 +21,12 @@
         <ColourCode>0x00ffffff</ColourCode>
         <ColourShortHand>W</ColourShortHand>
         <ThreadCount>9</ThreadCount>
+    </Thread>
+    <Thread>
+        <ID>4</ID>
+        <ColourName>Grey</ColourName>
+        <ColourCode>0x00808080</ColourCode>
+        <ColourShortHand>N</ColourShortHand>
+        <ThreadCount>1</ThreadCount>
     </Thread>
 </SettSpec>

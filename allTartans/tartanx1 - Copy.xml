@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <SettSpec>
-    <SettCount>5</SettCount>
+    <SettCount>2</SettCount>
     <Thread>
         <ID>1</ID>
-        <ColourName>DarkPurple</ColourName>
-        <ColourCode>0x00800080</ColourCode>
-        <ColourShortHand>DP</ColourShortHand>
+        <ColourName>Blue</ColourName>
+        <ColourCode>0x000000ff</ColourCode>
+        <ColourShortHand>B</ColourShortHand>
         <ThreadCount>11</ThreadCount>
     </Thread>
     <Thread>

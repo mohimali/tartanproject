@@ -233,4 +233,11 @@ public class Tartan {
     public boolean getSymmetric() {
         return isSymmetrical;
     }
+
+    public void updateDimensions(int size) {
+        width = height = size;
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
+
+    }
 }

@@ -243,4 +243,8 @@ public class ThreadChooser extends JPanel {
     public ArrayList<PaletteColour> getAllColourPalettes() {
         return palettes.getColoursArray();
     }
+
+    public void updateSettCount(int mySettCount) {
+        sprSettCount.setValue(mySettCount);
+    }
 }

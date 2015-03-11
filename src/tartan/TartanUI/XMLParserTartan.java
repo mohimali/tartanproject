@@ -26,7 +26,7 @@ public class XMLParserTartan extends DefaultHandler {
     private ArrayList<TartanThread> threadList;
     private String tempVal;
     private TartanThread tempThread;
-    private int settCount = 2;
+    private int settCount = 1;
     private boolean errorsDetected = false;
     private String errorMessages = "";
 

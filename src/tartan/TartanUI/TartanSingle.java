@@ -30,20 +30,15 @@ import java.util.TooManyListenersException;
 
 
 public class TartanSingle extends JPanel implements MouseListener {
-    JPanel borderContainer = new JPanel(new MigLayout());
     SVGTartan svgTartan;
     SVGDocument doc;
     JSVGCanvas canvas;
     Dimension tartanDimensions;
-
     Color background = Color.darkGray;
-
     Border highlightBorder = BorderFactory.createLineBorder(Color.green, 3);
-    Border originalBorder = BorderFactory.createLineBorder(Color.black, 3);
+    Border originalBorder = BorderFactory.createLineBorder(Color.darkGray, 3);
     int tartanID = 0;
     boolean updateDetected = true;
-
-
     Tartan currentTartan;
     final JPanel outside = this;
 
@@ -52,14 +47,10 @@ public class TartanSingle extends JPanel implements MouseListener {
     } //getTartan
 
     public void doCreationCanvas(Tartan tartan) {
-
+        setBorder(originalBorder);
         tartanDimensions = new Dimension(tartan.getDimensions(), tartan.getDimensions());
-
-
-
         svgTartan = new SVGTartan(tartan);
         doc = svgTartan.getSVGTartan();
-
         // Display the document.
         canvas = new JSVGCanvas(); // holds doc with graphics
         canvas.setSVGDocument(doc); // adds doc to canvas
@@ -80,33 +71,58 @@ public class TartanSingle extends JPanel implements MouseListener {
     public TartanSingle(Tartan ts) {
         currentTartan = ts;
         addMouseListener(this);
-
-
         this.setLayout(new MigLayout(""));
         //this.setBorder(BorderFactory.createEmptyBorder());
-
         tartanID = 0;
-
         doCreationCanvas(ts);
+        canvas.addMouseListener(new MouseInputListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
 
-        this.add(canvas,"push, align center");
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                outside.dispatchEvent(e);
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                outside.dispatchEvent(e);
+            }
+
+            @Override
+            public void mouseDragged(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseMoved(MouseEvent e) {
+
+            }
+        });
+        addCanvas();
 
     }
 
     public TartanSingle(int index, Tartan tartanx) {
         addMouseListener(this);
-
-
-
         currentTartan = tartanx;
         this.setLayout(new MigLayout(""));
         //this.setBorder(BorderFactory.createEmptyBorder());
         tartanID = index;
         final JPanel outside = this;
-
-
         doCreationCanvas(tartanx);
-
         canvas.addMouseListener(new MouseInputListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -144,8 +160,12 @@ public class TartanSingle extends JPanel implements MouseListener {
             }
         });
 
-        this.add(canvas,"push, align center");
+        addCanvas();
 
+    }
+
+    public void addCanvas() {
+        this.add(canvas, "push, align center");
     }
 
     public void addTartanToDisplay(Tartan newTartan) {
@@ -160,8 +180,6 @@ public class TartanSingle extends JPanel implements MouseListener {
 
         tartanDimensions = new Dimension(newTartan.getDimensions(), newTartan.getDimensions());
     }
-
-
 
 
     //@Override
@@ -193,7 +211,7 @@ public class TartanSingle extends JPanel implements MouseListener {
         int alpha1 = 100;
         int alpha2 = 0;
 
-        System.out.println(tartan1.toString());
+        //System.out.println(tartan1.toString());
 
 
         for (int i = 0; i < tartan1.getSettCount(); i += 1) {
@@ -206,14 +224,14 @@ public class TartanSingle extends JPanel implements MouseListener {
                 g2d.fill(new Rectangle2D.Double(0, 0, tartan1.getThreadSizes(tempIndex) / (double) tartan1.getSettCount(), tartan1.getDimensions()) {
                 });
                 g2d.translate(tartan1.getThreadSizes(tempIndex) / (double) tartan1.getSettCount(), 0);
-                System.out.println("getThreadSizes:" + tartan1.getThreadSizes(tempIndex) / (double) tartan1.getSettCount());
-                System.out.println("transformSingleBefore:" + g2d.getTransform().getTranslateX());
+                //System.out.println("getThreadSizes:" + tartan1.getThreadSizes(tempIndex) / (double) tartan1.getSettCount());
+                //System.out.println("transformSingleBefore:" + g2d.getTransform().getTranslateX());
 
                 tempIndex++;
 
             } //forwards for
 
-            System.out.println("transformHalfBefore:" + g2d.getTransform().getTranslateX());
+            //System.out.println("transformHalfBefore:" + g2d.getTransform().getTranslateX());
 
             //reverse pattern
             for (int x = tartan1.getThreadSizesCount() - 1; x >= 0; x -= 1) {
@@ -227,10 +245,10 @@ public class TartanSingle extends JPanel implements MouseListener {
         } // most outer for
 
 
-        System.out.println("transformBefore:" + g2d.getTransform().getTranslateX());
+        //System.out.println("transformBefore:" + g2d.getTransform().getTranslateX());
         g2d.translate(-1 * g2d.getTransform().getTranslateX(), 0);
         //g2d.translate(0,0);
-        System.out.println("transformMOHIM:" + g2d.getTransform().getTranslateX());
+        //System.out.println("transformMOHIM:" + g2d.getTransform().getTranslateX());
 
         //WEFT
 
@@ -266,7 +284,7 @@ public class TartanSingle extends JPanel implements MouseListener {
 
         } // FOR WEFT
 
-        System.out.println("");
+        //System.out.println("");
         return g2d;
     } // paintTartan
 
@@ -294,15 +312,14 @@ public class TartanSingle extends JPanel implements MouseListener {
 
 
     @Override
-    public void mouseEntered(MouseEvent e)
-    {
+    public void mouseEntered(MouseEvent e) {
         setBorder(highlightBorder);
     }
 
     @Override
-    public void mouseExited(MouseEvent e)
-    {
-        setBorder(originalBorder);
+    public void mouseExited(MouseEvent e) {
+        setBorder(originalBorder
+        );
     }
 
 

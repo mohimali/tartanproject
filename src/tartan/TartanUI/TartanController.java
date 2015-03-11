@@ -1,5 +1,6 @@
 package tartan.TartanUI;
 
+import tartan.Tartan;
 import tartan.TartanThread;
 import tartan.ThreadFactory;
 
@@ -42,11 +43,75 @@ public class TartanController {
         this.theView.addRefreshTartansList(new RefreshTartansList());
         this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
         this.theView.addConfigUpdateListener(new ConfigUpdateListener());
+        this.theView.addCombineTartansListener(new CombineTartansListener());
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
         this.theView.addActionMenu(new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png"))));
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
         this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
+
+        loadAllTartans();
+
+
     }
+
+    //Initialise all the information taken from a folder or online and placed into the model.
+    public void loadAllTartans() {
+
+        ArrayList<String> allFileNames = new ArrayList<String>();
+        ArrayList<Tartan> allTartans = new ArrayList<Tartan>(); // to be recorded in model
+
+
+        try {
+            File targetFolder = new File("./allTartans");
+            File[] allFiles = targetFolder.listFiles();
+
+            // GET FILE NAMES FROM FOLDER "./allTartans"
+            for (int i = 0; i < allFiles.length; i++) {
+                if (allFiles[i].isFile()) {
+                    //System.out.println("Tartan file " + i + " named " + allFiles[i].getName());
+                    allFileNames.add("./allTartans/" + allFiles[i].getName());
+                }
+            } // for getting a list of file names
+
+
+            for (int i = 0; i < allFileNames.size(); i++) {
+                xpTartan.parseXMLFile(allFileNames.get(i));
+
+                System.out.println(xpTartan.getErrorMessages());
+                boolean errorsDetected = xpTartan.getErrorsDetected();
+
+                if (!errorsDetected) {
+
+                    System.out.println("no errors");
+                    ArrayList<TartanThread> currentThreadList = xpTartan.getThreadList();
+                    int currentSettCount = xpTartan.getSettCount();
+                    Tartan currentTartan = new Tartan(currentThreadList, currentSettCount, 100, true);
+                    allTartans.add(currentTartan);
+
+                } else {
+                    System.out.println("Tartan not recognised with name " + allFileNames.get(i));
+                }
+
+            } // for to parse tartan sett xml files
+
+            // UPDATE THE MODEL WITH ALL THE NEW TARTANS WE FOUND
+            theModel.populateTartansList(allTartans);
+
+            //UPDATE THE VIEW WITH ALL THE TARTANS WE FOUND IN THE SECOND TAB
+            theView.populateTartansList(theModel.getTartansList());
+
+
+        } catch (NullPointerException e) {
+            System.out.println(e);
+            System.out.println("Couldnt find a folder allTartans where you tartans should be located");
+
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
+
+
+    } // loadAllTartans
 
     class RefreshTartansList implements ActionListener {
 
@@ -56,10 +121,28 @@ public class TartanController {
 
                 if (e.getSource() instanceof JButton) {
 
-                    theView.displayErrorMessage("Working");
+                    loadAllTartans();
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+
+        }
+
+    } //RefreshTartansList class
+
+    class CombineTartansListener implements ActionListener {
+
+        public void actionPerformed(ActionEvent e) {
+
+            try {
+
+                if (e.getSource() instanceof JButton) {
+                    theView.displayErrorMessage("stuppppppppp.");
+                }
+
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
 
@@ -95,12 +178,13 @@ public class TartanController {
                         theView.resetTartan();
                         populateViewsThreadList(theModel.getTartanThreadList());
                         theView.updateTartan(theModel.getTartan());
+                        theView.populateTartansList(theModel.getTartansList());
                     }
 
 
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
 
@@ -117,28 +201,21 @@ public class TartanController {
 
         public void actionPerformed(ActionEvent e) {
             try {
-
-                //System.out.println("Command: " + e.getActionCommand());
                 String command = e.getActionCommand();
-
                 if (command == "New Tartan") {
                     theModel.resetTartan();
                     theView.resetTartan();
+                    theView.populateTartansList(theModel.getTartansList());
                 } // New Tartan
                 else if (command == "Save my Tartan") {
-
-
                     saveFile.setDialogTitle("Save your tartan");
-
-
-                    if (!currentFileDirectory.isEmpty());
+                    if (!currentFileDirectory.isEmpty()) ;
                     {
                         File filex = new File(currentFileDirectory);
                         saveFile.setCurrentDirectory(filex);
                     }
 
                     int option = saveFile.showSaveDialog(null);
-
 
 
                     if (option == JFileChooser.APPROVE_OPTION) {
@@ -162,7 +239,7 @@ public class TartanController {
                 else if (command == "Load existing Tartan") {
 
 
-                    if (!currentFileDirectory.isEmpty());
+                    if (!currentFileDirectory.isEmpty()) ;
                     {
                         File filex = new File(currentFileDirectory);
                         openFile.setCurrentDirectory(filex);
@@ -173,8 +250,6 @@ public class TartanController {
 
                     System.out.println("getting file: " + openFile.getSelectedFile().getAbsolutePath());
                     xpTartan.parseXMLFile(openFile.getSelectedFile().getAbsolutePath());
-
-
 
 
                     System.out.println(xpTartan.getErrorMessages());
@@ -192,14 +267,9 @@ public class TartanController {
                         theModel.replaceThreadList(myNewThreads, mySettCount, 400, true);
                         theModel.updateSettCount(mySettCount);
                         // UPDATE THE VIEW
+                        theView.updateSettCount(mySettCount);
                         theView.updateTartan(theModel.getTartan());
-
-
-                        //theModel.getTartan().toString();
-                        //xpTartan.printThreads();
-
-                        //theModel.addTartanThread(colour, threadCount, colourName, colourShortHand);
-                        //theView.updateTartan(theModel.getTartan());
+                        theView.populateTartansList(theModel.getTartansList());
 
                         populateViewsThreadList(myNewThreads);
                         currentFileDirectory = openFile.getSelectedFile().getAbsolutePath();
@@ -225,8 +295,7 @@ public class TartanController {
 
     } // menuaction
 
-    private void populateViewsThreadList(ArrayList<TartanThread> myNewThreads)
-    {
+    private void populateViewsThreadList(ArrayList<TartanThread> myNewThreads) {
         for (int i = 0; i < myNewThreads.size(); i++) {
             TartanThread currentThread = myNewThreads.get(i);
 
@@ -234,7 +303,6 @@ public class TartanController {
             int threadCount = currentThread.getThreadCount();
             String colourName = currentThread.getColourName();
             String colourShortHand = currentThread.getColourShortHand();
-
 
             theView.addThreadToList(colour, threadCount, colourName, colourShortHand);
             theView.addUpdateThreadListener(new UpdateThreadListener(), i);
@@ -255,7 +323,7 @@ public class TartanController {
                     //PASS DATA FROM THE MODEL IN HERE IF NEEDED
                     theModel.resetTartan();
                     theView.resetTartan();
-
+                    theView.populateTartansList(theModel.getTartansList());
 
                 }
 
@@ -268,31 +336,20 @@ public class TartanController {
     } //ResetTartanListener class
 
     class SettCountUpdateListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
-
             try {
-
                 if (e.getSource() instanceof JButton) {
-                    //PASS DATA FROM THE MODEL IN HERE IF NEEDED
-                    //theModel.resetTartan();
-                    //theView.resetTartan();
                     int mySettCount = theView.getSettCount();
                     theModel.updateSettCount(mySettCount);
-
-                    //theView.resetTartan();
+                    //theView.updateSettCount(mySettCount);
                     theView.updateTartan(theModel.getTartan());
-                    //theView.displayErrorMessage("working");
-
-
+                    theView.populateTartansList(theModel.getTartansList());
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
-
         }
-
     } //SettCountUpdateListener class
 
 
@@ -309,7 +366,7 @@ public class TartanController {
 
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
@@ -329,7 +386,7 @@ public class TartanController {
                     theView.displayCustomColourPicker();
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
@@ -338,13 +395,9 @@ public class TartanController {
 
     } //AddCustomColourListener class
 
-
     class GridChooseColourListener implements ActionListener {
-
         public void actionPerformed(ActionEvent e) {
-
             try {
-
                 if (e.getSource() instanceof JButton) {
 
                     // 0 Means colour palette mode, 1 means row colour updating mode
@@ -355,7 +408,6 @@ public class TartanController {
                     String myName = currentJB.getClientProperty("Name").toString();
                     String colourShortHand = currentJB.getClientProperty("ShortHand").toString();
                     Color myColour = currentJB.getBackground(); // FULL PALETTE COLOUR REQUIRED
-
 
                     theView.leftColourChooser.updateSinglePaletteColour(myColour, myName, colourShortHand);
 
@@ -368,15 +420,13 @@ public class TartanController {
                         theView.updateColourRow(myRowIndex, myColour, myName, colourShortHand);
                         System.out.println("myRowIndex: " + myRowIndex + " myColour: " +
                                 myColour + " myName: " + myName + " colourShortHand: " + colourShortHand);
-
                         theView.updateTartan(theModel.getTartan());
+                        theView.populateTartansList(theModel.getTartansList());
                     }
-
                     theView.resetMode(theView.getOldColourToBeChanged());
                     theView.resetAllColourPalettes();
                 }
-
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
@@ -405,13 +455,14 @@ public class TartanController {
                     }
                     theModel.addTartanThread(colour, threadCount, colourName, colourShortHand);
                     theView.updateTartan(theModel.getTartan());
+                    theView.populateTartansList(theModel.getTartansList());
                     theView.addThreadToList(colour, threadCount, colourName, colourShortHand);
                     int lastIndex = theModel.getTartan().getThreadSizesCount() - 1;
                     theView.addUpdateThreadListener(new UpdateThreadListener(), lastIndex);
                     theView.addDeleteThreadListener(new DeleteThreadListener(), lastIndex);
                     theView.addUpdateColourRowListener(new UpdateColourRowListener(), lastIndex);
                 }
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need a number less then 99 for the thread count.");
             }
@@ -422,7 +473,7 @@ public class TartanController {
         public void actionPerformed(ActionEvent e) {
             try {
                 theView.leftColourChooser.updateSinglePaletteColour(null, null, null);
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
                 theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
@@ -448,9 +499,9 @@ public class TartanController {
                 theModel.updateThreadDetails(rowIndex, chosenColour, chosenThreadCount, chosenColourName, colourShortHand);
 
                 theView.updateTartan(theModel.getTartan());
-
+                theView.populateTartansList(theModel.getTartansList());
                 //theView.displayErrorMessage("updateThreadListener");
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
 
             }
@@ -469,8 +520,8 @@ public class TartanController {
                 theModel.removeThreadRow(rowIndex);
 
                 theView.updateTartan(theModel.getTartan());
-
-            } catch (NumberFormatException ex) {
+                theView.populateTartansList(theModel.getTartansList());
+            } catch (Exception ex) {
                 System.out.println(ex);
 
             }
@@ -486,19 +537,14 @@ public class TartanController {
                 Color myColour = currentJB.getBackground();
                 String myName = currentJB.getClientProperty("Name").toString();
                 String myColourShortHand = currentJB.getClientProperty("ShortHand").toString();
-                //theView.displayErrorMessage("Trying to updateColour: " + rowIndex + " with name: " + myName);
 
                 // ENSURE COLOUR IS FOUND OR NOT FOUND AND HENCE DEFAULT TO BLACK ANY
-
                 theView.resetAllColourPalettes();
-
                 theView.allowColourPalette(myName, rowIndex, myColour, myColourShortHand);
-
                 theView.updateTartan(theModel.getTartan());
-
-            } catch (NumberFormatException ex) {
+                theView.populateTartansList(theModel.getTartansList());
+            } catch (Exception ex) {
                 System.out.println(ex);
-
             }
         }
     } // UpdateColourRowListener

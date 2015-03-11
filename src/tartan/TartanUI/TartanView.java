@@ -97,28 +97,21 @@ public class TartanView {
     public void initComponents() throws Exception {
         frame = new JFrame("Tartan Designer");
         frame.setSize(1000, 600);
-
-
         Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
         mainWindow.setLayout(new MigLayout("", // Layout Constraints
                 "[]80[]", // Column constraints
                 "[]10[]")); // Row constraints);
 
-
         mainWindow.setBackground(Color.GRAY);
-
-
         //CREATE LEFT_CHOOSER
         leftColourChooser = new ThreadChooser();
         tartanDisplay = new TartanDisplay();
         tartanCombine = new TartanCombine();
         createTabs(leftColourChooser, tartanDisplay, tartanCombine);
         frame.add(mainTabPane, "Wrap,span");
-
         setUpMenuBars();
         frame.setJMenuBar(menuBar);
-
 
         // ADD WINDOW CLOSING LISTENERS
         frame.addWindowListener(new WindowAdapter() {
@@ -173,21 +166,12 @@ public class TartanView {
         mainTabPane.addChangeListener(new ChangeListener() {
             public void stateChanged(ChangeEvent e) {
                 System.out.println("Tab: " + mainTabPane.getSelectedIndex());
-                tartanCombine.updateTabChangedStatus(true);
+
 
                 // Prints the string 3 times if there are 3 tabs etc
             }
         });
 
-    }
-
-    protected JComponent makeTextPanel(String text) {
-        JPanel panel = new JPanel(false);
-        JLabel filler = new JLabel(text);
-        filler.setHorizontalAlignment(JLabel.CENTER);
-        panel.setLayout(new GridLayout(1, 1));
-        panel.add(filler);
-        return panel;
     }
 
 
@@ -295,8 +279,6 @@ public class TartanView {
 
     public void addSettCountUpdateListener(ActionListener settCountUpdateListener) {
         leftColourChooser.addSettCountUpdateListener(settCountUpdateListener);
-
-
     }
 
     public int getSettCount() {
@@ -348,5 +330,17 @@ public class TartanView {
 
     public void addRefreshTartansList(ActionListener refreshTartansList) {
         tartanCombine.addRefreshTartansList(refreshTartansList);
+    }
+
+    public void populateTartansList(ArrayList<Tartan> tartansList) {
+        tartanCombine.populateAllTartans(tartansList);
+    }
+
+    public void updateSettCount(int mySettCount) {
+        leftColourChooser.updateSettCount(mySettCount);
+    }
+
+    public void addCombineTartansListener(ActionListener combineTartansListener) {
+        tartanCombine.addCombineTartansListener(combineTartansListener);
     }
 } // TartanView
