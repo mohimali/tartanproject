@@ -94,7 +94,7 @@ public class TartanModel {
 
         //RESET ALL VARIABLES
         //tartansList = new ArrayList<Tartan>();
-        tartanThreadList = new ArrayList<TartanThread>();
+        //tartanThreadList = new ArrayList<TartanThread>();
         tartan = new Tartan(tartanSize, tartanSettCount);
         tartansList.set(0, tartan);
 

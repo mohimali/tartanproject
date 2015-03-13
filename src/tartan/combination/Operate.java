@@ -9,7 +9,11 @@ public class Operate {
 
     Combination combo;
 
-    public Tartan performOperation(Tartan t1, Tartan t2, OPERATION operation) {
+    public Operate()
+    {
+
+    }
+    public Tartan performOperation(Tartan t1, Tartan t2, OPERATION_BINARY operationBINARY) {
         Tartan newTartan = null;
 
         //COMBINE_CONCATENATION,
@@ -21,15 +25,17 @@ public class Operate {
 //                COMBINE_RANDOMISE
 
 
-        switch (operation) {
+        switch (operationBINARY) {
             case COMBINE_CONCATENATION:
                 Concatenation concatenation = new Concatenation();
                 newTartan = concatenation.performBinaryOperation(t1, t2);
                 break;
+            /*
             case COMBINE_ODD_EVEN:
                 OddEven oddEven = new OddEven();
                 newTartan = oddEven.performBinaryOperation(t1, t2);
                 break;
+
             case COMBINE_SUBTRACT:
                 break;
             case COMBINE_COMPOSITE:
@@ -42,22 +48,18 @@ public class Operate {
             case COMBINE_RANDOMISE:
                 break;
             default:
-                break;
-        }
+                break; */
+        } // SWITCH
 
 
         return newTartan;
     }
 
-    public Tartan performOperation(Tartan t1, OPERATION operation) {
+    public Tartan performOperation(Tartan t1, OPERATION_UNARY operation) {
 
         Tartan newTartan = null;
 
         switch (operation) {
-            case INVERT_COLOUR:
-                InvertColours invertColours = new InvertColours();
-                newTartan = invertColours.performUnaryOperation(t1);
-                break;
 
             case DARKER_COLOUR:
                 DarkerColours darkerColours = new DarkerColours();

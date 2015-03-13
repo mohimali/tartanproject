@@ -42,8 +42,8 @@ public class Tartan {
         width = height = tartanSize; //Its a square so width height are same
         isSymmetrical = true;
         originalThreadList = "";
-        //threadSizes = new double[]{};
-        //threadSizes = computeThreadSizes(threads);
+        threadCounts = new double[]{};
+        threadCounts = computeThreadSizes(threads);
 
     }
 

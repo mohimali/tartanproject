@@ -6,12 +6,10 @@ package tartan;/*
 
 
 import java.awt.*;
-import java.awt.geom.*;
 
 import javax.swing.*;
 
 import org.apache.batik.swing.*;
-import org.apache.batik.svggen.*;
 import org.apache.batik.dom.svg.SVGDOMImplementation;
 
 import org.w3c.dom.*;
@@ -21,13 +19,9 @@ import org.w3c.dom.svg.*;
 import java.awt.Graphics2D;
 import java.awt.Color;
 import java.awt.geom.Rectangle2D;
-import java.io.Writer;
-import java.io.OutputStreamWriter;
 import java.io.IOException;
 
 import org.apache.batik.svggen.SVGGraphics2D;
-import org.apache.batik.dom.GenericDOMImplementation;
-import org.w3c.dom.Document;
 import org.w3c.dom.DOMImplementation;
 import tartan.combination.*;
 
@@ -148,7 +142,7 @@ public class TartanGUI {
         Tartan t2 = new Tartan(threadT2, settCount, tartanDimensions, true);
 
         //Tartan t3 = combiner.performOperation(t1,t2,OPERATION.COMBINE_CONCATENATION);
-        Tartan t3 = combiner.performOperation(t1,t2,OPERATION.COMBINE_ODD_EVEN);
+        //Tartan t3 = combiner.performOperation(t1,t2, OPERATION_BINARY.COMBINE_ODD_EVEN);
         //Tartan t3 = combiner.performOperation(t1,OPERATION.INVERT_COLOUR);
         //Tartan t3 = combiner.performOperation(t1,OPERATION.DARKER_COLOUR);
         //Tartan t3 = combiner.performOperation(t1, OPERATION.BRIGHTER_COLOUR);
@@ -170,13 +164,13 @@ public class TartanGUI {
 
         if (mode == 1) //unary 1 tartan transformed
         {
-            test.paint(svgGenerator, t1);
-            test.paint(svgGenerator, t3);
+            //test.paint(svgGenerator, t1);
+            //test.paint(svgGenerator, t3);
         } else if (mode == 2) // binary  2 tartans combined
         {
-            test.paint(svgGenerator, t1);
-            test.paint(svgGenerator, t2);
-            test.paint(svgGenerator, t3);
+            //test.paint(svgGenerator, t1);
+            //test.paint(svgGenerator, t2);
+            //test.paint(svgGenerator, t3);
         }
 
 

@@ -137,7 +137,7 @@ public class TartanMaster {
         //Tartan t3 = combiner.performOperation(t1,t2,OPERATION.COMBINE_ODD_EVEN);
         //Tartan t3 = combiner.performOperation(t1,OPERATION.INVERT_COLOUR);
         //Tartan t3 = combiner.performOperation(t1,OPERATION.DARKER_COLOUR);
-        Tartan t3 = combiner.performOperation(t1, OPERATION.BRIGHTER_COLOUR);
+        //Tartan t3 = combiner.performOperation(t1, OPERATION_BINARY.BRIGHTER_COLOUR);
 
         System.out.println("Starting System");
         System.out.println("Tartan1: " + t1.toString());
@@ -160,12 +160,12 @@ public class TartanMaster {
         if (mode == 1) //unary 1 tartan transformed
         {
             test.paint(svgGenerator, t1);
-            test.paint(svgGenerator, t3);
+            //test.paint(svgGenerator, t3);
         } else if (mode == 2) // binary  2 tartans combined
         {
             test.paint(svgGenerator, t1);
             test.paint(svgGenerator, t2);
-            test.paint(svgGenerator, t3);
+            //test.paint(svgGenerator, t3);
         }
 
 

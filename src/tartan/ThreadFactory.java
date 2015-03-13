@@ -67,6 +67,12 @@ public class ThreadFactory {
                 String extractedThreadShortHand = m.group(1);
                 int extractedThreadCount = Integer.parseInt(m.group(2));
 
+                if(extractedThreadCount > 99)
+                {
+                    errorsDetected = true;
+                    accumulatedErrors += "Your thread count " + extractedThreadCount +
+                            " is greater than the limit of 99 \n";
+                }
 
                 //System.out.println("extractedThreadShortHand: " + extractedThreadShortHand);
                 //System.out.println("extractedThreadCount:" + extractedThreadCount);
@@ -96,7 +102,8 @@ public class ThreadFactory {
 
 
                 TartanThread tartanThread = new TartanThread(calcColour, extractedThreadShortHand, extractedThreadCount, calcColourName);
-                if(calcColour == null || extractedThreadShortHand == null|| calcColourName == null )
+
+                if(calcColour == null || extractedThreadShortHand == null|| calcColourName == null)
                 {
                     errorsDetected = true;
 
@@ -143,7 +150,7 @@ public class ThreadFactory {
                 String createdThread = "" + threads.get(i).getColourShortHand() + threads.get(i).getThreadCount();
                 if(!parts[i].equals(createdThread))
                 {
-                    accumulatedErrors += "" + parts[i] + " not recognised as a valid Colour and ThreadCount \n";
+                    accumulatedErrors += "" + parts[i] + " not recognised as a valid Colour and/or ThreadCount \n";
                 }
 
                 i++;
@@ -157,37 +164,6 @@ public class ThreadFactory {
         */
 
 
-        //CALCULATE THE ERRORS/////////////
-
-        /*
-        Map<String, Color> myColor = new HashMap<String, Color>();
-
-        myColor.put("K", K);
-        myColor.put("T", T);
-        myColor.put("N", N);
-        myColor.put("B", B);
-        myColor.put("G", G);
-        myColor.put("O", O);
-        myColor.put("P", P);
-        myColor.put("R", R);
-        myColor.put("W", W);
-        myColor.put("Y", Y);
-        myColor.put("M", M);
-        myColor.put("C", C);
-
-
-        int index = 0;
-        while (index < parts.length) {
-            Pattern p = Pattern.compile("([a-zA-Z]+)(\\d+)");
-            Matcher m = p.matcher(parts[index]); //Blue 6, Green 8
-            while (m.find()) {
-                String colourToken = m.group(1);  // Thread Color
-                String sizeToken = m.group(2); // Thread Size
-                threads.add(new TartanThread(myColor.get(colourToken), "X", Integer.parseInt(sizeToken)));
-            }
-            index++;
-        } // OUTER WHILE
-        */
         return threads;
     }
 

@@ -81,7 +81,7 @@ public class Palettes extends JPanel {
                     palettes[lastX][lastY].putClientProperty("Name", coloursArray.get(coloursArrayIndex).getName());
                     palettes[lastX][lastY].putClientProperty("ShortHand", coloursArray.get(coloursArrayIndex).getShortHand());
                     palettes[lastX][lastY].setToolTipText("Color: " + coloursArray.get(coloursArrayIndex).getName()
-                            + " ShortHand: " + coloursArray.get(coloursArrayIndex).getShortHand());
+                            + "\n ShortHand: " + coloursArray.get(coloursArrayIndex).getShortHand());
 
 
                     this.add(palettes[lastX][lastY]);
@@ -123,7 +123,7 @@ public class Palettes extends JPanel {
             palettes[tempX][tempY].setBackground(colour);
             palettes[tempX][tempY].putClientProperty("Name", name);
             palettes[tempX][tempY].putClientProperty("ShortHand", shortHand);
-            palettes[lastX][lastY].setToolTipText("Color: " + name
+            palettes[tempX][tempY].setToolTipText("Color: " + name
                     + " ShortHand: " + shortHand);
 
             tempX++;

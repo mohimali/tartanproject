@@ -7,6 +7,8 @@ import java.awt.event.ActionListener;    //for addController()
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
 import tartan.Tartan;
+import tartan.combination.OPERATION_BINARY;
+import tartan.combination.OPERATION_UNARY;
 
 import java.awt.*;
 import java.awt.event.KeyEvent;
@@ -342,5 +344,38 @@ public class TartanView {
 
     public void addCombineTartansListener(ActionListener combineTartansListener) {
         tartanCombine.addCombineTartansListener(combineTartansListener);
+    }
+
+    public void addUpdateCombinationModeListener(ActionListener updateCombinationModeUnary,
+                                                 ActionListener updateCombinationModeBinary) {
+        tartanCombine.addUpdateCombinationModeListener(updateCombinationModeUnary,updateCombinationModeBinary);
+    }
+
+    public void showUnaryOperations(boolean showUnaryOperations) {
+        tartanCombine.showUnaryOperations(showUnaryOperations);
+    }
+
+    public int getCombinationMode() {
+        return tartanCombine.getCombinationMode();
+    }
+
+    public Tartan getCombinationFirstTartan() {
+        return tartanCombine.getFirstTartan();
+    }
+
+    public Tartan getCombinationSecondTartan() {
+        return tartanCombine.getSecondTartan();
+    }
+
+    public OPERATION_BINARY getOperationBinaryMode() {
+        return tartanCombine.getOperationBinaryMode();
+    }
+
+    public OPERATION_UNARY getOperationUnaryMode() {
+        return tartanCombine.getOperationUnaryMode();
+    }
+
+    public void updateResultTartan(Tartan resultTartan) {
+        tartanCombine.updateResultTartan(resultTartan);
     }
 } // TartanView

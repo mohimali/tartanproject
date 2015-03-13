@@ -1,5 +1,6 @@
 package tartan.TartanUI;
 
+import tartan.combination.*;
 import tartan.Tartan;
 import tartan.TartanThread;
 import tartan.ThreadFactory;
@@ -14,6 +15,7 @@ import java.lang.String;
 // The Controller coordinates interactions
 // between the View and Model
 
+
 public class TartanController {
 
     private TartanModel theModel;
@@ -22,7 +24,7 @@ public class TartanController {
     private JFileChooser saveFile = new JFileChooser();
     private XMLParserTartan xpTartan = new XMLParserTartan();
     private XMLSaveTartan xsTartan = new XMLSaveTartan();
-
+    private Operate combiner = new Operate();
     String currentFileDirectory = "";
     ThreadFactory threadFactory = new ThreadFactory();
 
@@ -44,6 +46,8 @@ public class TartanController {
         this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
         this.theView.addConfigUpdateListener(new ConfigUpdateListener());
         this.theView.addCombineTartansListener(new CombineTartansListener());
+        this.theView.addUpdateCombinationModeListener(new UpdateCombinationModeUnary(),
+                new UpdateCombinationModeBinary());
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
         this.theView.addActionMenu(new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png"))));
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
@@ -82,7 +86,7 @@ public class TartanController {
 
                 if (!errorsDetected) {
 
-                    System.out.println("no errors");
+                    //System.out.println("no errors:" + i);
                     ArrayList<TartanThread> currentThreadList = xpTartan.getThreadList();
                     int currentSettCount = xpTartan.getSettCount();
                     Tartan currentTartan = new Tartan(currentThreadList, currentSettCount, 100, true);
@@ -113,23 +117,57 @@ public class TartanController {
 
     } // loadAllTartans
 
-    class RefreshTartansList implements ActionListener {
 
+    class UpdateCombinationModeUnary implements ActionListener {
         public void actionPerformed(ActionEvent e) {
-
             try {
+                if (e.getSource() instanceof JRadioButton) {
 
+                    JRadioButton tempButton = (JRadioButton) e.getSource();
+                    if (tempButton.getActionCommand() == "UNARY" && tempButton.isSelected()) {
+                        theView.showUnaryOperations(true);
+                        //System.out.println("uuuuunnnnnnnnnn");
+                    }
+
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    } //UpdateCombinationMode class
+
+    class UpdateCombinationModeBinary implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if (e.getSource() instanceof JRadioButton) {
+
+                    JRadioButton tempButton = (JRadioButton) e.getSource();
+
+                    if (tempButton.getActionCommand() == "BINARY" && tempButton.isSelected()) ;
+                    {
+
+                        theView.showUnaryOperations(false);
+                        //System.out.println("bnnnnnnn");
+                    }
+
+                }
+            } catch (Exception ex) {
+                System.out.println(ex);
+            }
+        }
+    } //UpdateCombinationMode class
+
+    class RefreshTartansList implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
                 if (e.getSource() instanceof JButton) {
 
                     loadAllTartans();
                 }
-
             } catch (Exception ex) {
                 System.out.println(ex);
             }
-
         }
-
     } //RefreshTartansList class
 
     class CombineTartansListener implements ActionListener {
@@ -139,7 +177,29 @@ public class TartanController {
             try {
 
                 if (e.getSource() instanceof JButton) {
-                    theView.displayErrorMessage("stuppppppppp.");
+
+                    int combinationMode = theView.getCombinationMode();
+
+                    if (combinationMode == 0) //UNARY
+                    {
+                        Tartan originalTartan = theView.getCombinationFirstTartan();
+                        OPERATION_UNARY operation_unary = theView.getOperationUnaryMode();
+                        Tartan resultTartan = combiner.performOperation(originalTartan, operation_unary);
+                        //System.out.println("mohimresult: " + resultTartan);
+                        theView.updateResultTartan(resultTartan);
+                    }  // UNARY IF
+
+                    if (combinationMode == 1) //BINARY
+                    {
+                        Tartan originalTartan1 = theView.getCombinationFirstTartan();
+                        Tartan originalTartan2 = theView.getCombinationSecondTartan();
+                        OPERATION_BINARY operation_binary = theView.getOperationBinaryMode();
+                        Tartan resultTartan = combiner.performOperation(originalTartan1, originalTartan2, operation_binary);
+                        //System.out.println("mohimresultb: " + resultTartan);
+                        theView.updateResultTartan(resultTartan);
+
+                    }
+                    //theView.displayErrorMessage("stuppppppppp.");
                 }
 
             } catch (Exception ex) {
@@ -293,7 +353,7 @@ public class TartanController {
             }
         }
 
-    } // menuaction
+    } // menu action
 
     private void populateViewsThreadList(ArrayList<TartanThread> myNewThreads) {
         for (int i = 0; i < myNewThreads.size(); i++) {
@@ -325,9 +385,10 @@ public class TartanController {
                     theView.resetTartan();
                     theView.populateTartansList(theModel.getTartansList());
 
+
                 }
 
-            } catch (NumberFormatException ex) {
+            } catch (Exception ex) {
                 System.out.println(ex);
             }
 
@@ -368,7 +429,7 @@ public class TartanController {
 
             } catch (Exception ex) {
                 System.out.println(ex);
-                theView.displayErrorMessage("You Need to Enter 2 Integers");
+                //theView.displayErrorMessage("You Need to Enter 2 Integers");
             }
 
         }

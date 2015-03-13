@@ -29,10 +29,12 @@ public class Concatenation extends BinaryOperation {
         }
 
         String requiredThreads = t1.getOriginalThreadList() + "," + t2.getOriginalThreadList();
-        int requiredSettCount = t1.getSettCount() + t2.getSettCount();
+        int requiredSettCount = Math.max(t1.getSettCount(),t2.getSettCount());
         int requiredDimensions = t1.getDimensions();
         boolean isSymmetrical = true;
-        newTartan = new Tartan(requiredThreads, requiredSettCount, requiredDimensions, isSymmetrical);
+
+        newTartan = new Tartan(newThreads, requiredSettCount, requiredDimensions, isSymmetrical);
+
 
         return newTartan;
     }

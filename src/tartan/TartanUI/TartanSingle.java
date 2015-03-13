@@ -171,7 +171,7 @@ public class TartanSingle extends JPanel implements MouseListener {
     public void addTartanToDisplay(Tartan newTartan) {
 
         currentTartan = newTartan;
-        System.out.println("addTartanToDisplay" + newTartan);
+        //System.out.println("addTartanToDisplay" + newTartan);
         svgTartan = new SVGTartan(newTartan);
         doc = svgTartan.getSVGTartan();
 
