@@ -1,5 +1,6 @@
 package tartan.TartanUI;
 
+import org.apache.batik.swing.JSVGCanvas;
 import tartan.combination.*;
 import tartan.Tartan;
 import tartan.TartanThread;
@@ -9,6 +10,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.File;
 import java.util.ArrayList;
 import java.lang.String;
@@ -42,7 +45,8 @@ public class TartanController {
         this.theView.addCustomColourListener(new AddCustomColourListener());
         this.theView.addSinglePaletteListener(new SinglePaletteListener());
         this.theView.addResetTartanListener(new ResetTartanListener());
-        this.theView.addRefreshTartansList(new RefreshTartansList());
+        this.theView.addRefreshTartansListListener(new RefreshTartansList());
+
         this.theView.addSettCountUpdateListener(new SettCountUpdateListener());
         this.theView.addConfigUpdateListener(new ConfigUpdateListener());
         this.theView.addCombineTartansListener(new CombineTartansListener());
@@ -53,10 +57,57 @@ public class TartanController {
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
         this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
 
+        this.theView.addSaveTartanResultListener(new SaveTartanResultListener());
+
         loadAllTartans();
+        addDoubleClickListeners();
+
+    }
+
+    private void addDoubleClickListeners() {
+        theView.addDoubleClickListenerToFirstChoice(new DoubleClickLoadTartanListener());
+        theView.addDoubleClickListenerToSecondChoice(new DoubleClickLoadTartanListener());
+        theView.addDoubleClickListenerToResult(new DoubleClickLoadTartanListener());
 
 
     }
+
+    class SaveTartanResultListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            try {
+                if (e.getSource() instanceof JButton) {
+                    saveFile.setDialogTitle("Save your resulting tartan");
+                    if (!currentFileDirectory.isEmpty()) ;
+                    {
+                        File filex = new File(currentFileDirectory);
+                        saveFile.setCurrentDirectory(filex);
+                    }
+
+                    int option = saveFile.showSaveDialog(null);
+
+                    if (option == JFileChooser.APPROVE_OPTION) {
+                        File fileToSave;
+                        if (!(saveFile.getSelectedFile().toString().endsWith(".xml"))) {
+                            fileToSave = new File(saveFile.getSelectedFile().toString() + ".xml");
+                        } else {
+                            fileToSave = new File(saveFile.getSelectedFile().toString());
+                        }
+
+                        System.out.println("fileToSave: " + fileToSave.getAbsoluteFile());
+                        currentFileDirectory = fileToSave.getAbsolutePath();
+                        Tartan tartan = theView.getCombinationResultTartan();
+                        xsTartan.updateTartanXML(tartan.getThreadList(), tartan.getSettCount(), fileToSave.getAbsolutePath());
+
+                    }
+                }
+
+            } // try
+            catch (Exception ex) {
+                System.out.println(ex);
+            }
+        } // actionPerformed
+    } //SaveTartanResultListener class
+
 
     //Initialise all the information taken from a folder or online and placed into the model.
     public void loadAllTartans() {
@@ -101,8 +152,13 @@ public class TartanController {
             // UPDATE THE MODEL WITH ALL THE NEW TARTANS WE FOUND
             theModel.populateTartansList(allTartans);
 
+
             //UPDATE THE VIEW WITH ALL THE TARTANS WE FOUND IN THE SECOND TAB
             theView.populateTartansList(theModel.getTartansList());
+
+            for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+            }
 
 
         } catch (NullPointerException e) {
@@ -117,6 +173,67 @@ public class TartanController {
 
     } // loadAllTartans
 
+    class DoubleClickLoadTartanListener implements MouseListener {
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+
+            try {
+                System.out.println("registered clicks");
+                if (e.getSource() instanceof JSVGCanvas) {
+
+                    System.out.println("JSVGCanvasX");
+                    if (e.getClickCount() == 2) {
+                        Container single = ((JSVGCanvas) e.getSource()).getParent();
+                        TartanSingle aaa = (TartanSingle) single;
+                        Tartan t = aaa.getTartan();
+
+                        theModel.replaceThreadList(t.getThreadList(),
+                                t.getSettCount(),
+                                t.getDimensions(),
+                                t.getSymmetric());
+
+                        System.out.println("settcount: " + t.getSettCount());
+                        theView.resetTartan();
+                        populateViewsThreadList(theModel.getTartanThreadList());
+                        theView.updateTartan(theModel.getTartan());
+                        theView.populateTartansList(theModel.getTartansList());
+
+                        for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                            theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                        }
+                        //theView.displayErrorMessage("e.getSource");
+                        theView.changeTabIndex(0);
+                    } // inner if
+
+                } // big iff
+            } // try
+
+            catch (Exception ex) {
+                System.out.println(ex);
+            }
+        } // mouseClicked
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    } //DoubleClickLoadTartanListener class
 
     class UpdateCombinationModeUnary implements ActionListener {
         public void actionPerformed(ActionEvent e) {

@@ -4,7 +4,8 @@ package tartan.combination;
  * Created by HomeM5 on 01/12/2014.
  */
 public enum OPERATION_BINARY {
-    COMBINE_CONCATENATION("Concatenation");
+    COMBINE_CONCATENATION("Concatenation"),
+    COMBINE_ODD_EVEN("Odd with Even");
 
     private final String form;
 

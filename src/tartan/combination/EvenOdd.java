@@ -10,7 +10,7 @@ import java.util.ArrayList;
 /**
  * Concrete Class
  */
-public class OddEven extends BinaryOperation {
+public class EvenOdd extends BinaryOperation {
 
     Tartan newTartan = null;
 
@@ -20,11 +20,13 @@ public class OddEven extends BinaryOperation {
 
         ArrayList<TartanThread> newThreads = new ArrayList<TartanThread>();
 
+        // TARTAN 1 TAKE EVEN ELEMENTS
         // Take even element e.g remember 0 index so 0,2,4,6
         for (int i = 0; i < t1.getThreadList().size(); i = i + 2) {
             newThreads.add(t1.getThreadList().get(i));
         }
 
+        // TARTAN 2 TAKE ODD ELEMENTS
         // Take even element e.g remember 0 index so 1,3,5,7
         for (int i = 1; i < t2.getThreadList().size(); i = i + 2) {
             newThreads.add(t2.getThreadList().get(i));

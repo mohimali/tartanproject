@@ -92,9 +92,11 @@ public class TartanDisplay extends JPanel {
 
 
     public void updateTartan(Tartan newTartan) {
+        newTartan.updateDimensions(400);
         addTartanToDisplay(newTartan);
 
         calculateSettStructure(newTartan.getThreadList());
+
 
 
     }

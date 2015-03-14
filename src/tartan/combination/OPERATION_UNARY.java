@@ -4,8 +4,9 @@ package tartan.combination;
  * Created by HomeM5 on 01/12/2014.
  */
 public enum OPERATION_UNARY {
-    DARKER_COLOUR("Darker Colours"),
-    BRIGHTER_COLOUR("Brighter Colours");
+    Tartanise("Tartanise"),
+    LeftThinner("Left Thinnernise"),
+    RightThinner("Right Thinnernise");
 
     private final String form;
 

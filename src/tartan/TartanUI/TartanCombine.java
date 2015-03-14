@@ -26,6 +26,7 @@ public class TartanCombine extends JPanel {
     JLabel lblNew = new JLabel("<html><font color='white'><b>Here you can choose two tartans to combine</b></font></html>");
     JLabel lblEquals;
     JPanel allTartans;
+    ArrayList<JLayer> arrayOfTartansForListeners = new ArrayList<JLayer>();
 
     String[] combinationAlgorithms = new String[EnumSet.allOf(OPERATION_BINARY.class).size()];
 
@@ -34,7 +35,7 @@ public class TartanCombine extends JPanel {
     JComboBox combinationList;
 
     ArrayList<TartanSingle> tsArray = new ArrayList<TartanSingle>();
-    JButton btnRefreshTartanList, btnCombineTartan;
+    JButton btnRefreshTartanList, btnCombineTartan,btnSaveResultTartan;
     int noOfTartansWidth = 4;
 
     JLayer tartanResult;
@@ -128,7 +129,7 @@ public class TartanCombine extends JPanel {
         btnCombineTartan.setBackground(Color.DARK_GRAY);
         allTartans.setBackground(Color.darkGray);
         allTartans.setPreferredSize(new Dimension(555, 250));
-
+        btnSaveResultTartan = new JButton("<html><font color='black'>Save new Tartan</font></html>");
         jScrollPane = new JScrollPane(allTartans);
         jScrollPane.getVerticalScrollBar().setUnitIncrement(7);
         jScrollPane.setHorizontalScrollBarPolicy(HORIZONTAL_SCROLLBAR_NEVER);
@@ -139,7 +140,7 @@ public class TartanCombine extends JPanel {
     public TartanCombine() {
         this.setLayout(new MigLayout(""));
         init();
-        String width = ",width 550:550:550";
+        String width = ",width 570:570:570";
         String height = ",height 220:220:220";
 
         String width2 = ",width 180:180:180";
@@ -148,8 +149,10 @@ public class TartanCombine extends JPanel {
         String spanMedium = ", span 1 2";
 
         this.setBackground(Color.darkGray);
-        this.add(jrUnaryOperations, "Wrap");
+        this.add(jrUnaryOperations,"span 4");
+        this.add(btnSaveResultTartan,"align center, span 2 2,wrap");
         this.add(jrBinaryOperations, "Wrap");
+
         //this.add(lblNew, "Wrap,span, dock south");
         //this.add(btnRefreshTartanList, "Wrap,dock south");
 
@@ -161,14 +164,14 @@ public class TartanCombine extends JPanel {
 
         JPanel combinationStuff = new JPanel(new MigLayout(""));
         combinationStuff.setBackground(Color.darkGray);
-        combinationStuff.add(combinationList, "wrap");
-        combinationStuff.add(btnCombineTartan);
+        combinationStuff.add(combinationList, "wrap" + width2 + height2);
+        combinationStuff.add(btnCombineTartan,"align center");
 
         topPanel.add(combinationStuff);
         topPanel.add(tartanSecondChoice, mediumString);
         topPanel.add(lblEquals);
         this.add(topPanel, "span 4");
-        this.add(tartanResult, "wrap , " + largeString);
+        this.add(tartanResult, "wrap , " + largeString + ",top, span 2 2");
         this.add(jScrollPane, "span 4,align left" + width + height + "");
 
 
@@ -178,6 +181,7 @@ public class TartanCombine extends JPanel {
 
         String wrap = ",wrap";
         allTartans.removeAll();
+        arrayOfTartansForListeners = new ArrayList<JLayer>(); // RESET
 
         allTartans.repaint();
         for (int index = 0; index < tartansList.size(); index++) {
@@ -191,8 +195,10 @@ public class TartanCombine extends JPanel {
             // DO A NEW ROW IF NEEDED
             if (((index + 1) % noOfTartansWidth) == 0) {
                 allTartans.add(currentMiniTartan, smallString + wrap);
+                arrayOfTartansForListeners.add(currentMiniTartan);
             } else {
                 allTartans.add(currentMiniTartan, smallString);
+                arrayOfTartansForListeners.add(currentMiniTartan);
             }
         } // outside for
         allTartans.repaint();
@@ -240,7 +246,6 @@ public class TartanCombine extends JPanel {
             });
 
 
-
         } else if (!showUnaryOperations) //BINARY
         {
             combinationMode = 1; // BINARY OPERATIONS ALLOWED
@@ -282,15 +287,13 @@ public class TartanCombine extends JPanel {
     } //getSecondTartan
 
     public OPERATION_BINARY getOperationBinaryMode() {
-        int index  = combinationList.getSelectedIndex();
-        String operation  = combinationList.getSelectedItem().toString();
+        int index = combinationList.getSelectedIndex();
+        String operation = combinationList.getSelectedItem().toString();
 
         OPERATION_BINARY currentOp = null;
 
-        for(OPERATION_BINARY text : EnumSet.allOf(OPERATION_BINARY.class))
-        {
-            if (text.toString() == operation)
-            {
+        for (OPERATION_BINARY text : EnumSet.allOf(OPERATION_BINARY.class)) {
+            if (text.toString() == operation) {
                 currentOp = text;
             }
         }
@@ -299,15 +302,13 @@ public class TartanCombine extends JPanel {
     }
 
     public OPERATION_UNARY getOperationUnaryMode() {
-        int index  = combinationList.getSelectedIndex();
-        String operation  = combinationList.getSelectedItem().toString();
+        int index = combinationList.getSelectedIndex();
+        String operation = combinationList.getSelectedItem().toString();
 
         OPERATION_UNARY currentOp = null;
 
-        for(OPERATION_UNARY text : EnumSet.allOf(OPERATION_UNARY.class))
-        {
-            if (text.toString() == operation)
-            {
+        for (OPERATION_UNARY text : EnumSet.allOf(OPERATION_UNARY.class)) {
+            if (text.toString() == operation) {
                 currentOp = text;
             }
         }
@@ -321,6 +322,40 @@ public class TartanCombine extends JPanel {
         ts.addTartanToDisplay(newResultTartan);
         ts.validate();
 
+    }
+
+    public void addDoubleClickListenerToFirstChoice(MouseListener doubleClickLoadTartanListener) {
+        tartanFirstChoice.addMouseListener(doubleClickLoadTartanListener);
+        TartanSingle myTS = (TartanSingle) tartanFirstChoice.getView();
+        myTS.canvas.addMouseListener(doubleClickLoadTartanListener);
+    }
+
+    public void addDoubleClickListenerToSecondChoice(MouseListener doubleClickLoadTartanListener) {
+        tartanSecondChoice.addMouseListener(doubleClickLoadTartanListener);
+        TartanSingle myTS = (TartanSingle) tartanSecondChoice.getView();
+        myTS.canvas.addMouseListener(doubleClickLoadTartanListener);
+    }
+
+    public void addDoubleClickListenerToResult(MouseListener doubleClickLoadTartanListener) {
+        tartanResult.addMouseListener(doubleClickLoadTartanListener);
+        TartanSingle myTS = (TartanSingle) tartanResult.getView();
+        myTS.canvas.addMouseListener(doubleClickLoadTartanListener);
+    }
+
+    public void addDoubleClickListenerToIndexedMini(int i, MouseListener doubleClickLoadTartanListener) {
+        JLayer currentMiniT = arrayOfTartansForListeners.get(i);
+        //currentMiniT.addMouseListener(doubleClickLoadTartanListener);
+        TartanSingle myTS = (TartanSingle) currentMiniT.getView();
+        myTS.canvas.addMouseListener(doubleClickLoadTartanListener);
+    }
+
+    public void addSaveTartanResultListener(ActionListener saveTartanResultListener) {
+        btnSaveResultTartan.addActionListener(saveTartanResultListener);
+    }
+
+    public Tartan getCombinationResultTartan() {
+        TartanSingle tss = (TartanSingle)tartanResult.getView();
+        return tss.getTartan();
     }
 
 
@@ -392,15 +427,9 @@ public class TartanCombine extends JPanel {
 
         @Override
         public void dragGestureRecognized(DragGestureEvent event) {
-
-            //System.out.println("triggered inside canvas method");
             Cursor cursor = null;
             JLayer myTartanX = currentLayer;
             TartanSingle myTartan = (TartanSingle) myTartanX.getView();
-
-            // System.out.println("About to print canvas");
-            //System.out.println(myTartan.getTartan().toString());
-
             if (event.getDragAction() == DnDConstants.ACTION_COPY) {
                 cursor = DragSource.DefaultCopyDrop;
             }
@@ -473,7 +502,6 @@ public class TartanCombine extends JPanel {
                 ((JLayer) c).setLayerEventMask(0);
             }
 
-
             // overridden method which catches MouseMotion events
             public void eventDispatched(AWTEvent e, JLayer<? extends JComponent> l) {
                 if (e.getID() == MouseEvent.MOUSE_DRAGGED) {
@@ -494,12 +522,12 @@ public class TartanCombine extends JPanel {
         DragSource ds = new DragSource();
         // create a component to be decorated with the layer
         // This would be your custom component.
-        TartanSingle customPanel = new TartanSingle(index, tartanInserted);
-        //customPanel.add(new JButton("JButton"));
+        TartanSingle ts = new TartanSingle(index, tartanInserted);
+        //ts.add(new JButton("JButton"));
 
-        JLayer tempLayerUI = new JLayer<JComponent>(customPanel, layerUI);
+        JLayer tempLayerUI = new JLayer<JComponent>(ts, layerUI);
 
-        ds.createDefaultDragGestureRecognizer(customPanel.canvas,
+        ds.createDefaultDragGestureRecognizer(ts.canvas,
                 DnDConstants.ACTION_COPY, new DragGestureListImp1(tempLayerUI));
 
         ds.createDefaultDragGestureRecognizer(tempLayerUI,

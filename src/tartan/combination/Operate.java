@@ -30,6 +30,10 @@ public class Operate {
                 Concatenation concatenation = new Concatenation();
                 newTartan = concatenation.performBinaryOperation(t1, t2);
                 break;
+            case COMBINE_ODD_EVEN:
+                EvenOdd evenOdd = new EvenOdd();
+                newTartan = evenOdd.performBinaryOperation(t1, t2);
+                break;
             /*
             case COMBINE_ODD_EVEN:
                 OddEven oddEven = new OddEven();
@@ -61,15 +65,21 @@ public class Operate {
 
         switch (operation) {
 
-            case DARKER_COLOUR:
-                DarkerColours darkerColours = new DarkerColours();
-                newTartan = darkerColours.performUnaryOperation(t1);
+            case Tartanise:
+                Tartanise tartanise = new Tartanise();
+                newTartan = tartanise.performUnaryOperation(t1);
                 break;
 
-            case BRIGHTER_COLOUR:
-                BrighterColours brighterColours = new BrighterColours();
-                newTartan = brighterColours.performUnaryOperation(t1);
+            case LeftThinner:
+                LeftThinner leftThinner = new LeftThinner();
+                newTartan = leftThinner.performUnaryOperation(t1);
                 break;
+
+            case RightThinner:
+                RightThinner rightThinner = new RightThinner();
+                newTartan = rightThinner.performUnaryOperation(t1);
+                break;
+
             default:
                 break;
         }

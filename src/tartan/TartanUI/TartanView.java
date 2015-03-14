@@ -2,7 +2,7 @@ package tartan.TartanUI;
 
 
 import javax.swing.JFrame;
-import java.awt.event.ActionListener;    //for addController()
+import java.awt.event.*;
 
 import com.bric.swing.ColorPicker;
 import net.miginfocom.swing.MigLayout;
@@ -11,9 +11,6 @@ import tartan.combination.OPERATION_BINARY;
 import tartan.combination.OPERATION_UNARY;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.io.IOException;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -97,7 +94,7 @@ public class TartanView {
     }
 
     public void initComponents() throws Exception {
-        frame = new JFrame("Tartan Designer");
+        frame = new JFrame("Tartan Designer and Combiner");
         frame.setSize(1000, 600);
         Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -208,6 +205,7 @@ public class TartanView {
 
     public void updateTartan(Tartan newTartan) {
         tartanDisplay.updateTartan(newTartan);
+        leftColourChooser.updateSettCount(newTartan.getSettCount());
         leftColourChooser.updateUI();
     }
 
@@ -330,7 +328,7 @@ public class TartanView {
         leftColourChooser.threadListRows.addDeleteThreadListener(index, listenForDeleteThreadListener);
     }
 
-    public void addRefreshTartansList(ActionListener refreshTartansList) {
+    public void addRefreshTartansListListener(ActionListener refreshTartansList) {
         tartanCombine.addRefreshTartansList(refreshTartansList);
     }
 
@@ -348,7 +346,7 @@ public class TartanView {
 
     public void addUpdateCombinationModeListener(ActionListener updateCombinationModeUnary,
                                                  ActionListener updateCombinationModeBinary) {
-        tartanCombine.addUpdateCombinationModeListener(updateCombinationModeUnary,updateCombinationModeBinary);
+        tartanCombine.addUpdateCombinationModeListener(updateCombinationModeUnary, updateCombinationModeBinary);
     }
 
     public void showUnaryOperations(boolean showUnaryOperations) {
@@ -377,5 +375,35 @@ public class TartanView {
 
     public void updateResultTartan(Tartan resultTartan) {
         tartanCombine.updateResultTartan(resultTartan);
+    }
+
+
+    public void addDoubleClickListenerToFirstChoice(MouseListener doubleClickLoadTartanListener) {
+        tartanCombine.addDoubleClickListenerToFirstChoice(doubleClickLoadTartanListener);
+    }
+
+    public void addDoubleClickListenerToSecondChoice(MouseListener doubleClickLoadTartanListener) {
+        tartanCombine.addDoubleClickListenerToSecondChoice(doubleClickLoadTartanListener);
+    }
+
+    public void addDoubleClickListenerToResult(MouseListener doubleClickLoadTartanListener) {
+        tartanCombine.addDoubleClickListenerToResult(doubleClickLoadTartanListener);
+    }
+
+
+    public void changeTabIndex(int tabIndex) {
+        mainTabPane.setSelectedIndex(tabIndex);
+    }
+
+    public void addDoubleClickListenerToIndexedMini(int i, MouseListener doubleClickLoadTartanListener) {
+        tartanCombine.addDoubleClickListenerToIndexedMini(i,doubleClickLoadTartanListener);
+    }
+
+    public void addSaveTartanResultListener(ActionListener saveTartanResultListener) {
+        tartanCombine.addSaveTartanResultListener(saveTartanResultListener);
+    }
+
+    public Tartan getCombinationResultTartan() {
+        return tartanCombine.getCombinationResultTartan();
     }
 } // TartanView
