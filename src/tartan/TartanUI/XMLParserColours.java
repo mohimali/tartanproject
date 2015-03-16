@@ -35,11 +35,7 @@ public class XMLParserColours extends DefaultHandler{
 
             //get a new instance of parser
             SAXParser sp = spf.newSAXParser();
-            //parse the file and also register this class for call backs
 
-
-            //System.out.println("XMLLoad: "  + this.getClass().getResource("resources/xml/palette.xml"));
-            //System.out.println("me" + test);
 
             try{
                 // CHECK IF THIER IS A FILE ALREADY WITH CUSTOM DATA

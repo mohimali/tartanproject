@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<SettSpec>
+    <SettCount>2</SettCount>
+    <Thread>
+        <ID>1</ID>
+        <ColourName>Yellow</ColourName>
+        <ColourCode>0x00ffff00</ColourCode>
+        <ColourShortHand>Y</ColourShortHand>
+        <ThreadCount>1</ThreadCount>
+    </Thread>
+    <Thread>
+        <ID>2</ID>
+        <ColourName>Purple</ColourName>
+        <ColourCode>0x00800080</ColourCode>
+        <ColourShortHand>P</ColourShortHand>
+        <ThreadCount>1</ThreadCount>
+    </Thread>
+</SettSpec>

@@ -143,7 +143,7 @@ public class TartanCombine extends JPanel {
         String width = ",width 570:570:570";
         String height = ",height 220:220:220";
 
-        String width2 = ",width 180:180:180";
+        String width2 = ",width 300:300:300";
         String height2 = ",height 30:30:30";
 
         String spanMedium = ", span 1 2";
@@ -223,6 +223,7 @@ public class TartanCombine extends JPanel {
         jrBinaryOperations.addActionListener(updateCombinationModeBinary);
     }
 
+
     public void showUnaryOperations(boolean showUnaryOperations) {
         if (showUnaryOperations) // UNARY
         {
@@ -246,6 +247,7 @@ public class TartanCombine extends JPanel {
             });
 
 
+            tartanSecondChoice.setVisible(false);
         } else if (!showUnaryOperations) //BINARY
         {
             combinationMode = 1; // BINARY OPERATIONS ALLOWED
@@ -267,7 +269,7 @@ public class TartanCombine extends JPanel {
                     String itemType = (String) type.getSelectedItem();
                 }
             });
-
+            tartanSecondChoice.setVisible(true);
         } // elseif for BINARY
 
     } // show

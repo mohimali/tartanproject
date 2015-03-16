@@ -5,7 +5,8 @@ package tartan.combination;
  */
 public enum OPERATION_BINARY {
     COMBINE_CONCATENATION("Concatenation"),
-    COMBINE_ODD_EVEN("Odd with Even");
+    COMBINE_EVEN_ODD("Even with Odd"),
+    RandomiseTogether("RandomiseTogether");
 
     private final String form;
 

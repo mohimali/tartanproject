@@ -30,10 +30,17 @@ public class Operate {
                 Concatenation concatenation = new Concatenation();
                 newTartan = concatenation.performBinaryOperation(t1, t2);
                 break;
-            case COMBINE_ODD_EVEN:
+            case COMBINE_EVEN_ODD:
                 EvenOdd evenOdd = new EvenOdd();
                 newTartan = evenOdd.performBinaryOperation(t1, t2);
                 break;
+
+            case RandomiseTogether:
+                RandomiseTogether randomiseTogether = new RandomiseTogether();
+                newTartan = randomiseTogether.performBinaryOperation(t1, t2);
+                break;
+
+
             /*
             case COMBINE_ODD_EVEN:
                 OddEven oddEven = new OddEven();
@@ -78,6 +85,11 @@ public class Operate {
             case RightThinner:
                 RightThinner rightThinner = new RightThinner();
                 newTartan = rightThinner.performUnaryOperation(t1);
+                break;
+
+            case RandomiseColoursWithThreadCounts:
+                RandomiseColoursWithThreadCounts randomiseColoursWithThreadCounts = new RandomiseColoursWithThreadCounts();
+                newTartan = randomiseColoursWithThreadCounts.performUnaryOperation(t1);
                 break;
 
             default:

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Palette>
+    <Colour type="Colour">
+        <Id>1</Id>
+        <Name>LightRed</Name>
+        <Code>0xFF3333</Code>
+        <ShortHand>LR</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>2</Id>
+        <Name>LightOrange</Name>
+        <Code>0xFFC04D</Code>
+        <ShortHand>LO</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>3</Id>
+        <Name>LightYellow</Name>
+        <Code>0xFFFFE0</Code>
+        <ShortHand>LY</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>4</Id>
+        <Name>LightGreen</Name>
+        <Code>0x90EE90</Code>
+        <ShortHand>LG</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>5</Id>
+        <Name>LightBlue</Name>
+        <Code>0xADD8E6</Code>
+        <ShortHand>LB</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>6</Id>
+        <Name>LightPurple</Name>
+        <Code>0xA64DA6</Code>
+        <ShortHand>LP</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>7</Id>
+        <Name>White</Name>
+        <Code>0xFFFFFF</Code>
+        <ShortHand>W</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>8</Id>
+        <Name>Red</Name>
+        <Code>0xFF0000</Code>
+        <ShortHand>R</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>9</Id>
+        <Name>Orange</Name>
+        <Code>0xFFA500</Code>
+        <ShortHand>O</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>10</Id>
+        <Name>Yellow</Name>
+        <Code>0xFFFF00</Code>
+        <ShortHand>Y</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>11</Id>
+        <Name>Green</Name>
+        <Code>0x008000</Code>
+        <ShortHand>G</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>12</Id>
+        <Name>Blue</Name>
+        <Code>0x0000FF</Code>
+        <ShortHand>B</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>13</Id>
+        <Name>Purple</Name>
+        <Code>0x800080</Code>
+        <ShortHand>P</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>14</Id>
+        <Name>Grey</Name>
+        <Code>0x808080</Code>
+        <ShortHand>N</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>15</Id>
+        <Name>DarkRed</Name>
+        <Code>0x8B0000</Code>
+        <ShortHand>DR</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>16</Id>
+        <Name>DarkOrange</Name>
+        <Code>0xFF8C00</Code>
+        <ShortHand>DO</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>17</Id>
+        <Name>DarkYellow</Name>
+        <Code>0xB8B800</Code>
+        <ShortHand>DY</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>18</Id>
+        <Name>DarkGreen</Name>
+        <Code>0x006400</Code>
+        <ShortHand>DG</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>19</Id>
+        <Name>DarkBlue</Name>
+        <Code>0x0000A0</Code>
+        <ShortHand>DB</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>20</Id>
+        <Name>DarkPurple</Name>
+        <Code>0x800080</Code>
+        <ShortHand>DP</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>21</Id>
+        <Name>Black</Name>
+        <Code>0x000000</Code>
+        <ShortHand>K</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>22</Id>
+        <Name>Brown</Name>
+        <Code>0xA52A2A</Code>
+        <ShortHand>T</ShortHand>
+    </Colour>
+    <Colour type="Colour">
+        <Id>23</Id>
+        <Name>MistyOrange</Name>
+        <Code>0x00803203</Code>
+        <ShortHand>MO</ShortHand>
+    </Colour>
+</Palette>

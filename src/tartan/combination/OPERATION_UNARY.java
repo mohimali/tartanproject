@@ -6,7 +6,8 @@ package tartan.combination;
 public enum OPERATION_UNARY {
     Tartanise("Tartanise"),
     LeftThinner("Left Thinnernise"),
-    RightThinner("Right Thinnernise");
+    RightThinner("Right Thinnernise"),
+    RandomiseColoursWithThreadCounts("Randomise Colours with Thread Counts");
 
     private final String form;
 

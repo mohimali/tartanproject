@@ -94,7 +94,7 @@ public class TartanView {
     }
 
     public void initComponents() throws Exception {
-        frame = new JFrame("Tartan Designer and Combiner");
+        frame = new JFrame("Tartan Designer and Combiner ");
         frame.setSize(1000, 600);
         Container mainWindow = frame.getContentPane();
         frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
@@ -131,8 +131,8 @@ public class TartanView {
         mainTabPane = new JTabbedPane();
 
 
-        ImageIcon imgTartanCreation = new ImageIcon(this.getClass().getResource("resources/images/new.png"));
-        ImageIcon imgTartanCombination = new ImageIcon(this.getClass().getResource("resources/images/load.png"));
+        ImageIcon imgTartanCreation = new ImageIcon(this.getClass().getResource("resources/images/creation.jpg"));
+        ImageIcon imgTartanCombination = new ImageIcon(this.getClass().getResource("resources/images/combine.png"));
 
 
         JPanel tartanDesigner = new JPanel(new MigLayout("", // Layout Constraints
@@ -151,10 +151,10 @@ public class TartanView {
         tartanCombiner.add(tartanCombinerMainWindow, "growx");
         tartanCombiner.setBackground(Color.darkGray);
 
-        mainTabPane.addTab("Tartan Designer", imgTartanCreation, tartanDesigner,
+        mainTabPane.addTab("Tartan Designer ", imgTartanCreation, tartanDesigner,
                 "Stuff");
 
-        mainTabPane.addTab("Tartan Combiner", imgTartanCombination, tartanCombiner,
+        mainTabPane.addTab("Tartan Combiner ", imgTartanCombination, tartanCombiner,
                 "Stuff");
 
 
@@ -166,8 +166,6 @@ public class TartanView {
             public void stateChanged(ChangeEvent e) {
                 System.out.println("Tab: " + mainTabPane.getSelectedIndex());
 
-
-                // Prints the string 3 times if there are 3 tabs etc
             }
         });
 

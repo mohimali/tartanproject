@@ -55,7 +55,7 @@ public class TartanController {
         this.theView.addActionMenu(new MenuAction("New Tartan", new ImageIcon(this.getClass().getResource("resources/images/new.png"))));
         this.theView.addActionMenu(new MenuAction("Save my Tartan", new ImageIcon(this.getClass().getResource("resources/images/save.png"))));
         this.theView.addActionMenu(new MenuAction("Load existing Tartan", new ImageIcon(this.getClass().getResource("resources/images/load.png"))));
-        this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
+        //this.theView.addActionMenu(new MenuAction("Upload tartan to web", new ImageIcon(this.getClass().getResource("resources/images/upload.png"))));
 
         this.theView.addSaveTartanResultListener(new SaveTartanResultListener());
 
@@ -257,16 +257,11 @@ public class TartanController {
         public void actionPerformed(ActionEvent e) {
             try {
                 if (e.getSource() instanceof JRadioButton) {
-
                     JRadioButton tempButton = (JRadioButton) e.getSource();
-
                     if (tempButton.getActionCommand() == "BINARY" && tempButton.isSelected()) ;
                     {
-
                         theView.showUnaryOperations(false);
-                        //System.out.println("bnnnnnnn");
                     }
-
                 }
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -356,6 +351,9 @@ public class TartanController {
                         populateViewsThreadList(theModel.getTartanThreadList());
                         theView.updateTartan(theModel.getTartan());
                         theView.populateTartansList(theModel.getTartansList());
+                        for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                            theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                        }
                     }
 
 
@@ -383,6 +381,12 @@ public class TartanController {
                     theModel.resetTartan();
                     theView.resetTartan();
                     theView.populateTartansList(theModel.getTartansList());
+
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
+                    theView.changeTabIndex(0);
+
                 } // New Tartan
                 else if (command == "Save my Tartan") {
                     saveFile.setDialogTitle("Save your tartan");
@@ -411,7 +415,15 @@ public class TartanController {
 
                     }
 
+                    //UPDATE THE VIEW WITH ALL THE TARTANS WE FOUND IN THE SECOND TAB
+                    theView.populateTartansList(theModel.getTartansList());
 
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
+
+                    loadAllTartans();
+                    theView.changeTabIndex(0);
                 } //SAVE MY TARTAN
                 else if (command == "Load existing Tartan") {
 
@@ -455,10 +467,23 @@ public class TartanController {
                         theView.displayErrorMessage("Not a valid tartan Sett");
                     }
 
+                    //UPDATE THE VIEW WITH ALL THE TARTANS WE FOUND IN THE SECOND TAB
+                    theView.populateTartansList(theModel.getTartansList());
 
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
+
+                    theView.changeTabIndex(0);
                 } //Load existing Tartan
                 else if (command == "Upload tartan to web") {
 
+                    theView.populateTartansList(theModel.getTartansList());
+
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
+                    theView.changeTabIndex(0);
                 } // Upload tartan to web
 
             } catch (
@@ -502,6 +527,9 @@ public class TartanController {
                     theView.resetTartan();
                     theView.populateTartansList(theModel.getTartansList());
 
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
 
                 }
 
@@ -522,6 +550,9 @@ public class TartanController {
                     //theView.updateSettCount(mySettCount);
                     theView.updateTartan(theModel.getTartan());
                     theView.populateTartansList(theModel.getTartansList());
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
                 }
 
             } catch (Exception ex) {
@@ -600,6 +631,9 @@ public class TartanController {
                                 myColour + " myName: " + myName + " colourShortHand: " + colourShortHand);
                         theView.updateTartan(theModel.getTartan());
                         theView.populateTartansList(theModel.getTartansList());
+                        for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                            theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                        }
                     }
                     theView.resetMode(theView.getOldColourToBeChanged());
                     theView.resetAllColourPalettes();
@@ -639,6 +673,9 @@ public class TartanController {
                     theView.addUpdateThreadListener(new UpdateThreadListener(), lastIndex);
                     theView.addDeleteThreadListener(new DeleteThreadListener(), lastIndex);
                     theView.addUpdateColourRowListener(new UpdateColourRowListener(), lastIndex);
+                    for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                        theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                    }
                 }
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -678,6 +715,9 @@ public class TartanController {
 
                 theView.updateTartan(theModel.getTartan());
                 theView.populateTartansList(theModel.getTartansList());
+                for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                    theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                }
                 //theView.displayErrorMessage("updateThreadListener");
             } catch (Exception ex) {
                 System.out.println(ex);
@@ -699,6 +739,9 @@ public class TartanController {
 
                 theView.updateTartan(theModel.getTartan());
                 theView.populateTartansList(theModel.getTartansList());
+                for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                    theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                }
             } catch (Exception ex) {
                 System.out.println(ex);
 
@@ -721,6 +764,9 @@ public class TartanController {
                 theView.allowColourPalette(myName, rowIndex, myColour, myColourShortHand);
                 theView.updateTartan(theModel.getTartan());
                 theView.populateTartansList(theModel.getTartansList());
+                for (int i = 0; i < theModel.getTartansList().size(); i++) {
+                    theView.addDoubleClickListenerToIndexedMini(i, new DoubleClickLoadTartanListener());
+                }
             } catch (Exception ex) {
                 System.out.println(ex);
             }
