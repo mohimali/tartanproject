@@ -9,16 +9,16 @@ import javax.swing.border.Border;
 
 class ToolTipLookAndFeel extends NimbusLookAndFeel
 {
-    protected void initSystemColorDefaults(UIDefaults table)
+    protected void initSystemColorDefaults(UIDefaults myInfo)
     {
-        super.initSystemColorDefaults(table);
-        table.put("info", new ColorUIResource(0, 247, 200));
+        super.initSystemColorDefaults(myInfo);
+        myInfo.put("info", new ColorUIResource(0, 247, 200));
     }
 
-    protected void initComponentDefaults(UIDefaults table) {
-        super.initComponentDefaults(table);
+    protected void initComponentDefaults(UIDefaults myInfo) {
+        super.initComponentDefaults(myInfo);
 
         Border border = BorderFactory.createLineBorder(new Color(76,79,83));
-        table.put("ToolTip.border", border);
+        myInfo.put("ToolTip.border", border);
     }
 }

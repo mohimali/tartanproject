@@ -20,6 +20,8 @@ import static javax.swing.ScrollPaneConstants.*;
 
 /**
  * Created by Mohim on 06/03/2015.
+ * http://stackoverflow.com/questions/28922000/how-to-make-all-of-the-region-of-a-jpanel-draggable-including-a-jsvgcanvas-withi
+ * http://softwareisart.blogspot.co.uk/2011/11/drag-and-drop-of-complex-custom-objects.html
  */
 public class TartanCombine extends JPanel {
 
@@ -30,12 +32,10 @@ public class TartanCombine extends JPanel {
 
     String[] combinationAlgorithms = new String[EnumSet.allOf(OPERATION_BINARY.class).size()];
 
-    //Create the combo box, select item at index 4.
-//Indices start at 0, so 4 specifies the pig.
     JComboBox combinationList;
 
     ArrayList<TartanSingle> tsArray = new ArrayList<TartanSingle>();
-    JButton btnRefreshTartanList, btnCombineTartan,btnSaveResultTartan;
+    JButton btnRefreshTartanList, btnCombineTartan, btnSaveResultTartan;
     int noOfTartansWidth = 4;
 
     JLayer tartanResult;
@@ -149,8 +149,8 @@ public class TartanCombine extends JPanel {
         String spanMedium = ", span 1 2";
 
         this.setBackground(Color.darkGray);
-        this.add(jrUnaryOperations,"span 4");
-        this.add(btnSaveResultTartan,"align center, span 2 2,wrap");
+        this.add(jrUnaryOperations, "span 4");
+        this.add(btnSaveResultTartan, "align center, span 2 2,wrap");
         this.add(jrBinaryOperations, "Wrap");
 
         //this.add(lblNew, "Wrap,span, dock south");
@@ -165,7 +165,7 @@ public class TartanCombine extends JPanel {
         JPanel combinationStuff = new JPanel(new MigLayout(""));
         combinationStuff.setBackground(Color.darkGray);
         combinationStuff.add(combinationList, "wrap" + width2 + height2);
-        combinationStuff.add(btnCombineTartan,"align center");
+        combinationStuff.add(btnCombineTartan, "align center");
 
         topPanel.add(combinationStuff);
         topPanel.add(tartanSecondChoice, mediumString);
@@ -356,7 +356,7 @@ public class TartanCombine extends JPanel {
     }
 
     public Tartan getCombinationResultTartan() {
-        TartanSingle tss = (TartanSingle)tartanResult.getView();
+        TartanSingle tss = (TartanSingle) tartanResult.getView();
         return tss.getTartan();
     }
 
@@ -391,9 +391,9 @@ public class TartanCombine extends JPanel {
         }
     } //TransferableTartan
 
-    class DragGestureListImp implements DragGestureListener {
+    class DragGestureForJLayer implements DragGestureListener {
 
-        DragGestureListImp() {
+        DragGestureForJLayer() {
 
         }
 
@@ -419,11 +419,11 @@ public class TartanCombine extends JPanel {
 
     } //DragGestureListImp
 
-    class DragGestureListImp1 implements DragGestureListener {
+    class DragGestureForCanvas implements DragGestureListener {
 
         JLayer currentLayer;
 
-        DragGestureListImp1(JLayer aa) {
+        DragGestureForCanvas(JLayer aa) {
             currentLayer = aa;
         }
 
@@ -447,12 +447,12 @@ public class TartanCombine extends JPanel {
             DropTargetListener {
 
         private DropTarget dropTarget;
-        private JLayer panel;
+        private JLayer customPanel;
 
-        public MyDropTargetListImp(JLayer panel) {
-            this.panel = panel;
+        public MyDropTargetListImp(JLayer dropPanel) {
+            this.customPanel = dropPanel;
 
-            dropTarget = new DropTarget(panel, DnDConstants.ACTION_COPY, this,
+            dropTarget = new DropTarget(dropPanel, DnDConstants.ACTION_COPY, this,
                     true, null);
         }
 
@@ -467,11 +467,11 @@ public class TartanCombine extends JPanel {
                 if (event.isDataFlavorSupported(dataFlavor)) {
                     event.acceptDrop(DnDConstants.ACTION_COPY);
 
-                    //this.panel.addTartanToDisplay(an);
-                    TartanSingle aa = (TartanSingle) this.panel.getView();
+                    //this.customPanel.addTartanToDisplay(an);
+                    TartanSingle aa = (TartanSingle) this.customPanel.getView();
                     aa.addTartanToDisplay(an);
                     event.dropComplete(true);
-                    this.panel.validate();
+                    this.customPanel.validate();
                     return;
                 }
                 event.rejectDrop();
@@ -483,9 +483,7 @@ public class TartanCombine extends JPanel {
     } //MyDropTargetListImp
 
     private JLayer<JComponent> createLayer(int index, Tartan tartanInserted, int layerSize, int type) {
-
         tartanInserted.updateDimensions(layerSize);
-        // This custom layerUI will intercept all mouseMotion events generated within its borders and delegate to the wrapped JPanel
 
         final LayerUI<JComponent> layerUI;
 
@@ -493,8 +491,6 @@ public class TartanCombine extends JPanel {
 
             public void installUI(JComponent c) {
                 super.installUI(c);
-                // enable mouse events for the layer's subcomponents
-                //((JLayer) c).setLayerEventMask(AWTEvent.MOUSE_EVENT_MASK);
                 ((JLayer) c).setLayerEventMask(AWTEvent.MOUSE_MOTION_EVENT_MASK);
             }
 
@@ -504,17 +500,9 @@ public class TartanCombine extends JPanel {
                 ((JLayer) c).setLayerEventMask(0);
             }
 
-            // overridden method which catches MouseMotion events
             public void eventDispatched(AWTEvent e, JLayer<? extends JComponent> l) {
                 if (e.getID() == MouseEvent.MOUSE_DRAGGED) {
-
-                    //e.startDrag(cursor, new TransferableTartan(tartan));
-                    // Do drag gesture processing here.
-                    // Note, you cannot dispatch these events to the view component, since that
-                    // creates an event loop.
                 }
-
-
             }
 
 
@@ -522,18 +510,16 @@ public class TartanCombine extends JPanel {
 
 
         DragSource ds = new DragSource();
-        // create a component to be decorated with the layer
-        // This would be your custom component.
+
         TartanSingle ts = new TartanSingle(index, tartanInserted);
-        //ts.add(new JButton("JButton"));
 
         JLayer tempLayerUI = new JLayer<JComponent>(ts, layerUI);
 
         ds.createDefaultDragGestureRecognizer(ts.canvas,
-                DnDConstants.ACTION_COPY, new DragGestureListImp1(tempLayerUI));
+                DnDConstants.ACTION_COPY, new DragGestureForCanvas(tempLayerUI));
 
         ds.createDefaultDragGestureRecognizer(tempLayerUI,
-                DnDConstants.ACTION_COPY, new DragGestureListImp());
+                DnDConstants.ACTION_COPY, new DragGestureForJLayer());
 
         // MAKE IT DROPPABLE IF ITS A DROP REGION
         if (type == DROP_REGION) {
@@ -541,7 +527,7 @@ public class TartanCombine extends JPanel {
         }
 
         setBorder(BorderFactory.createEmptyBorder());
-        // create the layer for the panel using our custom layerUI
+
         return tempLayerUI;
     }
 

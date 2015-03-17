@@ -40,9 +40,9 @@ public class SVGTartan {
         // Create an SVG document.
 
         this.tartan2 = tartan;
-        DOMImplementation impl = SVGDOMImplementation.getDOMImplementation();
+        DOMImplementation domMe = SVGDOMImplementation.getDOMImplementation();
         String svgNS = SVGDOMImplementation.SVG_NAMESPACE_URI;
-        doc = (SVGDocument) impl.createDocument(svgNS, "svg", null);
+        doc = (SVGDocument) domMe.createDocument(svgNS, "svg", null);
 
         // Create a converter for this document.
         SVGGraphics2D svgGenerator = new SVGGraphics2D(doc);

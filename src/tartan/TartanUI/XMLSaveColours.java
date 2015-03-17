@@ -89,10 +89,10 @@ public class XMLSaveColours {
     private void createDocument() {
 
         //Factory instance
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilderFactory builder = DocumentBuilderFactory.newInstance();
         try {
             //BUILDER INSTANCE
-            DocumentBuilder db = dbf.newDocumentBuilder();
+            DocumentBuilder db = builder.newDocumentBuilder();
 
             //DOC INSTANCE
             dom = db.newDocument();
@@ -115,10 +115,10 @@ public class XMLSaveColours {
         dom.appendChild(rootEle);
 
         //No enhanced for
-        Iterator it  = paletteColours.iterator();
-        while(it.hasNext()) {
-            PaletteColour pc = (PaletteColour)it.next();
-            //For each Colour object  create <Colour> element and attach it to root
+        Iterator iterator  = paletteColours.iterator();
+        while(iterator.hasNext()) {
+            PaletteColour pc = (PaletteColour)iterator.next();
+            //For each Colour object  create <Colour> element and attach iterator to root
             Element colourEle = createColourElement(pc);
             rootEle.appendChild(colourEle);
         }

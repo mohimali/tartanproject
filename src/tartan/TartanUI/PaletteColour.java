@@ -64,16 +64,16 @@ public class PaletteColour {
 
     private static String rgbToHex(String rgb) {
         String hexValue = "";
-        Pattern rgbPattern = Pattern.compile(commaSeparatedRGBPattern);
-        Matcher rgbMatcher = rgbPattern.matcher(rgb);
+        Pattern myRgbRegEx = Pattern.compile(commaSeparatedRGBPattern);
+        Matcher myRgbRegExMatcher = myRgbRegEx.matcher(rgb);
 
         int red;
         int green;
         int blue;
-        if (rgbMatcher.find()) {
-            red = Integer.parseInt(rgbMatcher.group(1));
-            green = Integer.parseInt(rgbMatcher.group(2));
-            blue = Integer.parseInt(rgbMatcher.group(3));
+        if (myRgbRegExMatcher.find()) {
+            red = Integer.parseInt(myRgbRegExMatcher.group(1));
+            green = Integer.parseInt(myRgbRegExMatcher.group(2));
+            blue = Integer.parseInt(myRgbRegExMatcher.group(3));
             Color color = new Color(red, green, blue);
             hexValue = Integer.toHexString(color.getRGB() & 0x00ffffff);
             int numberOfZeroesNeededForPadding = HEXLENGTH - hexValue.length();

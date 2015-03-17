@@ -117,10 +117,10 @@ public class XMLParserTartan extends DefaultHandler {
             }
 
 
-        } catch (SAXException se) {
-            se.printStackTrace();
-        } catch (ParserConfigurationException pce) {
-            pce.printStackTrace();
+        } catch (SAXException saxException) {
+            saxException.printStackTrace();
+        } catch (ParserConfigurationException parsonConfigEx) {
+            parsonConfigEx.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         }

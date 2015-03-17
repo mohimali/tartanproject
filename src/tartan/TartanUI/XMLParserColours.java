@@ -30,11 +30,11 @@ public class XMLParserColours extends DefaultHandler{
     private void parseDocument() {
 
         //get a factory
-        SAXParserFactory spf = SAXParserFactory.newInstance();
+        SAXParserFactory parsorFac = SAXParserFactory.newInstance();
         try {
 
             //get a new instance of parser
-            SAXParser sp = spf.newSAXParser();
+            SAXParser sp = parsorFac.newSAXParser();
 
 
             try{
@@ -51,12 +51,12 @@ public class XMLParserColours extends DefaultHandler{
             }
 
 
-        }catch(SAXException se) {
-            se.printStackTrace();
-        }catch(ParserConfigurationException pce) {
-            pce.printStackTrace();
-        }catch (IOException ie) {
-            ie.printStackTrace();
+        }catch(SAXException saxException) {
+            saxException.printStackTrace();
+        }catch(ParserConfigurationException parserConfigException) {
+            parserConfigException.printStackTrace();
+        }catch (IOException inputOutput) {
+            inputOutput.printStackTrace();
         }
     }
 
@@ -65,9 +65,9 @@ public class XMLParserColours extends DefaultHandler{
 
         System.out.println("No of Colours '" + coloursList.size() + "'.");
 
-        Iterator it = coloursList.iterator();
-        while(it.hasNext()) {
-            System.out.println(it.next().toString());
+        Iterator iterator = coloursList.iterator();
+        while(iterator.hasNext()) {
+            System.out.println(iterator.next().toString());
         }
     }
 
