@@ -8,6 +8,7 @@ This is the ultimate tartan generator in the history of tartans. Don't mess with
 * Requirements
 Java 1.8
 
+Run the TartanMVC.java main class
 
 * Create a tartan
 ![alt text](./resources/Tartan2.PNG)
